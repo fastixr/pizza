@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=7bb7d1cf-d99b-466c-b516-579a37e76f0d&amp;lang=ru_RU" type="text/javascript"></script>
+</head>
+<body>
+    <div>
+        <form id="address-form">
+            <label for="address">Адрес:</label>
+            <input type="text" id="address" name="address" size="76">
+            <button type="submit">Найти</button>
+        </form>
+    </div>
+    <div id="map" style="width: 600px; height: 400px;"></div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
