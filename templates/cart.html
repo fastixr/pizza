@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=7bb7d1cf-d99b-466c-b516-579a37e76f0d&lang=ru_RU" type="text/javascript"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link 
+    rel="stylesheet"
+    type="text/css"
+    href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Корзина</title>
+</head>
+<body>
+    <div class="container">
+        <div id="block1" class="block">
+            <img id="logo_cart" src="{{ url_for('static', filename='img/logo_cart.png') }}" alt="logo_cart">
+            <img id="info_cart" src="{{ url_for('static', filename='img/info_cart.png') }}" alt="info_cart">
+            <h1 id="text_cart1" class="cart_text">Корзина</h1>
+            <h2 id="text_cart2" class="cart_text">Добавить к заказу?</h2>
+            <h2 id="text_cart3" class="cart_text">Соусы к бортикам и закускам</h2>
+            <h2 id="text_cart4" class="cart_text">Промокод</h2>
+            <input class="promo_input" type="text" placeholder="Введите промокод">
+            <button id="apply_btn1" type="button" class="apply_btn">Применить</button>
+            <button id="apply_btn2" type="button" class="apply_btn">Оформить заказ ></button>
+            <button id="back_btn1" type="button" class="back_btn"> < Вернуться в магазин</button>
+            <!-- Слайдер-->
+            <div class="slider">
+                <img id="slide1" src="{{ url_for('static', filename='img/recommend1.png') }}" alt="Slide 1">
+                <img id="slide2" src="{{ url_for('static', filename='img/recommend2.png') }}" alt="Slide 2">
+                <img id="slide3" src="{{ url_for('static', filename='img/recommend3.png') }}" alt="Slide 3">
+                <img id="slide4" src="{{ url_for('static', filename='img/recommend4.png') }}" alt="Slide 4">
+                <img id="slide5" src="{{ url_for('static', filename='img/recommend5.png') }}" alt="Slide 5">
+                <img id="slide6" src="{{ url_for('static', filename='img/recommend6.png') }}" alt="Slide 6">
+            </div>
+            <img id="l_btn" class="slide_btn" src="{{ url_for('static', filename='img/l_btn.png') }}" alt="l_btn">
+            <img id="r_btn" class="slide_btn" src="{{ url_for('static', filename='img/r_btn.png') }}" alt="r_btn">
+            <!-- Конец слайдера -->
+            <h3 id="text_cart5" class="cart_text">Сумма заказа:</h3>
+            <div id="image_btn_cart1" class="image_btn_cart">
+                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
+                <h4 id="pizza_desc_img_cart1" class="text_desc_img_cart">Сырный соус</h4>
+                <h4 id="pizza_cost_img_cart1" class="text_cost_img_cart">от 120 ₽</h4>
+            </div>
+            <div id="image_btn_cart2" class="image_btn_cart">
+                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
+                <h4 id="pizza_desc_img_cart2" class="text_desc_img_cart">Сырный соус</h4>
+                <h4 id="pizza_cost_img_cart2" class="text_cost_img_cart">от 120 ₽</h4>
+            </div>
+            <div id="image_btn_cart3" class="image_btn_cart">
+                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
+                <h4 id="pizza_desc_img_cart3" class="text_desc_img_cart">Сырный соус</h4>
+                <h4 id="pizza_cost_img_cart3" class="text_cost_img_cart">от 120 ₽</h4>
+            </div>
+            <div id="image_btn_cart4" class="image_btn_cart">
+                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
+                <h4 id="pizza_desc_img_cart4" class="text_desc_img_cart">Сырный соус</h4>
+                <h4 id="pizza_cost_img_cart4" class="text_cost_img_cart">от 120 ₽</h4>
+            </div>
+            <div id="image_btn_cart5" class="image_btn_cart">
+                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
+                <h4 id="pizza_desc_img_cart5" class="text_desc_img_cart">Сырный соус</h4>
+                <h4 id="pizza_cost_img_cart5" class="text_cost_img_cart">от 120 ₽</h4>
+            </div>
+            <div id="image_btn_cart6" class="image_btn_cart">
+                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
+                <h4 id="pizza_desc_img_cart6" class="text_desc_img_cart">Сырный соус</h4>
+                <h4 id="pizza_cost_img_cart6" class="text_cost_img_cart">от 120 ₽</h4>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/static/js/script.js"></script>
+</body>
