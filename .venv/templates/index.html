@@ -7,485 +7,686 @@
 {% block content %}
 <body>
     <div class="container">
-        <div class="slider"> 
-            <div class="slide prev-slide"> 
-                <img src="/static/img/slide1.png" alt="Slide 1"> 
-            </div> 
-            <div class="slide active"> 
-                <img src="/static/img/slide2.png" alt="Slide 2"> 
-            </div> 
-            <div class="slide active"> 
-                <img src="/static/img/slide3.png" alt="Slide 3"> 
-            </div> 
-            <div class="slide next"> 
-                <img src="/static/img/slide4.png" alt="Slide 4"> 
-            </div> 
-        </div> 
+        <div class="slider">
+            <div class="slide prev-slide">
+                <img src="/static/img/slide1.png" alt="Slide 1">
+            </div>
+            <div class="slide active">
+                <img src="/static/img/slide2.png" alt="Slide 2">
+            </div>
+            <div class="slide active">
+                <img src="/static/img/slide3.png" alt="Slide 3">
+            </div>
+            <div class="slide next">
+                <img src="/static/img/slide4.png" alt="Slide 4">
+            </div>
+        </div>
     </div>
 </body>
 <body>
-        <div id="rn1_modal" class="modal_pizza">
-            <div class="modal_content">
-                <h2 id="pizza_name_pop1" class="text_name_pop">С креветками и трюфелями</h2>
-                <h3 id="pizza_desc_pop1" class="text_desc_pop">25 см, традиционное тесто, 360 г</h3>
-                <h4 id="pizza_dang_pop1" class="text_dang_pop">Моцарелла, соус альфредо</h4>
-                <button id="small_btn1" type="button" class="btn_size1">Маленькая</button>
-                <button id="middle_btn1" type="button" class="btn_size2">Средняя</button>
-                <button id="big_btn1" type="button" class="btn_size3">Большая</button>
-                <button id="tradition_btn1" type="button" class="btn_dough1">Традиционное</button>
-                <button id="thin_btn1" type="button" class="btn_dough2">Тонкое</button>
-                <div class="scrollable_content">
-                    <div id="image_btn_pop1" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop1" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop1" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
-                    <div id="image_btn_pop2" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop2" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop2" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
-                    <div id="image_btn_pop3" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop3" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop3" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
-                    <div id="image_btn_pop4" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop4" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop4" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
-                    <div id="image_btn_pop5" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop5" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop5" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
-                    <div id="image_btn_pop6" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop6" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop6" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
+    <!-- Модальное окно для пицц-->
+    <div id="rn1_modal" class="modal_pizza">
+        <div class="modal_content">
+            <h2 id="pizza_name_pop1" class="text_name_pop">С креветками и трюфелями</h2>
+            <h3 id="pizza_desc_pop1" class="text_desc_pop">25 см, традиционное тесто, 360 г</h3>
+            <h4 id="pizza_dang_pop1" class="text_dang_pop">Моцарелла, соус альфредо</h4>
+            <button id="small_btn1" type="button" class="btn_size1">Маленькая</button>
+            <button id="middle_btn1" type="button" class="btn_size2">Средняя</button>
+            <button id="big_btn1" type="button" class="btn_size3">Большая</button>
+            <button id="tradition_btn1" type="button" class="btn_dough1">Традиционное</button>
+            <button id="thin_btn1" type="button" class="btn_dough2">Тонкое</button>
+            <div class="scrollable_content">
+                <div id="image_btn_pop1" class="image_btn_pop image_btn_pop_cord1">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop1" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop1" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
-                <button id="to_cart_in_pop1" type="button" class="to_cart_in_pop">Добавить в корзину 1 048 ₽</button>
-                <img id="pizza1pop" class="pizza_pop" src="{{ url_for('static', filename='img/pizza_for_pop1.png') }}" alt="pizza1pop_image">
-                <img id="close_pop1" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
-            </div>
-        </div>
-        <!-- Конец модального окна для пицц -->
-        <!-- Модальное окно для новинок -->
-        <div id="rn2_modal" class="modal_pizza">
-            <div class="modal_content">
-                <h2 id="pizza_name_pop2" class="text_name_pop">Карбонара</h2>
-                <h3 id="pizza_desc_pop2" class="text_desc_pop">25 см, традиционное тесто, 360 г</h3>
-                <h4 id="pizza_dang_pop2" class="text_dang_pop">Моцарелла, соус альфредо</h4>
-                <button id="small_btn2" type="button" class="btn_size1">Маленькая</button>
-                <button id="middle_btn2" type="button" class="btn_size2">Средняя</button>
-                <button id="big_btn2" type="button" class="btn_size3">Большая</button>
-                <button id="tradition_btn2" type="button" class="btn_dough1">Традиционное</button>
-                <button id="thin_btn2" type="button" class="btn_dough2">Тонкое</button>
-                <div class="scrollable_content">
-                    <div id="image_btn_pop7" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop7" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop7" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
-                    <div id="image_btn_pop8" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop8" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop8" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
-                    <div id="image_btn_pop9" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop9" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop9" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
-                    <div id="image_btn_pop10" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop10" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop10" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
-                    <div id="image_btn_pop11" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop11" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop11" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
-                    <div id="image_btn_pop12" class="image_btn_pop">
-                        <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                        <h4 id="pizza_desc_img_pop12" class="text_desc_img_pop">Острый халапеньо</h4>
-                        <h4 id="pizza_cost_img_pop12" class="text_cost_img_pop">от 120 ₽</h4>
-                    </div>
+                <div id="image_btn_pop2" class="image_btn_pop image_btn_pop_cord2">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop2" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop2" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
-                <button id="to_cart_in_pop2" type="button" class="to_cart_in_pop">Добавить в корзину 1 048 ₽</button>
-                <img id="pizza2pop" class="pizza_pop" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza1pop_image" width="504" height="504">
-                <img id="close_pop2" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
+                <div id="image_btn_pop3" class="image_btn_pop image_btn_pop_cord3">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop3" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop3" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop4" class="image_btn_pop image_btn_pop_cord4">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop4" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop4" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop5" class="image_btn_pop image_btn_pop_cord5">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop5" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop5" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop6" class="image_btn_pop image_btn_pop_cord6">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop6" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop6" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
             </div>
+            <button id="to_cart_in_pop1" type="button" class="to_cart_in_pop">Добавить в корзину 1 048 ₽</button>
+            <img id="pizza1pop" class="pizza_pop" src="{{ url_for('static', filename='img/pizza_for_pop1.png') }}" alt="pizza1pop_image">
+            <img id="close_pop1" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
         </div>
-        <!-- Конец модального окна для новинок-->
-        <div id="block1" class="block">
-            <h3 id="new" class="text">Новинки</h3>
-            <div id="r1" type="bytton" class="rectangle btn btn-light">
-                <img id="pizzapng" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza_image">
-                    <h2 id="pizza_rect" class="text">Карбонара</h2>
-                    <h2 id="pizza_cost" class="text">от 320 ₽</h2>
+    </div>
+    <!-- Конец модального окна для пицц -->
+    <!-- Модальное окно для новинок -->
+    <div id="rn2_modal" class="modal_pizza">
+        <div class="modal_content">
+            <h2 id="pizza_name_pop2" class="text_name_pop">Карбонара</h2>
+            <h3 id="pizza_desc_pop2" class="text_desc_pop">25 см, традиционное тесто, 360 г</h3>
+            <h4 id="pizza_dang_pop2" class="text_dang_pop">Моцарелла, соус альфредо</h4>
+            <button id="small_btn2" type="button" class="btn_size1">Маленькая</button>
+            <button id="middle_btn2" type="button" class="btn_size2">Средняя</button>
+            <button id="big_btn2" type="button" class="btn_size3">Большая</button>
+            <button id="tradition_btn2" type="button" class="btn_dough1">Традиционное</button>
+            <button id="thin_btn2" type="button" class="btn_dough2">Тонкое</button>
+            <div class="scrollable_content">
+                <div id="image_btn_pop7" class="image_btn_pop image_btn_pop_cord1">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop7" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop7" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop8" class="image_btn_pop image_btn_pop_cord2">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop8" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop8" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop9" class="image_btn_pop image_btn_pop_cord3">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop9" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop9" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop10" class="image_btn_pop image_btn_pop_cord4">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop10" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop10" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop11" class="image_btn_pop image_btn_pop_cord5">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop11" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop11" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop12" class="image_btn_pop image_btn_pop_cord6">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop12" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop12" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
             </div>
-            <div id="r2" type="bytton" class="rectangle btn btn-light">
-                <img id="pizzapng" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza_image">
-                    <h2 id="pizza_rect" class="text">Карбонара</h2>
-                    <h2 id="pizza_cost" class="text">от 320 ₽</h2>
-            </div>
-            <div id="r3" type="bytton" class="rectangle btn btn-light">
-                <img id="pizzapng" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza_image">
-                    <h2 id="pizza_rect" class="text">Карбонара</h2>
-                    <h2 id="pizza_cost" class="text">от 320 ₽</h2>
-            </div>
-            <div id="r4" type="bytton" class="rectangle btn btn-light">
-                <img id="pizzapng" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza_image">
-                    <h2 id="pizza_rect" class="text">Карбонара</h2>
-                    <h2 id="pizza_cost" class="text">от 320 ₽</h2>
-            </div>
-    
-            <h3 id="zag_pizza" class="text">Пицца</h3>
-            <div id="rn1" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn2" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn3" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn4" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn5" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn6" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn7" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn8" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn9" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn10" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn11" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn12" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn13" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn14" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn15" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn16" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <h3 id="zag_salade" class="text">Салаты</h3>
-            <div id="rn17" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn18" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn19" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn20" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn21" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn22" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn23" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn24" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <h3 id="zag_combo" class="text">Комбо</h3>
-            <div id="rn25" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn26" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn27" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn28" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn29" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn30" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn31" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn32" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn33" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn34" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <h3 id="zag_desert" class="text">Десерты</h3>
-            <div id="rn35" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn36" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn37" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn38" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <h3 id="zag_napitki" class="text">Напитки</h3>
-            <div id="rn39" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn40" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn41" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
-            <div id="rn42" type="bytton" class="rectangle1 btn btn-light">
-                <img id="pizza1png" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
-                <h2 id="pizza_name" class="text">С креветками</h2>
-                <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
-                </h2>
-                <h2 id="pizza_cost2" class="text">600 ₽</h2>
-                <button id="to_cart" type="button" class="btn btn-primary">В корзину</button>
-            </div>
+            <button id="to_cart_in_pop2" type="button" class="to_cart_in_pop">Добавить в корзину 1 048 ₽</button>
+            <img id="pizza2pop" class="pizza_pop" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza1pop_image" width="504" height="504">
+            <img id="close_pop2" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
         </div>
+    </div>
+    <!-- Конец модального окна для новинок -->
+    <!-- Модальное окно салаты -->
+    <div id="rn3_modal" class="modal_pizza">
+        <div class="modal_content">
+            <h2 id="pizza_name_pop3" class="text_name_pop">Салаты</h2>
+            <h3 id="pizza_desc_pop3" class="text_desc_pop">25 см, традиционное тесто, 360 г</h3>
+            <h4 id="pizza_dang_pop3" class="text_dang_pop">Моцарелла, соус альфредо</h4>
+            <button id="small_btn3" type="button" class="btn_size1">Маленькая</button>
+            <button id="middle_btn3" type="button" class="btn_size2">Средняя</button>
+            <button id="big_btn3" type="button" class="btn_size3">Большая</button>
+            <button id="tradition_btn3" type="button" class="btn_dough1">Традиционное</button>
+            <button id="thin_btn3" type="button" class="btn_dough2">Тонкое</button>
+            <div class="scrollable_content">
+                <div id="image_btn_pop13" class="image_btn_pop image_btn_pop_cord1">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop13" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop13" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop14" class="image_btn_pop image_btn_pop_cord2">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop14" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop14" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop15" class="image_btn_pop image_btn_pop_cord3">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop15" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop15" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop16" class="image_btn_pop image_btn_pop_cord4">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop16" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop16" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop17" class="image_btn_pop image_btn_pop_cord5">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop17" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop17" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop18" class="image_btn_pop image_btn_pop_cord6">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop18" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop18" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+            </div>
+            <button id="to_cart_in_pop3" type="button" class="to_cart_in_pop">Добавить в корзину 1 048 ₽</button>
+            <img id="pizza3pop" class="pizza_pop" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza1pop_image" width="504" height="504">
+            <img id="close_pop3" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
+        </div>
+    </div>
+    <!-- Конец модального окна для салатов -->
+    <!-- Модальное окно комбо -->
+    <div id="rn4_modal" class="modal_pizza">
+        <div class="modal_content">
+            <h2 id="pizza_name_pop4" class="text_name_pop">Комбо</h2>
+            <h3 id="pizza_desc_pop4" class="text_desc_pop">25 см, традиционное тесто, 360 г</h3>
+            <h4 id="pizza_dang_pop4" class="text_dang_pop">Моцарелла, соус альфредо</h4>
+            <button id="small_btn4" type="button" class="btn_size1">Маленькая</button>
+            <button id="middle_btn4" type="button" class="btn_size2">Средняя</button>
+            <button id="big_btn4" type="button" class="btn_size3">Большая</button>
+            <button id="tradition_btn4" type="button" class="btn_dough1">Традиционное</button>
+            <button id="thin_btn4" type="button" class="btn_dough2">Тонкое</button>
+            <div class="scrollable_content">
+                <div id="image_btn_pop19" class="image_btn_pop image_btn_pop_cord1">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop19" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop19" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop20" class="image_btn_pop image_btn_pop_cord2">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop20" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop20" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop21" class="image_btn_pop image_btn_pop_cord3">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop21" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop21" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop22" class="image_btn_pop image_btn_pop_cord4">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop22" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop22" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop23" class="image_btn_pop image_btn_pop_cord5">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop23" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop23" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop24" class="image_btn_pop image_btn_pop_cord6">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop24" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop24" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+            </div>
+            <button id="to_cart_in_pop4" type="button" class="to_cart_in_pop">Добавить в корзину 1 048 ₽</button>
+            <img id="pizza4pop" class="pizza_pop" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza1pop_image" width="504" height="504">
+            <img id="close_pop4" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
+        </div>
+    </div>
+    <!-- Конец модального окна для комбо -->
+    <!-- Модальное окно десерты -->
+    <div id="rn5_modal" class="modal_pizza">
+        <div class="modal_content">
+            <h2 id="pizza_name_pop5" class="text_name_pop">Десерты</h2>
+            <h3 id="pizza_desc_pop5" class="text_desc_pop">25 см, традиционное тесто, 360 г</h3>
+            <h4 id="pizza_dang_pop5" class="text_dang_pop">Моцарелла, соус альфредо</h4>
+            <button id="small_btn5" type="button" class="btn_size1">Маленькая</button>
+            <button id="middle_btn5" type="button" class="btn_size2">Средняя</button>
+            <button id="big_btn5" type="button" class="btn_size3">Большая</button>
+            <button id="tradition_btn5" type="button" class="btn_dough1">Традиционное</button>
+            <button id="thin_btn5" type="button" class="btn_dough2">Тонкое</button>
+            <div class="scrollable_content">
+                <div id="image_btn_pop25" class="image_btn_pop image_btn_pop_cord1">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop25" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop25" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop26" class="image_btn_pop image_btn_pop_cord2">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop26" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop26" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop27" class="image_btn_pop image_btn_pop_cord3">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop27" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop27" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop28" class="image_btn_pop image_btn_pop_cord4">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop28" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop28" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop29" class="image_btn_pop image_btn_pop_cord5">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop29" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop29" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop30" class="image_btn_pop image_btn_pop_cord6">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop30" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop30" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+            </div>
+            <button id="to_cart_in_pop5" type="button" class="to_cart_in_pop">Добавить в корзину 1 048 ₽</button>
+            <img id="pizza5pop" class="pizza_pop" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza1pop_image" width="504" height="504">
+            <img id="close_pop5" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
+        </div>
+    </div>
+    <!-- Конец модального окна для десерты -->
+    <!-- Модальное окно напитки -->
+    <div id="rn6_modal" class="modal_pizza">
+        <div class="modal_content">
+            <h2 id="pizza_name_pop6" class="text_name_pop">Напитки</h2>
+            <h3 id="pizza_desc_pop6" class="text_desc_pop">25 см, традиционное тесто, 360 г</h3>
+            <h4 id="pizza_dang_pop6" class="text_dang_pop">Моцарелла, соус альфредо</h4>
+            <button id="small_btn6" type="button" class="btn_size1">Маленькая</button>
+            <button id="middle_btn6" type="button" class="btn_size2">Средняя</button>
+            <button id="big_btn6" type="button" class="btn_size3">Большая</button>
+            <button id="tradition_btn6" type="button" class="btn_dough1">Традиционное</button>
+            <button id="thin_btn6" type="button" class="btn_dough2">Тонкое</button>
+            <div class="scrollable_content">
+                <div id="image_btn_pop31" class="image_btn_pop image_btn_pop_cord1">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop31" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop31" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop32" class="image_btn_pop image_btn_pop_cord2">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop32" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop32" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop33" class="image_btn_pop image_btn_pop_cord3">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop33" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop33" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop34" class="image_btn_pop image_btn_pop_cord4">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop34" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop34" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop35" class="image_btn_pop image_btn_pop_cord5">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop35" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop35" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+                <div id="image_btn_pop36" class="image_btn_pop image_btn_pop_cord6">
+                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop36" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <h4 id="pizza_cost_img_pop36" class="text_cost_img_pop">от 120 ₽</h4>
+                </div>
+            </div>
+            <button id="to_cart_in_pop6" type="button" class="to_cart_in_pop">Добавить в корзину 1 048 ₽</button>
+            <img id="pizza6pop" class="pizza_pop" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza1pop_image" width="504" height="504">
+            <img id="close_pop6" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
+        </div>
+    </div>
+    <!-- Конец модального окна для напитков -->
+    <div id="block1" class="block">
+        <h3 id="new" class="text">Новинки</h3>
+        <div id="r1" type="bytton" class="rectangle btn btn-light">
+            <img id="pizzapng" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza_image">
+                <h2 id="pizza_rect" class="text">Карбонара</h2>
+                <h2 id="pizza_cost" class="text">от 320 ₽</h2>
+        </div>
+        <div id="r2" type="bytton" class="rectangle btn btn-light">
+            <img id="pizzapng" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza_image">
+                <h2 id="pizza_rect" class="text">Карбонара</h2>
+                <h2 id="pizza_cost" class="text">от 320 ₽</h2>
+        </div>
+        <div id="r3" type="bytton" class="rectangle btn btn-light">
+            <img id="pizzapng" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza_image">
+                <h2 id="pizza_rect" class="text">Карбонара</h2>
+                <h2 id="pizza_cost" class="text">от 320 ₽</h2>
+        </div>
+        <div id="r4" type="bytton" class="rectangle btn btn-light">
+            <img id="pizzapng" src="{{ url_for('static', filename='img/pizza.png') }}" alt="pizza_image">
+                <h2 id="pizza_rect" class="text">Карбонара</h2>
+                <h2 id="pizza_cost" class="text">от 320 ₽</h2>
+        </div>
+        <!--Пицца-->
+        <h3 id="zag_pizza" class="text">Пицца</h3>
+        <div id="rn1" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn2" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn3" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn4" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn5" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn6" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn7" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn8" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn9" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn10" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn11" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn12" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn13" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn14" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn15" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <div id="rn16" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_pizza" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost1" class="text">от 600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary pizza-list">В корзину</button>
+        </div>
+        <!--Салаты-->
+        <h3 id="zag_salade" class="text">Салаты</h3>
+        <div id="rn17" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_salad" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary salad-list">В корзину</button>
+        </div>
+        <div id="rn18" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_salad" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary salad-list">В корзину</button>
+        </div>
+        <div id="rn19" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_salad" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary salad-list">В корзину</button>
+        </div>
+        <div id="rn20" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_salad" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary salad-list">В корзину</button>
+        </div>
+        <div id="rn21" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_salad" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary salad-list">В корзину</button>
+        </div>
+        <div id="rn22" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_salad" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary salad-list">В корзину</button>
+        </div>
+        <div id="rn23" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_salad" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary salad-list">В корзину</button>
+        </div>
+        <div id="rn24" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_salad" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary salad-list">В корзину</button>
+        </div>
+        <!--Комбо-->
+        <h3 id="zag_combo" class="text">Комбо</h3>
+        <div id="rn25" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_combo" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary combo-list">В корзину</button>
+        </div>
+        <div id="rn26" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_combo" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary combo-list">В корзину</button>
+        </div>
+        <div id="rn27" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_combo" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary combo-list">В корзину</button>
+        </div>
+        <div id="rn28" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_combo" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary combo-list">В корзину</button>
+        </div>
+        <div id="rn29" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_combo" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary combo-list">В корзину</button>
+        </div>
+        <div id="rn30" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_combo" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary combo-list">В корзину</button>
+        </div>
+        <div id="rn31" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_combo" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary combo-list">В корзину</button>
+        </div>
+        <div id="rn32" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_combo" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary combo-list">В корзину</button>
+        </div>
+        <div id="rn33" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_combo" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary combo-list">В корзину</button>
+        </div>
+        <div id="rn34" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_combo" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary combo-list">В корзину</button>
+        </div>
+        <!--Десерты-->
+        <h3 id="zag_desert" class="text">Десерты</h3>
+        <div id="rn35" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_dessert" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary dessert-list">В корзину</button>
+        </div>
+        <div id="rn36" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_dessert" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary dessert-list">В корзину</button>
+        </div>
+        <div id="rn37" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_dessert" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary dessert-list">В корзину</button>
+        </div>
+        <div id="rn38" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_dessert" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary dessert-list">В корзину</button>
+        </div>
+        <!--Напитки-->
+        <h3 id="zag_napitki" class="text">Напитки</h3>
+        <div id="rn39" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_drink" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary drink-list">В корзину</button>
+        </div>
+        <div id="rn40" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_drink" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary drink-list">В корзину</button>
+        </div>
+        <div id="rn41" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_drink" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary drink-list">В корзину</button>
+        </div>
+        <div id="rn42" type="bytton" class="rectangle1 btn btn-light">
+            <img id="pizza1png" class="open_modal_drink" src="{{ url_for('static', filename='img/pizza1.png') }}" alt="pizza1_image">
+            <h2 id="pizza_name" class="text">С креветками</h2>
+            <h2 id="pizza_des" class="text">Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец, пармезан.350 г
+            </h2>
+            <h2 id="pizza_cost2" class="text">600 ₽</h2>
+            <button id="to_cart" type="button" class="btn btn-primary drink-list">В корзину</button>
+        </div>
+    </div>
         <div class="container-fluid">
             <div class="section">
                 <div id="block52" class="block">
