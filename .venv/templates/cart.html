@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link 
+    <link
     rel="stylesheet"
     type="text/css"
     href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
@@ -21,9 +21,17 @@
 </head>
 <body>
     <div class="container">
-        <div id="block1000" class="block">
-            <img id="logo_cart" src="{{ url_for('static', filename='img/logo_cart.png') }}" alt="logo_cart">
-            <img id="info_cart" src="{{ url_for('static', filename='img/info_cart.png') }}" alt="info_cart">
+        <header id="header_cart" class="header d-flex flex-wrap align-items-center justify-content-center justify-content-md-between" style="height: 90px;">
+            <div class="col-md-3 mb-2 mb-md-0">
+                <a href="/">
+                    <img id="logo_cart" src="{{ url_for('static', filename='img/avatar_full.png') }}" alt="logo_cart">
+                </a>
+                <img id="info_cart" src="{{ url_for('static', filename='img/info_cart.png') }}" alt="info_cart">
+            </div>
+        </header>
+    </div>
+    <div class="container">
+        <div id="block_cart" class="block">
             <h1 id="text_cart1" class="cart_text">Корзина</h1>
             <h2 id="text_cart2" class="cart_text">Добавить к заказу?</h2>
             <h2 id="text_cart3" class="cart_text">Соусы к бортикам и закускам</h2>
@@ -31,9 +39,11 @@
             <input class="promo_input" type="text" placeholder="Введите промокод">
             <button id="apply_btn1" type="button" class="apply_btn">Применить</button>
             <button id="apply_btn2" type="button" class="apply_btn">Оформить заказ ></button>
-            <button id="back_btn1" type="button" class="back_btn"> < Вернуться в магазин</button>
-            <!-- Слайдер-->
-            <div id="slider2" class="slider">
+            <a href="/">
+                <button id="back_btn1" type="button" class="back_btn"> < Вернуться в магазин</button>
+            </a>
+            <!-- Слайдер -->
+            <div class="slider_cart">
                 <img id="slide1" src="{{ url_for('static', filename='img/recommend1.png') }}" alt="Slide 1">
                 <img id="slide2" src="{{ url_for('static', filename='img/recommend2.png') }}" alt="Slide 2">
                 <img id="slide3" src="{{ url_for('static', filename='img/recommend3.png') }}" alt="Slide 3">
@@ -46,39 +56,71 @@
             <!-- Конец слайдера -->
             <h3 id="text_cart5" class="cart_text">Сумма заказа:</h3>
             <div id="image_btn_cart1" class="image_btn_cart">
-                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
+                <img src="{{ url_for('static', filename='img/sauce1.png') }}" alt="sauce1_img">
                 <h4 id="pizza_desc_img_cart1" class="text_desc_img_cart">Сырный соус</h4>
                 <h4 id="pizza_cost_img_cart1" class="text_cost_img_cart">от 120 ₽</h4>
             </div>
             <div id="image_btn_cart2" class="image_btn_cart">
-                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
-                <h4 id="pizza_desc_img_cart2" class="text_desc_img_cart">Сырный соус</h4>
+                <img src="{{ url_for('static', filename='img/sauce2.png') }}" alt="sauce2_img">
+                <h4 id="pizza_desc_img_cart2" class="text_desc_img_cart">Барбекю</h4>
                 <h4 id="pizza_cost_img_cart2" class="text_cost_img_cart">от 120 ₽</h4>
             </div>
             <div id="image_btn_cart3" class="image_btn_cart">
-                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
-                <h4 id="pizza_desc_img_cart3" class="text_desc_img_cart">Сырный соус</h4>
+                <img src="{{ url_for('static', filename='img/sauce3.png') }}" alt="sauce3_img">
+                <h4 id="pizza_desc_img_cart3" class="text_desc_img_cart">Ранч</h4>
                 <h4 id="pizza_cost_img_cart3" class="text_cost_img_cart">от 120 ₽</h4>
             </div>
             <div id="image_btn_cart4" class="image_btn_cart">
-                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
-                <h4 id="pizza_desc_img_cart4" class="text_desc_img_cart">Сырный соус</h4>
+                <img src="{{ url_for('static', filename='img/sauce4.png') }}" alt="sauce4_img">
+                <h4 id="pizza_desc_img_cart4" class="text_desc_img_cart">Сгущенка</h4>
                 <h4 id="pizza_cost_img_cart4" class="text_cost_img_cart">от 120 ₽</h4>
             </div>
             <div id="image_btn_cart5" class="image_btn_cart">
-                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
-                <h4 id="pizza_desc_img_cart5" class="text_desc_img_cart">Сырный соус</h4>
+                <img src="{{ url_for('static', filename='img/sauce5.png') }}" alt="sauce5_img">
+                <h4 id="pizza_desc_img_cart5" class="text_desc_img_cart">Малиновое варенье</h4>
                 <h4 id="pizza_cost_img_cart5" class="text_cost_img_cart">от 120 ₽</h4>
             </div>
             <div id="image_btn_cart6" class="image_btn_cart">
-                <img src="{{ url_for('static', filename='img/sauce.png') }}" alt="sauce_img">
+                <img src="{{ url_for('static', filename='img/sauce1.png') }}" alt="sauce1_img">
                 <h4 id="pizza_desc_img_cart6" class="text_desc_img_cart">Сырный соус</h4>
                 <h4 id="pizza_cost_img_cart6" class="text_cost_img_cart">от 120 ₽</h4>
             </div>
         </div>
     </div>
+    <div class="container">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top-0">
+          <div class="col mb-3">
+            <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+              <img id="header_podval" class="header__img" src="{{ url_for('static', filename='img/avatar_full.png') }}" alt="avatar_full">
+            </a>
+            <p id="prava" class="text-body-secondary">Права на дизайн защищены ЧВВ © 2024</p>
+            <p id="karol" class="col mb-3">Калорийность и состав</p>
+            <p id="pravovinf" class="col mb-3">Правовая информация</p>
+            <p id="voprosi" class="col mb-3">ОСТАЛИСЬ ВОПРОСЫ? А МЫ ВСЕГДА НА СВЯЗИ:</p>
+            <div id="rnl1" type="bytton" class="btn btn-light">
+              <img id="VK" class="header__img" src="{{ url_for('static', filename='img/VK.png') }}" alt="VK">
+            </div>
+            <div id="rnl2" type="bytton" class="btn btn-light">
+              <img id="TG" class="header__img" src="{{ url_for('static', filename='img/TG.png') }}" alt="TG">
+            </div>
+            <div id="rnl3" type="bytton" class="btn btn-light">
+              <img id="DZEN" class="header__img" src="{{ url_for('static', filename='img/DZEN.png') }}" alt="DZEN">
+            </div>
+            <div id="rnl4" type="bytton" class="btn btn-light">
+              <img id="OK" class="header__img" src="{{ url_for('static', filename='img/OK.png') }}" alt="OK">
+            </div>
+            <div id="rnl5" type="bytton" class="btn btn-light">
+              <img id="VC" class="header__img" src="{{ url_for('static', filename='img/VC.png') }}" alt="VC">
+            </div>
+            <div id="rnl6" type="bytton" class="btn btn-light">
+              <p id="napisat" class="col mb-3">Написать нам</p>
+            </div>
+            <p id="number_podval" class="col mb-3">8 535 555-35-35</p>
+          </div>
+        </footer>
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/static/js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
 </body>
 </html>
