@@ -4,11 +4,11 @@ from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_user, login_required, logout_user, LoginManager, UserMixin
 
+
 app = Flask(__name__)
 app.secret_key = 'sdgdwffewofeiuwoehufiowfhue'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 db = SQLAlchemy(app)
-manager = LoginManager(app)
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -17,9 +17,6 @@ class Users(db.Model, UserMixin):
     password = db.Column(db.String, nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __repr__(self):
-        return '<Users %r>' % self.id
-    
 @manager.user_loader
 def load_user(user_id):
     return Users.query.get(user_id)
