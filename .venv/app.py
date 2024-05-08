@@ -3,12 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_user, login_required, logout_user, LoginManager, UserMixin
+from flask_migrate import Migrate
 
 
 app = Flask(__name__)
 app.secret_key = 'sdgdwffewofeiuwoehufiowfhue'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+manager = LoginManager(app)
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,6 +19,21 @@ class Users(db.Model, UserMixin):
     phone = db.Column(db.String(16), nullable=False)
     password = db.Column(db.String, nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
+    birthDate = db.Column(db.Datatime)
+    
+    def __repr__(self):
+        return '<Users %r>' % self.id
+
+class Dishes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    image = db.Column(db.LargeBinary)
+    ingredients = db.Column(db.String)
+    weight = db.Column(db.Integer)
+    price = db.Column(db.Integer)
+    
+    def __repr__(self):
+        return '<Dishes %r>' % self.id
 
 @manager.user_loader
 def load_user(user_id):
