@@ -424,18 +424,65 @@ buttons_adds_of_pizza6.forEach(button => {
     });
 });
 
-// Изменяем кол-во товаров в корзине
+// УВЕЛИЧИВАЕМ КОЛ-ВО ТОВАРА
 const cartButton = document.getElementById('cart');
 const addToCartButtons = document.querySelectorAll('.to_cart_in_pop');
 
+let count = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
 addToCartButtons.forEach(function(addToCartButton) {
     addToCartButton.addEventListener('click', function() {
-        let count = parseInt(cartButton.textContent.split('|')[1].trim());
         if (count < 99) {
             count++;
-        } else {
-            count = '99+';
         }
-        cartButton.textContent = `Корзина | ${count}`; //после 99 будет 99+ писать и счетчик увеличиваться  не будет
+        updateCartButtonText(count);
+        // Сохраняем значение счетчика в localStorage
+        localStorage.setItem('cartCount', count.toString());
     });
+});
+function updateCartButtonText(count) {
+    if (count <= 99) {cartButton.textContent = `Корзина | ${count}`;}
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const cartButton = document.getElementById('cart');
+
+    let count = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
+    updateCartButtonText(count);
+
+    function updateCartButtonText(count) {
+        cartButton.textContent = `Корзина | ${count}`;
+    }
+
+    window.addEventListener('storage', function(event) {
+        if (event.key === 'cartCount') {
+            count = parseInt(event.newValue);
+            updateCartButtonText(count);
+        }
+    });
+});
+
+
+//Ставим флаги видимости товаров в корзине 
+document.getElementById("to_cart_in_pop1").addEventListener("click", function() {
+    localStorage.setItem("cart_item_visible1", "true"); // Устанавливаем флаг видимости элемента
+});
+
+document.getElementById("to_cart_in_pop2").addEventListener("click", function() {
+    localStorage.setItem("cart_item_visible2", "true"); // Устанавливаем флаг видимости элемента
+});
+
+document.getElementById("to_cart_in_pop3").addEventListener("click", function() {
+    localStorage.setItem("cart_item_visible3", "true"); // Устанавливаем флаг видимости элемента
+});
+
+document.getElementById("to_cart_in_pop4").addEventListener("click", function() {
+    localStorage.setItem("cart_item_visible4", "true"); // Устанавливаем флаг видимости элемента
+});
+
+document.getElementById("to_cart_in_pop5").addEventListener("click", function() {
+    localStorage.setItem("cart_item_visible5", "true"); // Устанавливаем флаг видимости элемента
+});
+
+document.getElementById("to_cart_in_pop6").addEventListener("click", function() {
+    localStorage.setItem("cart_item_visible6", "true"); // Устанавливаем флаг видимости элемента
 });
