@@ -19,7 +19,6 @@ class Users(db.Model, UserMixin):
     phone = db.Column(db.String(16), nullable=False)
     password = db.Column(db.String, nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
-    birthDate = db.Column(db.Datatime)
     
     def __repr__(self):
         return '<Users %r>' % self.id
