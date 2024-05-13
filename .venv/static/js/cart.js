@@ -314,6 +314,7 @@ var minusButton1 = document.getElementById('order_item_minus1');
 var count1 = localStorage.getItem('count1') || 1;
 var priceElement1 = document.getElementById('order_item_price1');
 var initialPrice1 = parseFloat(priceElement1.textContent);
+const removeButtons = document.querySelectorAll('order_item_minus1');
 function updatePriceAndCount1() {
     amountElement1.textContent = count1;
     priceElement1.textContent = (initialPrice1 * count1) + ' ₽';
@@ -331,6 +332,16 @@ minusButton1.addEventListener('click', function() {
         count1--;
         updatePriceAndCount1();
     }
+});
+removeButtons.forEach(function(removeButton) {
+    removeButton.addEventListener('click', function() {
+        if (count > 0) {
+            count--;
+        }
+        updateCartButtonText(count);
+        // Сохраняем значение счетчика в localStorage
+        localStorage.setItem('cartCount', count.toString());
+    });
 });
 
 
