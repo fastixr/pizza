@@ -19,7 +19,6 @@ class Users(db.Model, UserMixin):
     phone = db.Column(db.String(16), nullable=False)
     password = db.Column(db.String, nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
-    birthDate = db.Column(db.Datatime)
     
     def __repr__(self):
         return '<Users %r>' % self.id
@@ -46,6 +45,10 @@ def index():
 @app.route("/contacts")
 def contacts():
     return render_template('contacts.html')
+
+@app.route("/placing")
+def placing():
+    return render_template('placing.html')
 
 @app.route("/actions")
 def actions():
