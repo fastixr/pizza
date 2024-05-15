@@ -45,7 +45,7 @@ function moveSlides(forward = true) {
     img.src = `/static/img/slide${(currentImageIndex - index + slides.length) % slides.length + 1}.png`;
     img.alt = `Slide ${(currentImageIndex - index + slides.length) % slides.length + 1}`;
   });
-  slideInterval = setInterval(moveSlides, 3000);
+  slideInterval = setInterval(moveSlides, 7000);
 }
 moveSlides();
 function moveRight() {
