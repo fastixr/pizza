@@ -1908,13 +1908,15 @@ footer {
     margin-bottom: 60px;
 }
 
+/* CABINET */
+
 #text4 {
     position: absolute;
     color: #4E0476;
     font-family: "Montserrat", sans-serif;
     font-weight: 900px;
     font-size: 40px;
-    left: 100px;
+    left: 160px;
     top: 40px;
 }
 
@@ -1927,7 +1929,7 @@ footer {
 
 #lk_rect1 {
     position: absolute;
-    left: 100px;
+    left: 160px;
     top: 120px;
 }
 
@@ -1956,7 +1958,7 @@ footer {
 
 #bonus_name {
     position: absolute;
-    left: 0px;
+    left: 6px;
     top: 10px;
     color: #686466;
     font-family: "Montserrat", sans-serif;
@@ -1973,7 +1975,7 @@ footer {
 
 #all_actions {
     position: absolute;
-    left: 84px;
+    left: 144px;
     top: 490px;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
@@ -1983,7 +1985,7 @@ footer {
 
 #all_actions:hover {
     position: absolute;
-    left: 84px;
+    left: 144px;
     top: 490px;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
@@ -2009,7 +2011,7 @@ li::marker {
     font-family: "Montserrat", sans-serif;
     font-weight: 900px;
     font-size: 40px;
-    left: 100px;
+    left: 160px;
     top: 40px;
 }
 
@@ -2019,7 +2021,7 @@ li::marker {
     font-family: "Montserrat", sans-serif;
     font-weight: 900px;
     font-size: 18px;
-    left: 100px;
+    left: 160px;
     top: 120px;
 }
 
@@ -2060,7 +2062,7 @@ li::marker {
 
 #block_name {
     position: absolute;
-    left: 100px;
+    left: 160px;
     top: 120px;
 }
 
@@ -2114,7 +2116,7 @@ li::marker {
 
 #edit_name_button_lk {
     position: absolute;
-    left: 300px;
+    left: 360px;
     top: 40px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
@@ -2126,7 +2128,7 @@ li::marker {
 
 #edit_name_button_lk:hover {
     position: absolute;
-    left: 300px;
+    left: 360px;
     top: 40px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
@@ -2137,7 +2139,7 @@ li::marker {
 
 #block_phone {
     position: absolute;
-    left: 100px;
+    left: 160px;
     top: 220px;
 }
 
@@ -2147,19 +2149,19 @@ li::marker {
     font-family: "Montserrat", sans-serif;
     font-weight: 900px;
     font-size: 18px;
-    left: 100px;
+    left: 160px;
     top: 220px;
 }
 
 #block_date {
     position: absolute;
-    left: 100px;
+    left: 160px;
     top: 320px;
 }
 
 #edit_date_button_lk {
     position: absolute;
-    left: 300px;
+    left: 360px;
     top: 40px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
@@ -2171,7 +2173,7 @@ li::marker {
 
 #edit_date_button_lk:hover {
     position: absolute;
-    left: 300px;
+    left: 360px;
     top: 40px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
@@ -2182,7 +2184,7 @@ li::marker {
 
 #edit_card_button_lk {
     position: absolute;
-    left: 300px;
+    left: 360px;
     top: 40px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
@@ -2194,7 +2196,7 @@ li::marker {
 
 #edit_card_button_lk:hover {
     position: absolute;
-    left: 300px;
+    left: 360px;
     top: 40px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
@@ -2209,7 +2211,7 @@ li::marker {
     font-family: "Montserrat", sans-serif;
     font-weight: 900px;
     font-size: 18px;
-    left: 100px;
+    left: 160px;
     top: 320px;
 }
 
@@ -2219,7 +2221,7 @@ li::marker {
     font-family: "Montserrat", sans-serif;
     font-weight: 900px;
     font-size: 40px;
-    left: 100px;
+    left: 160px;
     top: 700px;
 }
 
@@ -2227,13 +2229,13 @@ li::marker {
     position: absolute;
     width: 30px;
     height: 30px;
-    left: 100px;
+    left: 160px;
     top: 770px;
 }
 
 #sub_text {
     position: absolute;
-    left: 130px;
+    left: 190px;
     top: 775px;
     font-family: "Montserrat", sans-serif;
     font-weight: 900px;
@@ -2248,7 +2250,7 @@ input[type='checkbox'] {
     position: absolute;
     width: 120px;
     height: 50px;
-    left: 100px;
+    left: 160px;
     top: 870px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
@@ -2263,25 +2265,25 @@ input[type='checkbox'] {
     font-family: "Montserrat", sans-serif;
     font-weight: 900px;
     font-size: 40px;
-    left: 100px;
+    left: 160px;
     top: 450px;
 }
 
 #block_card {
     position: absolute;
-    left: 100px;
+    left: 160px;
     top: 490px;
 }
 
 #block_card_date {
     position: absolute;
-    left: 100px;
+    left: 160px;
     top: 570px;
 }
 
 #block_card_cvc {
     position: absolute;
-    left: 250px;
+    left: 310px;
     top: 570px;
 }
 
@@ -2331,14 +2333,14 @@ input[type='checkbox'] {
     position: absolute;
     font-family: "Montserrat", sans-serif;
     color: gray;
-    left: 615px;
+    left: 675px;
     top: 772px;
 }
 
 #info_sub:hover {
     position: absolute;
     font-family: "Montserrat", sans-serif;
-    left: 615px;
+    left: 675px;
     top: 772px;
     color: black;
 }
@@ -2720,6 +2722,26 @@ input[type='checkbox'] {
     position: absolute;
     left: 300px;
     top: 545px;
+}
+
+#phone_pl {
+    position: absolute;
+    color: #686466;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 18px;
+    left: 100px;
+    top: 220px;
+}
+
+#date_pl {
+    position: absolute;
+    color: #686466;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 18px;
+    left: 100px;
+    top: 320px;
 }
 
 .wrapper_time_pl {
@@ -3376,13 +3398,20 @@ input[type='checkbox'] {
 }
 
 input[type="text"]:disabled {
-    background-color: #F1F2F5; /* Серый цвет для отключенного поля */
+    background-color: #F1F2F5; 
 }
   
 input[type="text"]:enabled {
-    background-color: white; /* Белый цвет для активного поля */
+    background-color: white;
 }
-=======
+
+input[type="date"]:disabled {
+    background-color: #F1F2F5;
+}
+  
+input[type="date"]:enabled {
+    background-color: white;
+}
 
 /* Добавление всё что относится к добавлению товара в корзину*/
 .client_order_cart {
