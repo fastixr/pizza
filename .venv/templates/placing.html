@@ -45,8 +45,8 @@
             <div id="block_phone_pl">
                 <div class="wrapper_phone_pl">
                     <div class="input_phone_pl">
-                        <input type="text" id="name_form" value="+7(800)555-35-35" disabled>
-                        <button id="edit_phone_button">Изменить</button>
+                        <input type="text" id="phone_form_pl" name="phone_form_pl" value="+7(800)555-35-35" disabled>
+                        <button id="edit_phone_button_pl">Изменить</button>
                     </div>
                 </div>
             </div>
@@ -55,8 +55,8 @@
                 <div class="wrapper_address_pl">
                     <div class="input_address_pl">
                         <input type="text" id="name_form" value="Адрес" disabled>
-                        <button id="edit_address_button">Изменить</button>
-                        <button id="choose_sam_button">Выбрать самовывоз</button>
+                        <button id="edit_address_button_pl">Изменить</button>
+                        <button id="choose_sam_button_pl">Выбрать самовывоз</button>
                     </div>
                 </div>
             </div>
@@ -64,8 +64,8 @@
             <div id="block_time_pl">
                 <div class="wrapper_time_pl">
                     <div class="input_time_pl">
-                        <input type="text" id="name_form" value="Побыстрее" disabled>
-                        <button id="edit_time_button">Изменить</button>
+                        <input type="text" id="time_form_pl" value="Побыстрее" disabled>
+                        <button id="edit_time_button_pl">Изменить</button>
                     </div>
                 </div>
             </div>
@@ -73,8 +73,8 @@
             <div id="block_promo_pl">
                 <div class="wrapper_promo_pl">
                     <div class="input_promo_pl">
-                        <input type="text" id="name_form" placeholder="Введите промокод" enabled>
-                        <button id="edit_promo_button">Применить</button>
+                        <input type="text" id="promo_form_pl" placeholder="Введите промокод" enabled>
+                        <button id="edit_promo_button_pl">Применить</button>
                     </div>
                 </div>
             </div>
@@ -146,8 +146,10 @@
         </span>
         <button id="offer_accept" type="button" class="btn btn-light">Оформить заказ на 1 337 ₽.</button>
         <container>
-            <button id="back_to_cart" type="button" class="btn btn-light">Назад в корзину</button>
-            <img id="strelka" class="strelka_img" src="{{ url_for('static', filename='img/strelka.png') }}" alt="strelka">
+            <a href="/сart">
+                <div id="back_to_cart">Назад в корзину</div>
+                <img id="strelka" class="strelka_img" src="{{ url_for('static', filename='img/strelka.png') }}" alt="strelka">
+            </a>            
         </container>
         <div id="block_order_structure" class="rectangle_order">
             <h2 id="order_list" type="text">Состав заказа</h2>
