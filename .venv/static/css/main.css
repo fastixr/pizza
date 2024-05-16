@@ -702,8 +702,6 @@ footer {
 
 .btn_dough1 {
     position: absolute;
-    left: 560px;
-    top: 170px;
     width: 110px;
     height: 34px;
     font-weight: normal;
@@ -715,10 +713,23 @@ footer {
     border: white;
 }
 
+#tradition_btn1 {
+    left: 560px;
+    top: 170px;
+}
+
+#tradition_btn2 {
+    left: 560px;
+    top: 170px;
+}
+
+#tradition_btn4 {
+    left: 560px;
+    top: 115px;
+}
+
 .btn_dough2 {
     position: absolute;
-    left: 680px;
-    top: 170px;
     width: 110px;
     height: 34px;
     font-weight: normal;
@@ -728,6 +739,21 @@ footer {
     border-radius: 7px;
     background-color: white;
     border: white;
+}
+
+#thin_btn1 {
+    left: 680px;
+    top: 170px;
+}
+
+#thin_btn2 {
+    left: 680px;
+    top: 170px;
+}
+
+#thin_btn4 {
+    left: 680px;
+    top: 115px;
 }
 
 .active {
@@ -738,11 +764,53 @@ footer {
 
 .scrollable_content {
     position: absolute;
+}
+
+#scrollable_coords1 {
     left: 560px;
     top: 230px;
     width: 370px;
-    height: 250px;
+    height: 265px;
+    overflow-y: auto; 
+}
+
+
+#scrollable_coords2 {
+    left: 560px;
+    top: 230px;
+    width: 370px;
+    height: 265px;
     overflow-y: auto;
+}
+
+#scrollable_coords3 {
+    left: 560px;
+    top: 115px;
+    width: 370px;
+    height: 345px;
+}
+
+#scrollable_coords4 {
+    left: 560px;
+    top: 175px;
+    width: 370px;
+    height: 265px;
+    overflow-y: auto; 
+}
+
+#scrollable_coords5 {
+    left: 560px;
+    top: 115px;
+    width: 370px;
+    height: 345px;
+}
+
+#scrollable_coords6 {
+    left: 560px;
+    top: 175px;
+    width: 370px;
+    height: 265px;
+    overflow-y: auto; 
 }
 
 .image_btn_pop {
