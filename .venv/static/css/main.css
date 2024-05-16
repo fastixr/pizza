@@ -100,6 +100,53 @@ footer {
 
 /* MODAL */
 
+#pizza1pop {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    top: 55px;
+    left: 35px;
+}
+
+#pizza2pop {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    top: 50px;
+    left: 25px;
+}
+
+#saladpop {
+    position: absolute;
+    height: 500px;
+    width: 475px;
+    top: 55px;
+    left: 45px;
+}
+
+#pizzaCpop {
+    position: absolute;
+    height: 400px;
+    width: 500px;
+    top: 100px;
+    left: 30px;
+}
+
+#icecreampop {
+    position: absolute;
+    width: 800px;
+    height: 550px;
+    top: 0px;
+    left: -115px;
+}
+
+#napitkipop {
+    position: absolute;
+    width: 165px;
+    height: 530px;
+    top: 35px;
+    left: 205px;
+}
 
 
 /* SLIDER */
@@ -655,8 +702,6 @@ footer {
 
 .btn_dough1 {
     position: absolute;
-    left: 560px;
-    top: 170px;
     width: 110px;
     height: 34px;
     font-weight: normal;
@@ -668,10 +713,23 @@ footer {
     border: white;
 }
 
+#tradition_btn1 {
+    left: 560px;
+    top: 170px;
+}
+
+#tradition_btn2 {
+    left: 560px;
+    top: 170px;
+}
+
+#tradition_btn4 {
+    left: 560px;
+    top: 115px;
+}
+
 .btn_dough2 {
     position: absolute;
-    left: 680px;
-    top: 170px;
     width: 110px;
     height: 34px;
     font-weight: normal;
@@ -681,6 +739,21 @@ footer {
     border-radius: 7px;
     background-color: white;
     border: white;
+}
+
+#thin_btn1 {
+    left: 680px;
+    top: 170px;
+}
+
+#thin_btn2 {
+    left: 680px;
+    top: 170px;
+}
+
+#thin_btn4 {
+    left: 680px;
+    top: 115px;
 }
 
 .active {
@@ -691,11 +764,53 @@ footer {
 
 .scrollable_content {
     position: absolute;
+}
+
+#scrollable_coords1 {
     left: 560px;
     top: 230px;
     width: 370px;
-    height: 250px;
+    height: 265px;
+    overflow-y: auto; 
+}
+
+
+#scrollable_coords2 {
+    left: 560px;
+    top: 230px;
+    width: 370px;
+    height: 265px;
     overflow-y: auto;
+}
+
+#scrollable_coords3 {
+    left: 560px;
+    top: 115px;
+    width: 370px;
+    height: 345px;
+}
+
+#scrollable_coords4 {
+    left: 560px;
+    top: 175px;
+    width: 370px;
+    height: 265px;
+    overflow-y: auto; 
+}
+
+#scrollable_coords5 {
+    left: 560px;
+    top: 115px;
+    width: 370px;
+    height: 345px;
+}
+
+#scrollable_coords6 {
+    left: 560px;
+    top: 175px;
+    width: 370px;
+    height: 265px;
+    overflow-y: auto; 
 }
 
 .image_btn_pop {
@@ -808,7 +923,9 @@ footer {
 #pizzapng {
     position: absolute;
     left: 10px;
-    top: 10px;
+    top: 25px;
+    width: 75px;
+    height: 45px;
 }
 
 #pizza_cost {
@@ -823,8 +940,10 @@ footer {
 
 #pizza1png {
     position: absolute;
-    left: 10px;
-    bottom: 200px;
+    right: 0px;
+    bottom: 220px;
+    width: 275px;
+    height: 186px;
 }
 
 #pizza_name {
@@ -855,6 +974,30 @@ footer {
     bottom: 16px;
     font-size: 22px;
     font-family: "Montserrat", sans-serif;
+}
+
+#saladpng {
+    position: absolute;
+    left: 35px;
+    bottom: 210px;
+    width: 200px;
+    height: 206px;
+}
+
+#icepng {
+    position: absolute;
+    right: -65px;
+    bottom: 190px;
+    width: 400px;
+    height: 275px;
+}
+
+#napitkipng {
+    position: absolute;
+    left: 105px;
+    bottom: 200px;
+    width: 65px;
+    height: 215px;
 }
 
 #to_cart {
@@ -3268,4 +3411,229 @@ input[type="date"]:disabled {
   
 input[type="date"]:enabled {
     background-color: white;
+}
+
+/* Добавление всё что относится к добавлению товара в корзину*/
+.client_order_cart {
+    position: absolute;
+    top: 90px;
+    left: 272px;
+}
+
+#client_order_container {
+    position: sticky;
+}
+
+.cart_item {
+    position: absolute;
+    height: 100px;
+    width: 790px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+#cart_item1 {
+    display: none;
+}
+
+#cart_item2 {
+    display: none;
+}
+
+#cart_item3 {
+    display: none;
+}
+
+#cart_item4 {
+    display: none;
+}
+
+#cart_item5 {
+    display: none;
+}
+
+#cart_item6 {
+    display: none;
+}
+
+.delete_from_cart {
+    position: absolute;
+    width: 30px;
+    border: 2px solid rgba(78, 4, 118, 1);
+    border-radius: 100px;
+    padding: 3px;
+    height: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0px;
+    cursor: pointer;
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.delete_from_cart:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.cart_item_nothing {
+    position: absolute;
+    left: 0px;
+    width: 790px;
+    height: 100px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.order_item_cart {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.order_item_zag {
+    position: absolute;
+    top: 10px;
+    left: 105px;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    color: rgb(0, 0, 0);
+    font-size: 19px;
+    white-space: nowrap;
+}
+
+.order_item_desc {
+    position: absolute;
+    top: 40px;
+    left: 105px;
+    width: 600px;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+}
+
+.order_item_price {
+    position: absolute;
+    left: 545px;
+    white-space: nowrap;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+    font-size: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.order_item_amount {
+    position: absolute;
+    left: 680px;
+    white-space: nowrap;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+    font-size: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    filter: grayscale(100%);
+    opacity: 0.6;
+}
+
+.order_item_plus {
+    position: absolute;
+    left: 694px;
+    white-space: nowrap;
+    font-weight: normal;
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: white;
+    filter: grayscale(100%);
+    opacity: 0.6;
+}
+
+.order_item_plus:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}    
+
+.order_item_minus {
+    position: absolute;
+    left: 650px;
+    white-space: nowrap;
+    font-weight: normal;
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: white;
+    filter: grayscale(100%);
+    opacity: 0.6;
+}
+
+.order_item_minus:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}    
+
+#order_item_cart1 {
+    position: absolute;
+    left: 5px;
+    width: 93px;
+    height: 93px;
+}
+
+#order_item_cart2 {
+    position: absolute;
+    left: 5px;
+    width: 93px;
+    height: 93px;
+}
+
+#order_item_cart3 {
+    position: absolute;
+    left: 7px;
+    width: 88px;
+    height: 93px;
+}
+
+#order_item_cart4 {
+    position: absolute;
+    left: 7px;
+    height: 100px;
+    width: 125px;
+}
+
+#order_item_cart5 {
+    position: absolute;
+    left: -18px;
+    width: 145px;
+    height: 100px;
+}
+
+#order_item_cart6 {
+    position: absolute;
+    left: 38px;
+    width: 31px;
+    height: 93px;
+}
+
+#order_item_zag4 {
+    position: absolute;
+    left: 150px;
+    top: 10px;
+}
+
+#order_item_desc4 {
+    position: absolute;
+    left: 150px;
+    top: 40px;
 }
