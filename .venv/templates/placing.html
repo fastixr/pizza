@@ -37,26 +37,30 @@
             <div id="block_name_pl">
                 <div class="wrapper_name_pl">
                     <div class="input_name_pl">
-                        <input type="text" id="name_form" name="name" value="Владимир" enabled>
+                        <input type="text" id="name_form" name="name" value="Владимир"
+                        pattern="[А-Яа-яЁё]+"
+                        title="Используйте только буквы кириллицы" required enabled>
                     </div>
                 </div>
             </div>
-            <h2 id="phone_lk" class="text">Номер телефона</h2>
+            <h2 id="phone_pl" class="text">Номер телефона</h2>
             <div id="block_phone_pl">
                 <div class="wrapper_phone_pl">
                     <div class="input_phone_pl">
-                        <input type="text" id="name_form" value="+7(800)555-35-35" disabled>
-                        <button id="edit_phone_button">Изменить</button>
+                        <input type="text" id="phone_form_pl" name="phone_form_pl" value="+7(800)555-35-35" disabled 
+                        pattern="\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}"
+                        title="Формат телефона: +7(000)000-00-00" required>
+                        <button id="edit_phone_button_pl">Изменить</button>
                     </div>
                 </div>
             </div>
-            <h2 id="date_lk" class="text">Адрес доставки</h2>
+            <h2 id="date_pl" class="text">Адрес доставки</h2>
             <div id="block_address_pl">
                 <div class="wrapper_address_pl">
                     <div class="input_address_pl">
                         <input type="text" id="name_form" value="Адрес" disabled>
-                        <button id="edit_address_button">Изменить</button>
-                        <button id="choose_sam_button">Выбрать самовывоз</button>
+                        <button id="edit_address_button_pl">Изменить</button>
+                        <button id="choose_sam_button_pl">Выбрать самовывоз</button>
                     </div>
                 </div>
             </div>
@@ -64,8 +68,8 @@
             <div id="block_time_pl">
                 <div class="wrapper_time_pl">
                     <div class="input_time_pl">
-                        <input type="text" id="name_form" value="Побыстрее" disabled>
-                        <button id="edit_time_button">Изменить</button>
+                        <input type="text" id="time_form_pl" value="Побыстрее" disabled>
+                        <button id="edit_time_button_pl">Изменить</button>
                     </div>
                 </div>
             </div>
@@ -73,8 +77,8 @@
             <div id="block_promo_pl">
                 <div class="wrapper_promo_pl">
                     <div class="input_promo_pl">
-                        <input type="text" id="name_form" placeholder="Введите промокод" enabled>
-                        <button id="edit_promo_button">Применить</button>
+                        <input type="text" id="promo_form_pl" placeholder="Введите промокод" enabled>
+                        <button id="edit_promo_button_pl">Применить</button>
                     </div>
                 </div>
             </div>
@@ -91,7 +95,8 @@
                 <div id="block_cash_change_pl">
                     <div class="wrapper_cash_change_pl">
                         <div class="input_cash_change_pl">
-                            <input type="text" id="cash_change_pl" enabled>
+                            <input type="text" id="cash_change_pl" 
+                            pattern="d*" title="Используйте только цифры" enabled>
                         </div>
                     </div>
                 </div>
@@ -111,21 +116,25 @@
                     <div id="block_card_pl">
                         <div class="wrapper">
                             <div class="input_card_pl">
-                                <input type="text" id="name_form_pl" placeholder="0000 0000 0000 0000" enabled>
+                                <input type="text" id="name_form_pl" placeholder="0000 0000 0000 0000" 
+                                pattern="d{4} d{4} d{4} d{4}" 
+                                title="Номер карты должен состоять из 16 цифр и быть разделён пробелами" enabled>
                             </div>
                         </div>
                     </div>
                     <div id="block_card_date_pl">
                         <div class="wrapper_card_date_pl">
                             <div class="input_date_card_pl">
-                                <input type="text" id="date_form_pl" placeholder="мм гг" enabled>
+                                <input type="text" id="date_form_pl" placeholder="мм/гг"
+                                pattern="(0[1-9]|1[0-2])/d{2}" title="Дата должна быть в формате мм/гг" enabled>
                             </div>
                         </div>
                     </div>
                     <div id="block_card_cvc_pl">
                         <div class="wrapper_card_date_pl">
                             <div class="input_card_cvc_pl">
-                                <input type="text" id="cvc_form_pl" placeholder="CVC" enabled>
+                                <input type="text" id="cvc_form_pl" placeholder="CVC"
+                                pattern="d{3}" title="CVC код должен состоять из 3 цифр" enabled>
                             </div>
                         </div>
                     </div>
@@ -146,8 +155,10 @@
         </span>
         <button id="offer_accept" type="button" class="btn btn-light">Оформить заказ на 1 337 ₽.</button>
         <container>
-            <button id="back_to_cart" type="button" class="btn btn-light">Назад в корзину</button>
-            <img id="strelka" class="strelka_img" src="{{ url_for('static', filename='img/strelka.png') }}" alt="strelka">
+            <a href="/сart">
+                <div id="back_to_cart">Назад в корзину</div>
+                <img id="strelka" class="strelka_img" src="{{ url_for('static', filename='img/strelka.png') }}" alt="strelka">
+            </a>            
         </container>
         <div id="block_order_structure" class="rectangle_order">
             <h2 id="order_list" type="text">Состав заказа</h2>
