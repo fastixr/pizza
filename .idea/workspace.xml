@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b437f1f0-bdf6-4807-a15e-ccabf223d31e" name="Changes" comment="base" />
+    <list default="true" id="b437f1f0-bdf6-4807-a15e-ccabf223d31e" name="Changes" comment="base">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/templates/cabinet.html" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/templates/cabinet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/var/app-instance/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/var/app-instance/users.db" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,12 +43,12 @@
     &quot;assignee&quot;: &quot;FortuneHunter78&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/fastixr/Pizza-by-Pashka&quot;,
-    &quot;accountId&quot;: &quot;0e665407-f483-4c7e-b525-886d3eac431d&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/FortuneHunter78/Pizza-by-Pashka",
+    "accountId": "0e665407-f483-4c7e-b525-886d3eac431d"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -50,15 +57,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.app.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Databases",
-    "last_opened_file_path": "C:/Users/Pavel/PycharmProjects/Pizza-by-Pashka/venv",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pavel/PycharmProjects/Pizza-by-Pashka/venv&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -117,6 +124,17 @@
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="base" />
