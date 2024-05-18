@@ -2402,6 +2402,7 @@ input[type='checkbox'] {
 #text_cart5 {
     top: 872px;
     left: 722px;
+    width: 200px;
     font-size: 24px;
     color: black;
 }
@@ -3636,4 +3637,16 @@ input[type="date"]:enabled {
     position: absolute;
     left: 150px;
     top: 40px;
+}
+
+.text_total_cost_cart { 
+    position: absolute; 
+    top: 860px; 
+    left: 930px; 
+    font-weight: normal; 
+    font-family: "Montserrat", sans-serif; 
+    color: rgba(78, 4, 118, 1); 
+    font-size: 36px; 
+    text-align: center; 
+    white-space: nowrap; 
 }
