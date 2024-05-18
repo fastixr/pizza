@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Личный кабинет
+{% endblock %}
+
+{% block content %}
+<body>
+    <div class="container-fluid">
+        <div class="section1">
+            <div id="block52" class="block">
+                <h1 id="text4">Мои бонусы</h1>
+                <div id="lk_rect1" class="rectangle_lk">
+                    <img id="bonus_sale" class="sale_img" src="{{ url_for('static', filename='img/bonus_sale.png') }}" alt="bonus_sale">
+                    <div id="lk_rect_bonus" class="rectangle_bonus">
+                        <h2 id="bonus_name" class="text">Бонусы появятся здесь после заказа</h2>
+                    </div>
+                </div>
+                <ul>
+                    <li><a id="all_actions" href="http://127.0.0.1:5000/actions" class="nav-link px-3">Все акции</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<body>
+    <div id="block_lk" class="block">
+        <h2 id="my_data" class="text">Личные данные</h2>
+        <form>
+            <h2 id="name_lk" class="text">Имя</h2>
+            <div id="block_name">
+                <div class="wrapper">
+                    <div class="input_name">
+                        <input type="text" id="name_form_lk" name="name" value="{{user.username}}" disabled>
+                        <button id="edit_name_button_lk">Изменить</button>
+                    </div>
+                </div>
+            </div>
+            <h2 id="phone_lk" class="text">Номер телефона</h2>
+            <div id="block_phone">
+                <div class="wrapper">
+                    <div class="input_name">
+                        <input type="text" id="name_form" value="{{user.phone}}" disabled>
+                    </div>
+                </div>
+            </div>
+            <h2 id="date_lk" class="text">Дата рождения</h2>
+            <div id="block_date">
+                <div class="wrapper">
+                    <div class="input_name">
+                        <input type="date" id="date_form_lk" max="2010-04-29" value="2010-04-29" disabled>
+                        <button id="edit_date_button_lk">Изменить</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <h2 id="actual_card">Актуальный способ оплаты</h2>
+        <form>
+            <div id="block_card">
+                <div class="wrapper">
+                    <div class="input_name">
+                        <input type="text" id="card_form_lk" placeholder="0000 0000 0000 0000" disabled>
+                        <button id="edit_card_button_lk">Изменить</button>
+                    </div>
+                </div>
+            </div>
+            <div id="block_card_date">
+                <div class="wrapper_card_date">
+                    <div class="input_name">
+                        <input type="text" id="card_date_form_lk" placeholder="мм/гг" disabled>
+                    </div>
+                </div>
+            </div>
+            <div id="block_card_cvc">
+                <div class="wrapper_card_date">
+                    <div class="input_name">
+                        <input type="text" id="card_cvc_form_lk" placeholder="CVC" disabled>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <span id="info_sub" class="clue" data-clue="Согласие на СМС-расслыку от ООО Пицца от Пашки">
+            i
+        </span>
+        <h2 id="subscribe" class="text">Подписки</h2>
+        <div>
+            <label>
+                <input id="sub_check" type="checkbox">
+                <span></span>
+                <h2 id="sub_text">Сообщать о бонусах, акциях и новых продуктах.</h2>
+            </label>
+        </div>
+        <button id="log_out" type="button" class="btn btn-light">Выйти</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/cabinet.js') }}"></script>
+</body>
+
+{% endblock %}
