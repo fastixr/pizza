@@ -20,6 +20,7 @@ class Users(db.Model, UserMixin):
     phone = db.Column(db.String(16), nullable=False)
     password = db.Column(db.String, nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
+    birthDate = db.Column(db.DateTime)
     
     def __repr__(self):
         return '<Users %r>' % self.id
@@ -142,13 +143,13 @@ def user(id):
 
     user = Users.query.filter_by(id=id).first_or_404()
     if request.method == "POST":
-        user.username = request.form['username']
+        if 'name_from_lk' in request.form:
+            user.username = request.form.get('name_from_lk')
+        if 'date_form_lk' in request.form:
+            user.birthDate = request.form.get('date_form_lk')
 
-        try:
-            db.session.commit()
-            return render_template('cabinet.html', user=user)
-        except:
-            return "Ошибка редактирования"
+        db.session.commit()
+        return render_template('cabinet.html', user=user)
     return render_template('cabinet.html', user=user)
 
 
