@@ -184,6 +184,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// ТОВАРЫ ИЗ РЕКОМЕНДАЦИЙ ДОБАВЛЕНИЕ В КОРЗИНУ
+var priceFromRec = document.getElementById('order_item_price7').textContent.match(/\d+/)[0]; // Устанавливаем цену
+sessionStorage.setItem("rn7_modal_price", priceFromRec);
+
+document.querySelectorAll(".rec_add_cart").forEach(function(element) {
+    element.addEventListener("click", function() {
+        sessionStorage.setItem("cart_item_visible7", "true"); // Устанавливаем флаг видимости элемента
+        document.getElementById("cart_item7").style.display = "block";
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var isVisible = sessionStorage.getItem("cart_item_visible7"); // Получаем информацию о видимости элемента
+    if (isVisible === "true") {
+        var currentHeight = (parseInt(cartExpand.style.height) || 0);
+        if (currentHeightItem >= 0) {cartExpand.style.height = (currentHeight + 110) + "px";}
+        var cartItem = document.getElementById("cart_item7");
+        cartItem.style.display = "block"; // Показываем элемент, если флаг установлен
+        
+        cartItem.style.top = (currentHeightItem + 110) + "px"; // Устанавливаем отступ сверху
+        currentHeightItem = parseInt(cartItem.style.top) || 0;
+        cartItem.style.left = "0px"; 
+    }
+});
+// КОНЕЦ ТОВАРОВ ИЗ РЕКОМЕНДАЦИЙ
+
+
 // УДАЛЕНИЕ ИЗ КОРЗИНЫ ТОВАРОВ
 var deleteButton1 = document.getElementById("delete_from_cart1");
 deleteButton1.addEventListener("click", function() {
@@ -193,7 +221,7 @@ deleteButton1.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible1"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item2, #cart_item3, #cart_item4, #cart_item5, #cart_item6");
+    var cartItems = document.querySelectorAll("#cart_item2, #cart_item3, #cart_item4, #cart_item5, #cart_item6, #cart_item7");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -214,7 +242,7 @@ deleteButton2.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible2"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item3, #cart_item4, #cart_item5, #cart_item6");
+    var cartItems = document.querySelectorAll("#cart_item3, #cart_item4, #cart_item5, #cart_item6, #cart_item7");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -235,7 +263,7 @@ deleteButton3.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible3"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item4, #cart_item5, #cart_item6");
+    var cartItems = document.querySelectorAll("#cart_item4, #cart_item5, #cart_item6, #cart_item7");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -256,7 +284,7 @@ deleteButton4.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible4"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item5, #cart_item6");
+    var cartItems = document.querySelectorAll("#cart_item5, #cart_item6, #cart_item7");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -277,7 +305,7 @@ deleteButton5.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible5"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item6");
+    var cartItems = document.querySelectorAll("#cart_item6, #cart_item7");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -298,7 +326,28 @@ deleteButton6.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible6"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item6");
+    var cartItems = document.querySelectorAll("#cart_item7");
+    for (var i = 0; i < cartItems.length; i++) {
+        if (cartItems[i].style.display !== "none") {
+            cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
+        }
+    }
+    var cartExpand = document.getElementById("client_order_container");
+    var currentHeight = parseInt(cartExpand.style.height) || 0;
+    if (currentHeight > 110) {
+        cartExpand.style.height = (currentHeight - 110) + "px";
+    }
+});
+
+var deleteButton7 = document.getElementById("delete_from_cart7");
+deleteButton7.addEventListener("click", function() {
+    var cartItem = document.getElementById("cart_item7");
+    cartItem.style.display = "none";
+    sessionStorage.setItem('count7', 1);
+    sessionStorage.removeItem("cart_item_visible7"); // Удаляем флаг из sessionStorage
+
+    // Обновление координат других блоков
+    var cartItems = document.querySelectorAll("#cart_item7");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -477,6 +526,31 @@ minusButton6.addEventListener('click', function() {
         count6--;
         updatePriceAndCount6();
     }
+});
+
+var amountElement7 = document.getElementById('order_item_amount7'); 
+var plusButton7 = document.getElementById('order_item_plus7'); 
+var minusButton7 = document.getElementById('order_item_minus7'); 
+var count7 = sessionStorage.getItem('count7') || 1; 
+var priceElement7 = document.getElementById('order_item_price7'); 
+var initialPrice7 = sessionStorage.getItem('rn7_modal_price');
+function updatePriceAndCount7() { 
+    amountElement7.textContent = count7; 
+    priceElement7.textContent = (initialPrice7 * count7) + ' ₽'; 
+    sessionStorage.setItem('count7', count7); 
+} 
+updatePriceAndCount7(); 
+plusButton7.addEventListener('click', function() { 
+    if (count7 < 9) { 
+        count7++; 
+        updatePriceAndCount7(); 
+    } 
+}); 
+minusButton7.addEventListener('click', function() { 
+    if (count7 > 1) { 
+        count7--; 
+        updatePriceAndCount7(); 
+    } 
 });
 
 

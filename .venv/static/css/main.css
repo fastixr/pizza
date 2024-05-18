@@ -2583,6 +2583,10 @@ input[type='checkbox'] {
     display: none;
 }
 
+#cart_item7 {
+    display: none;
+}
+
 .delete_from_cart {
     position: absolute;
     width: 30px;
@@ -2750,6 +2754,13 @@ input[type='checkbox'] {
     left: 38px;
     width: 31px;
     height: 93px;
+}
+
+#order_item_cart7 {
+    position: absolute;
+    left: 10px;
+    width: 80px;
+    height: 80px;
 }
 
 #order_item_zag4 {
