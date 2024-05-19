@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ДОБАВЛЕНИЕ В КОРЗИНУ ТОВАРОВ
 var currentHeightItem = -110;
+
 var cartExpand = document.getElementById("client_order_container");
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -185,31 +186,94 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // ТОВАРЫ ИЗ РЕКОМЕНДАЦИЙ ДОБАВЛЕНИЕ В КОРЗИНУ
-var priceFromRec = document.getElementById('order_item_price7').textContent.match(/\d+/)[0]; // Устанавливаем цену
-sessionStorage.setItem("rn7_modal_price", priceFromRec);
+var priceFromRec1 = document.getElementById('order_item_price7').textContent.match(/\d+/)[0]; // Устанавливаем цену
+sessionStorage.setItem("rn7_modal_price", priceFromRec1);
+if (sessionStorage.getItem("flagPriceRecTapped1") === null) {
+    sessionStorage.setItem("flagPriceRecTapped1", false);
+}
 
 document.querySelectorAll(".rec_add_cart").forEach(function(element) {
     element.addEventListener("click", function() {
-        sessionStorage.setItem("cart_item_visible7", "true"); // Устанавливаем флаг видимости элемента
-        document.getElementById("cart_item7").style.display = "block";
+        if (sessionStorage.getItem("flagPriceRecTapped1") === "false") {
+            whoIsFirst = false;
+            sessionStorage.setItem("flagPriceRecTapped1", true);
+            sessionStorage.setItem("cart_item_visible7", "true"); // Устанавливаем флаг видимости элемента
+            document.getElementById("cart_item7").style.display = "block";
+            var currentHeight = (parseInt(cartExpand.style.height) || 0);
+            if (currentHeightItem >= 0) {cartExpand.style.height = (currentHeight + 110) + "px";}
+
+            var cartItem = document.getElementById("cart_item7");    
+            cartItem.style.top = (currentHeightItem + 110) + "px"; // Устанавливаем отступ сверху
+            currentHeightItem = parseInt(cartItem.style.top) || 0;
+            cartItem.style.left = "0px";
+        }
     });
 });
-
-
+// ЧТОБЫ ПОКАЗЫВАЛСЯ ЭЛЕМЕНТ ПОСЛЕ ОБНОВЛЕНИЯ БРАУЗЕРА
 document.addEventListener("DOMContentLoaded", function() {
     var isVisible = sessionStorage.getItem("cart_item_visible7"); // Получаем информацию о видимости элемента
     if (isVisible === "true") {
+        document.getElementById("cart_item7").style.display = "block"; // Показываем элемент, если флаг установлен
+
         var currentHeight = (parseInt(cartExpand.style.height) || 0);
         if (currentHeightItem >= 0) {cartExpand.style.height = (currentHeight + 110) + "px";}
-        var cartItem = document.getElementById("cart_item7");
-        cartItem.style.display = "block"; // Показываем элемент, если флаг установлен
-        
+
+        var cartItem = document.getElementById("cart_item7");    
         cartItem.style.top = (currentHeightItem + 110) + "px"; // Устанавливаем отступ сверху
         currentHeightItem = parseInt(cartItem.style.top) || 0;
-        cartItem.style.left = "0px"; 
+        cartItem.style.left = "0px";
+    }    
+});
+
+// СОУСЫ ДОБАВЛЕНИЕ В КОРЗИНУ
+var priceFromRec2 = document.getElementById('order_item_price8').textContent.match(/\d+/)[0]; // Устанавливаем цену
+sessionStorage.setItem("rn8_modal_price", priceFromRec2);
+if (sessionStorage.getItem("flagPriceRecTapped2") === null) {
+    sessionStorage.setItem("flagPriceRecTapped2", false);
+}
+
+document.querySelectorAll(".image_btn_cart").forEach(function(element) {
+    element.addEventListener("click", function() {
+        whoIsFirst = true;
+        if (sessionStorage.getItem("flagPriceRecTapped2") === "false") {
+            sessionStorage.setItem("flagPriceRecTapped2", true);
+            sessionStorage.setItem("cart_item_visible8", "true"); // Устанавливаем флаг видимости элемента
+            document.getElementById("cart_item8").style.display = "block";
+            var currentHeight = (parseInt(cartExpand.style.height) || 0);
+            if (currentHeightItem >= 0) {
+                cartExpand.style.height = (currentHeight + 110) + "px";
+            }
+
+            var cartItem = document.getElementById("cart_item8");
+            cartItem.style.top = (currentHeightItem + 110) + "px"; // Устанавливаем отступ сверху
+            currentHeightItem = parseInt(cartItem.style.top) || 0;
+            cartItem.style.left = "0px";
+        }
+    });
+});
+// ЧТОБЫ ПОКАЗЫВАЛСЯ ЭЛЕМЕНТ ПОСЛЕ ОБНОВЛЕНИЯ БРАУЗЕРА
+document.addEventListener("DOMContentLoaded", function() {
+    var isVisible = sessionStorage.getItem("cart_item_visible8"); // Получаем информацию о видимости элемента
+    if (isVisible === "true") {
+        document.getElementById("cart_item8").style.display = "block"; // Показываем элемент, если флаг установлен
+
+        var currentHeight = (parseInt(cartExpand.style.height) || 0);
+        if (currentHeightItem >= 0) {
+            cartExpand.style.height = (currentHeight + 110) + "px";
+        }
+
+        var cartItem = document.getElementById("cart_item8");
+        cartItem.style.top = (currentHeightItem + 110) + "px"; // Устанавливаем отступ сверху
+        currentHeightItem = parseInt(cartItem.style.top) || 0;
+        cartItem.style.left = "0px";
     }
 });
-// КОНЕЦ ТОВАРОВ ИЗ РЕКОМЕНДАЦИЙ
+
+var whoIsFirst = false;
+document.addEventListener('DOMContentLoaded', function() {
+    whoIsFirst = true;
+});
+
 
 
 // УДАЛЕНИЕ ИЗ КОРЗИНЫ ТОВАРОВ
@@ -221,7 +285,7 @@ deleteButton1.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible1"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item2, #cart_item3, #cart_item4, #cart_item5, #cart_item6, #cart_item7");
+    var cartItems = document.querySelectorAll("#cart_item2, #cart_item3, #cart_item4, #cart_item5, #cart_item6, #cart_item7, #cart_item8");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -229,9 +293,10 @@ deleteButton1.addEventListener("click", function() {
     }
     var cartExpand = document.getElementById("client_order_container");
     var currentHeight = parseInt(cartExpand.style.height) || 0;
-        if (currentHeight > 110) {
-            cartExpand.style.height = (currentHeight - 110) + "px";
-        }
+    if (currentHeight > 110) {
+        cartExpand.style.height = (currentHeight - 110) + "px";
+    }
+    currentHeightItem -= 110;    
 });
 
 var deleteButton2 = document.getElementById("delete_from_cart2");
@@ -242,7 +307,7 @@ deleteButton2.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible2"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item3, #cart_item4, #cart_item5, #cart_item6, #cart_item7");
+    var cartItems = document.querySelectorAll("#cart_item3, #cart_item4, #cart_item5, #cart_item6, #cart_item7, #cart_item8");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -250,9 +315,10 @@ deleteButton2.addEventListener("click", function() {
     }
     var cartExpand = document.getElementById("client_order_container");
     var currentHeight = parseInt(cartExpand.style.height) || 0;
-        if (currentHeight > 110) {
-            cartExpand.style.height = (currentHeight - 110) + "px";
-        }
+    if (currentHeight > 110) {
+        cartExpand.style.height = (currentHeight - 110) + "px";
+    }
+    currentHeightItem -= 110;
 });
 
 var deleteButton3 = document.getElementById("delete_from_cart3");
@@ -263,7 +329,7 @@ deleteButton3.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible3"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item4, #cart_item5, #cart_item6, #cart_item7");
+    var cartItems = document.querySelectorAll("#cart_item4, #cart_item5, #cart_item6, #cart_item7, #cart_item8");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -274,6 +340,7 @@ deleteButton3.addEventListener("click", function() {
     if (currentHeight > 110) {
         cartExpand.style.height = (currentHeight - 110) + "px";
     }
+    currentHeightItem -= 110;
 });
 
 var deleteButton4 = document.getElementById("delete_from_cart4");
@@ -284,7 +351,7 @@ deleteButton4.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible4"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item5, #cart_item6, #cart_item7");
+    var cartItems = document.querySelectorAll("#cart_item5, #cart_item6, #cart_item7, #cart_item8");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -295,6 +362,7 @@ deleteButton4.addEventListener("click", function() {
     if (currentHeight > 110) {
         cartExpand.style.height = (currentHeight - 110) + "px";
     }
+    currentHeightItem -= 110;
 });
 
 var deleteButton5 = document.getElementById("delete_from_cart5");
@@ -305,7 +373,7 @@ deleteButton5.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible5"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item6, #cart_item7");
+    var cartItems = document.querySelectorAll("#cart_item6, #cart_item7, #cart_item8");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -316,6 +384,7 @@ deleteButton5.addEventListener("click", function() {
     if (currentHeight > 110) {
         cartExpand.style.height = (currentHeight - 110) + "px";
     }
+    currentHeightItem -= 110;
 });
 
 var deleteButton6 = document.getElementById("delete_from_cart6");
@@ -326,7 +395,7 @@ deleteButton6.addEventListener("click", function() {
     sessionStorage.removeItem("cart_item_visible6"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item7");
+    var cartItems = document.querySelectorAll("#cart_item7, #cart_item8");
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -337,17 +406,20 @@ deleteButton6.addEventListener("click", function() {
     if (currentHeight > 110) {
         cartExpand.style.height = (currentHeight - 110) + "px";
     }
+    currentHeightItem -= 110;
 });
 
 var deleteButton7 = document.getElementById("delete_from_cart7");
 deleteButton7.addEventListener("click", function() {
+    sessionStorage.setItem("flagPriceRecTapped1", false);
     var cartItem = document.getElementById("cart_item7");
     cartItem.style.display = "none";
     sessionStorage.setItem('count7', 1);
     sessionStorage.removeItem("cart_item_visible7"); // Удаляем флаг из sessionStorage
 
     // Обновление координат других блоков
-    var cartItems = document.querySelectorAll("#cart_item7");
+    if (whoIsFirst === false) {var cartItems = document.querySelectorAll("#cart_item7");}
+    else if (whoIsFirst === true) {var cartItems = document.querySelectorAll("#cart_item8");}
     for (var i = 0; i < cartItems.length; i++) {
         if (cartItems[i].style.display !== "none") {
             cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
@@ -358,6 +430,34 @@ deleteButton7.addEventListener("click", function() {
     if (currentHeight > 110) {
         cartExpand.style.height = (currentHeight - 110) + "px";
     }
+    currentHeightItem -= 110;
+    whoIsFirst = false;
+});
+
+var deleteButton8 = document.getElementById("delete_from_cart8");
+deleteButton8.addEventListener("click", function() {
+    sessionStorage.setItem("flagPriceRecTapped2", false);
+    var cartItem = document.getElementById("cart_item8");
+    cartItem.style.display = "none";
+    sessionStorage.setItem('count8', 1);
+    sessionStorage.removeItem("cart_item_visible8"); // Удаляем флаг из sessionStorage
+
+    // Обновление координат других блоков
+    if (whoIsFirst === true) {var cartItems = document.querySelectorAll("#cart_item8");}
+    else if (whoIsFirst === false) {var cartItems = document.querySelectorAll("#cart_item7");}
+    
+    for (var i = 0; i < cartItems.length; i++) {
+        if (cartItems[i].style.display !== "none") {
+            cartItems[i].style.top = (parseInt(cartItems[i].style.top) - 110) + "px";
+        }
+    }
+    var cartExpand = document.getElementById("client_order_container");
+    var currentHeight = parseInt(cartExpand.style.height) || 0;
+    if (currentHeight > 110) {
+        cartExpand.style.height = (currentHeight - 110) + "px";
+    }
+    currentHeightItem -= 110;
+    whoIsFirst = false;
 });
 
 // УВЕЛЕЧЕНИЕ КОЛ-ВА КАЖДОГО ТОВАРА В КОРЗИНЕ
@@ -368,7 +468,6 @@ var minusButton1 = document.getElementById('order_item_minus1');
 var count1 = sessionStorage.getItem('count1') || 1;
 var priceElement1 = document.getElementById('order_item_price1');
 var initialPrice1 = sessionStorage.getItem('rn1_modal_price');
-const removeButtons = document.querySelectorAll('order_item_minus');
 function updatePriceAndCount1() {
     amountElement1.textContent = count1;
     priceElement1.textContent = (initialPrice1 * count1) + ' ₽';
@@ -386,16 +485,6 @@ minusButton1.addEventListener('click', function() {
         count1--;
         updatePriceAndCount1();
     }
-});
-removeButtons.forEach(function(removeButton) {
-    removeButton.addEventListener('click', function() {
-        if (count > 0) {
-            count--;
-        }
-        updateCartButtonText(count);
-        // Сохраняем значение счетчика в sessionStorage
-        sessionStorage.setItem('cartCount', count.toString());
-    });
 });
 
 
@@ -553,6 +642,31 @@ minusButton7.addEventListener('click', function() {
     } 
 });
 
+var amountElement8 = document.getElementById('order_item_amount8');  
+var plusButton8 = document.getElementById('order_item_plus8');  
+var minusButton8 = document.getElementById('order_item_minus8');  
+var count8 = sessionStorage.getItem('count8') || 1;  
+var priceElement8 = document.getElementById('order_item_price8');  
+var initialPrice8 = sessionStorage.getItem('rn8_modal_price'); 
+function updatePriceAndCount8() {  
+    amountElement8.textContent = count8;  
+    priceElement8.textContent = (initialPrice8 * count8) + ' ₽';  
+    sessionStorage.setItem('count8', count8);  
+}  
+updatePriceAndCount8();  
+plusButton8.addEventListener('click', function() {  
+    if (count8 < 9) {  
+        count8++;  
+        updatePriceAndCount8();  
+    }  
+});  
+minusButton8.addEventListener('click', function() {  
+    if (count8 > 1) {  
+        count8--;  
+        updatePriceAndCount8();  
+    }  
+});
+
 
 // ОБЩАЯ СУММА ЗАКАЗА
 document.addEventListener('DOMContentLoaded', function() {
@@ -591,7 +705,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateTotalCost();
 });
-
-
-
-

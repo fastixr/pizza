@@ -105,7 +105,17 @@
                 <h4 id="order_item_amount7" class="order_item_amount">1</h4>
                 <button id="order_item_plus7" class="order_item_plus">&plus;</button>
                 <button id="order_item_minus7" class="order_item_minus">&minus;</button>
-            </div>  
+            </div>
+            <div id="cart_item8" class="cart_item">
+                <img id="delete_from_cart8" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                <img id="order_item_cart8" class="order_item_cart" src="{{ url_for('static', filename='img/sauce1.png') }}" alt="something">
+                <h3 id="order_item_zag8" class="order_item_zag">Соус</h3>
+                <h4 id="order_item_desc8" class="order_item_desc">Тут будет описание</h4>
+                <h4 id="order_item_price8" class="order_item_price">30 ₽</h4>
+                <h4 id="order_item_amount8" class="order_item_amount">1</h4>
+                <button id="order_item_plus8" class="order_item_plus">&plus;</button>
+                <button id="order_item_minus8" class="order_item_minus">&minus;</button>
+            </div>
         </div>
     </div>   
 
@@ -116,7 +126,9 @@
             <h2 id="text_cart4" class="cart_text">Промокод</h2>
             <input class="promo_input" type="text" placeholder="Введите промокод">
             <button id="apply_btn1" type="button" class="apply_btn">Применить</button>
-            <button id="apply_btn2" type="button" class="apply_btn">Оформить заказ ></button>
+            <a href="{{ url_for('placing') }}">
+                <button id="apply_btn2" type="button" class="apply_btn">Оформить заказ ></button>
+            </a>
             <a href="/">
                 <button id="back_btn1" type="button" class="back_btn"> < Вернуться в магазин</button>
             </a>
@@ -136,33 +148,33 @@
             <h3 id="text_total_cost_cart1" class="text_total_cost_cart">0 ₽</h3>
             <div id="image_btn_cart1" class="image_btn_cart">
                 <img src="{{ url_for('static', filename='img/sauce1.png') }}" alt="sauce1_img">
-                <h4 id="pizza_desc_img_cart1" class="text_desc_img_cart">Сырный соус</h4>
-                <h4 id="pizza_cost_img_cart1" class="text_cost_img_cart">от 30 ₽</h4>
+                <h4 id="pizza_desc_img_cart1" class="text_desc_img_cart">Cоус</h4>
+                <h4 id="pizza_cost_img_cart1" class="text_cost_img_cart">30 ₽</h4>
             </div>
             <div id="image_btn_cart2" class="image_btn_cart">
-                <img src="{{ url_for('static', filename='img/sauce2.png') }}" alt="sauce2_img">
-                <h4 id="pizza_desc_img_cart2" class="text_desc_img_cart">Барбекю</h4>
-                <h4 id="pizza_cost_img_cart2" class="text_cost_img_cart">от 30 ₽</h4>
+                <img src="{{ url_for('static', filename='img/sauce1.png') }}" alt="sauce2_img">
+                <h4 id="pizza_desc_img_cart2" class="text_desc_img_cart">Cоус</h4>
+                <h4 id="pizza_cost_img_cart2" class="text_cost_img_cart">30 ₽</h4>
             </div>
             <div id="image_btn_cart3" class="image_btn_cart">
-                <img src="{{ url_for('static', filename='img/sauce3.png') }}" alt="sauce3_img">
-                <h4 id="pizza_desc_img_cart3" class="text_desc_img_cart">Ранч</h4>
-                <h4 id="pizza_cost_img_cart3" class="text_cost_img_cart">от 30 ₽</h4>
+                <img src="{{ url_for('static', filename='img/sauce1.png') }}" alt="sauce3_img">
+                <h4 id="pizza_desc_img_cart3" class="text_desc_img_cart">Cоус</h4>
+                <h4 id="pizza_cost_img_cart3" class="text_cost_img_cart">30 ₽</h4>
             </div>
             <div id="image_btn_cart4" class="image_btn_cart">
-                <img src="{{ url_for('static', filename='img/sauce4.png') }}" alt="sauce4_img">
-                <h4 id="pizza_desc_img_cart4" class="text_desc_img_cart">Сгущенка</h4>
-                <h4 id="pizza_cost_img_cart4" class="text_cost_img_cart">от 30 ₽</h4>
+                <img src="{{ url_for('static', filename='img/sauce1.png') }}" alt="sauce4_img">
+                <h4 id="pizza_desc_img_cart4" class="text_desc_img_cart">Cоус</h4>
+                <h4 id="pizza_cost_img_cart4" class="text_cost_img_cart">30 ₽</h4>
             </div>
             <div id="image_btn_cart5" class="image_btn_cart">
-                <img src="{{ url_for('static', filename='img/sauce5.png') }}" alt="sauce5_img">
-                <h4 id="pizza_desc_img_cart5" class="text_desc_img_cart">Малиновое варенье</h4>
-                <h4 id="pizza_cost_img_cart5" class="text_cost_img_cart">от 30 ₽</h4>
+                <img src="{{ url_for('static', filename='img/sauce1.png') }}" alt="sauce5_img">
+                <h4 id="pizza_desc_img_cart5" class="text_desc_img_cart">Cоус</h4>
+                <h4 id="pizza_cost_img_cart5" class="text_cost_img_cart">30 ₽</h4>
             </div>
             <div id="image_btn_cart6" class="image_btn_cart">
                 <img src="{{ url_for('static', filename='img/sauce1.png') }}" alt="sauce1_img">
-                <h4 id="pizza_desc_img_cart6" class="text_desc_img_cart">Сырный соус</h4>
-                <h4 id="pizza_cost_img_cart6" class="text_cost_img_cart">от 30 ₽</h4>
+                <h4 id="pizza_desc_img_cart6" class="text_desc_img_cart">Cоус</h4>
+                <h4 id="pizza_cost_img_cart6" class="text_cost_img_cart">30 ₽</h4>
             </div>
         </div>
     </div>

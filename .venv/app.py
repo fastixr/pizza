@@ -46,6 +46,10 @@ def index():
 def contacts():
     return render_template('contacts.html')
 
+@app.route("/placing")
+def placing():
+    return render_template('placing.html')
+
 @app.route("/actions")
 def actions():
     return render_template('actions.html')
