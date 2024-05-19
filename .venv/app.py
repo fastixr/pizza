@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, redirect, flash, url_for
+from flask import Flask, render_template, request, redirect, flash, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_login import login_user, login_required, logout_user, LoginManager, UserMixin
+from flask_login import login_user, login_required, logout_user, LoginManager, UserMixin, current_user
 from flask_migrate import Migrate
 
 
@@ -12,6 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = LoginManager(app)
+is_authentificated = False
 
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,6 +20,7 @@ class Users(db.Model, UserMixin):
     phone = db.Column(db.String(16), nullable=False)
     password = db.Column(db.String, nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
+    birthDate = db.Column(db.DateTime)
     
     def __repr__(self):
         return '<Users %r>' % self.id
@@ -105,8 +107,14 @@ def register_complete():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    global is_authentificated
     phone = request.form.get('phone')
     password = request.form.get('password')
+
+    if is_authentificated:
+        id = current_user.id
+        URL = "/cabinet/" + str(id)
+        return redirect(URL)
 
     if phone and password:
         user = Users.query.filter_by(phone=phone).first()
@@ -114,8 +122,10 @@ def login():
         URL = "/cabinet/" + str(id)
 
         if user and check_password_hash(user.password, password):
-            login_user(user)
+            login_user(user, remember=True)
 
+            is_authentificated = True
+            session['id'] = user.id
             return redirect(URL)
         else:
             flash('Неправильный логин или пароль')
@@ -128,16 +138,29 @@ def login():
 @app.route('/cabinet/<id>', methods=['POST', 'GET'])
 @login_required
 def user(id):
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
+
     user = Users.query.filter_by(id=id).first_or_404()
     if request.method == "POST":
-        user.username = request.form['username']
+        if 'name_from_lk' in request.form:
+            user.username = request.form.get('name_from_lk')
+        if 'date_form_lk' in request.form:
+            user.birthDate = request.form.get('date_form_lk')
 
-        try:
-            db.session.commit()
-            return render_template('cabinet.html', user=user)
-        except:
-            return "Ошибка редактирования"
+        db.session.commit()
+        return render_template('cabinet.html', user=user)
     return render_template('cabinet.html', user=user)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    global is_authentificated
+    logout_user()
+    flash("Вы вышли из аккаунта", "success")
+    is_authentificated  = False
+    return redirect(url_for('login'))
 
 
 @app.route('/cabinet/<id>/password_change', methods=['POST', 'GET'])

@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b437f1f0-bdf6-4807-a15e-ccabf223d31e" name="Changes" comment="base" />
+    <list default="true" id="b437f1f0-bdf6-4807-a15e-ccabf223d31e" name="Changes" comment="Security fixes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/static/js/cabinet.js" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/static/js/cabinet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/templates/cabinet.html" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/templates/cabinet.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/var/app-instance/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/var/app-instance/users.db" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +44,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/fastixr/Pizza-by-Pashka&quot;,
+    &quot;url&quot;: &quot;https://github.com/FortuneHunter78/Pizza-by-Pashka&quot;,
     &quot;accountId&quot;: &quot;0e665407-f483-4c7e-b525-886d3eac431d&quot;
   }
 }</component>
@@ -54,8 +60,8 @@
   "keyToString": {
     "Python.app.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Databases",
-    "last_opened_file_path": "C:/Users/Pavel/PycharmProjects/Pizza-by-Pashka/venv",
+    "git-widget-placeholder": "security",
+    "last_opened_file_path": "C:/Users/Pavel/PycharmProjects/PizzaPashka",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
@@ -117,6 +123,17 @@
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="base" />

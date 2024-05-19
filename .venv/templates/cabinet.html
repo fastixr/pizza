@@ -26,18 +26,20 @@
 <body>
     <div id="block_lk" class="block">
         <h2 id="my_data" class="text">Личные данные</h2>
-        <form>
+        <form method="POST">
             <h2 id="name_lk" class="text">Имя</h2>
             <div id="block_name">
                 <div class="wrapper">
                     <div class="input_name">
-                        <input type="text" id="name_form_lk" name="name" value="{{user.username}}" 
+                        <input type="text" id="name_form_lk" name="name_form_lk" value="{{user.username}}" 
                         pattern="[А-Яа-яЁё]+"
                         title="Используйте только буквы кириллицы" required disabled>
                         <button id="edit_name_button_lk">Изменить</button>
                     </div>
                 </div>
             </div>
+        </form>
+        <form method="POST">
             <h2 id="phone_lk" class="text">Номер телефона</h2>
             <div id="block_phone">
                 <div class="wrapper">
@@ -46,11 +48,13 @@
                     </div>
                 </div>
             </div>
+        </form>
+        <form method="POST">
             <h2 id="date_lk" class="text">Дата рождения</h2>
             <div id="block_date">
                 <div class="wrapper">
                     <div class="input_name">
-                        <input type="date" id="date_form_lk" max="2010-04-29" value="2010-04-29" disabled>
+                        <input type="date" id="date_form_lk" max="2010-04-29" value="{{user.birthDate}}" disabled>
                         <button id="edit_date_button_lk">Изменить</button>
                     </div>
                 </div>
@@ -95,7 +99,9 @@
                 <h2 id="sub_text">Сообщать о бонусах, акциях и новых продуктах.</h2>
             </label>
         </div>
-        <button id="log_out" type="button" class="btn btn-light">Выйти</button>
+        <a href="{{ url_for('logout') }}">
+            <button id="log_out" type="button" class="btn btn-light">Выйти</button>
+        </a>
     </div>
     <script src="{{ url_for('static', filename='js/cabinet.js') }}"></script>
 </body>
