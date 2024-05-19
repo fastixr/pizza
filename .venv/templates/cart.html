@@ -37,63 +37,89 @@
             <div id="cart_item_nothing1" class="cart_item_nothing">
             </div>  
             <div id="cart_item1" class="cart_item">
-                <img id="delete_from_cart1" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                <a href="/remove_from_order/1">
+                    <img id="delete_from_cart1" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                </a>
                 <img id="order_item_cart1" class="order_item_cart" src="{{ url_for('static', filename='img/pizza_for_pop1.png') }}" alt="something">
                 <h3 id="order_item_zag1" class="order_item_zag">Пицца с креветками</h3>
                 <h4 id="order_item_desc1" class="order_item_desc">Тут будет описание</h4>
                 <h4 id="order_item_price1" class="order_item_price">450 ₽</h4>
                 <h4 id="order_item_amount1" class="order_item_amount">1</h4>
-                <button id="order_item_plus1" class="order_item_plus">&plus;</button>
-                <button id="order_item_minus1" class="order_item_minus">&minus;</button>
+                <a href="/add_to_order/1">
+                    <button id="order_item_plus1" class="order_item_plus">&plus;</button>
+                </a>
+                <a href="/decrease_quantity/1">
+                    <button id="order_item_minus1" class="order_item_minus">&minus;</button>
+                </a>
             </div>
             <div id="cart_item2" class="cart_item">
-                <img id="delete_from_cart2" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                <a href="/remove_from_order/11">
+                    <img id="delete_from_cart2" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                </a>
                 <img id="order_item_cart2" class="order_item_cart" src="{{ url_for('static', filename='img/pizza_for_pop2.png') }}" alt="something">
                 <h3 id="order_item_zag2" class="order_item_zag">Карбонара</h3>
                 <h4 id="order_item_desc2" class="order_item_desc">Тут будет описание</h4>
                 <h4 id="order_item_price2" class="order_item_price">320 ₽</h4>
                 <h4 id="order_item_amount2" class="order_item_amount">1</h4>
-                <button id="order_item_plus2" class="order_item_plus">&plus;</button>
+                <a href="/add_to_order/11">
+                    <button id="order_item_plus2" class="order_item_plus">&plus;</button>
+                </a>
                 <button id="order_item_minus2" class="order_item_minus">&minus;</button>
             </div>
-            <div id="cart_item3" class="cart_item"> 
-                <img id="delete_from_cart3" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+            <div id="cart_item3" class="cart_item">
+                <a href="/remove_from_order/2">
+                    <img id="delete_from_cart3" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                </a>
                 <img id="order_item_cart3" class="order_item_cart" src="{{ url_for('static', filename='img/salad_full.png') }}" alt="something">
                 <h3 id="order_item_zag3" class="order_item_zag">Цезарь с курицей</h3>
                 <h4 id="order_item_desc3" class="order_item_desc">Тут будет описание</h4>
                 <h4 id="order_item_price3" class="order_item_price">230 ₽</h4>
                 <h4 id="order_item_amount3" class="order_item_amount">1</h4>
-                <button id="order_item_plus3" class="order_item_plus">&plus;</button>
+                <a href="/add_to_order/2">
+                    <button id="order_item_plus3" class="order_item_plus">&plus;</button>
+                </a>
                 <button id="order_item_minus3" class="order_item_minus">&minus;</button>
             </div>
             <div id="cart_item4" class="cart_item">
-                <img id="delete_from_cart4" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                <a href="/remove_from_order/4">
+                    <img id="delete_from_cart4" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                </a>
                 <img id="order_item_cart4" class="order_item_cart" src="{{ url_for('static', filename='img/pizzaC.png') }}" alt="something">
                 <h3 id="order_item_zag4" class="order_item_zag">Комбо 1+1</h3>
                 <h4 id="order_item_desc4" class="order_item_desc">Тут будет описание</h4>
                 <h4 id="order_item_price4" class="order_item_price">600 ₽</h4>
                 <h4 id="order_item_amount4" class="order_item_amount">1</h4>
-                <button id="order_item_plus4" class="order_item_plus">&plus;</button>
+                <a href="/add_to_order/4">
+                    <button id="order_item_plus4" class="order_item_plus">&plus;</button>
+                </a>
                 <button id="order_item_minus4" class="order_item_minus">&minus;</button>
             </div>
             <div id="cart_item5" class="cart_item">
-                <img id="delete_from_cart5" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                <a href="/remove_from_order/10">
+                    <img id="delete_from_cart5" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                </a>
                 <img id="order_item_cart5" class="order_item_cart" src="{{ url_for('static', filename='img/ice-cream_full.png') }}" alt="something">
                 <h3 id="order_item_zag5" class="order_item_zag">Сорбет</h3>
                 <h4 id="order_item_desc5" class="order_item_desc">Тут будет описание</h4>
                 <h4 id="order_item_price5" class="order_item_price">249 ₽</h4>
                 <h4 id="order_item_amount5" class="order_item_amount">1</h4>
-                <button id="order_item_plus5" class="order_item_plus">&plus;</button>
+                <a href="/add_to_order/10">
+                    <button id="order_item_plus5" class="order_item_plus">&plus;</button>
+                </a>
                 <button id="order_item_minus5" class="order_item_minus">&minus;</button>
             </div>
             <div id="cart_item6" class="cart_item">
-                <img id="delete_from_cart6" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                <a href="/remove_from_order/5">
+                    <img id="delete_from_cart6" class="delete_from_cart" src="{{ url_for('static', filename='img/Close.png') }}" alt="Close">
+                </a>
                 <img id="order_item_cart6" class="order_item_cart" src="{{ url_for('static', filename='img/napitki.png') }}" alt="something">
                 <h3 id="order_item_zag6" class="order_item_zag">Добрый Cola</h3>
                 <h4 id="order_item_desc6" class="order_item_desc">Тут будет описание</h4>
                 <h4 id="order_item_price6" class="order_item_price">120 ₽</h4>
                 <h4 id="order_item_amount6" class="order_item_amount">1</h4>
-                <button id="order_item_plus6" class="order_item_plus">&plus;</button>
+                <a href="/add_to_order/5">
+                    <button id="order_item_plus6" class="order_item_plus">&plus;</button>
+                </a>
                 <button id="order_item_minus6" class="order_item_minus">&minus;</button>
             </div>  
         </div>
