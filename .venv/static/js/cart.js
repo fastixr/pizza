@@ -109,14 +109,13 @@ var cartExpand = document.getElementById("client_order_container");
 document.addEventListener("DOMContentLoaded", function() {
     var isVisible = sessionStorage.getItem("cart_item_visible1"); // Получаем информацию о видимости элемента
     if (isVisible === "true") {
-        order_item_price1.textContent = (sessionStorage.getItem('rn1_modal_price')) + " ₽";
         var currentHeight = (parseInt(cartExpand.style.height) || 0);
         if (currentHeightItem >= 0) {cartExpand.style.height = (currentHeight + 110) + "px";}
         var cartItem = document.getElementById("cart_item1");
         cartItem.style.display = "block"; // Показываем элемент, если флаг установлен
         cartItem.style.top = (currentHeightItem + 110) + "px"; // Устанавливаем отступ сверху
         currentHeightItem = parseInt(cartItem.style.top) || 0;
-        cartItem.style.left = "0px"; 
+        cartItem.style.left = "0px";
     }
 });
 
