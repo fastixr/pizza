@@ -7,16 +7,9 @@
     <list default="true" id="b437f1f0-bdf6-4807-a15e-ccabf223d31e" name="Changes" comment="Name changing added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/static/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/static/js/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/static/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/templates/cabinet.html" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/templates/cabinet.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/templates/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/templates/placing.html" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/templates/placing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/var/app-instance/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/var/app-instance/users.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/readme" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/users.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/instance/users.db" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/instance/users.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/users.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/var/app-instance/users.db" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,15 +56,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;security&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Pavel/PycharmProjects/PizzaPashka&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.app.executor": "Run",
+    "Python.utils.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "security",
+    "last_opened_file_path": "C:/Users/Pavel/PycharmProjects/Pizza-by-Pashka/.venv/var/app-instance",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Pavel\PycharmProjects\Pizza-by-Pashka\.venv\var\app-instance" />
+      <recent name="C:\Users\Pavel\PycharmProjects\Pizza-by-Pashka\.venv\instance" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -136,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716029731169</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Name changing added">
+      <option name="closed" value="true" />
+      <created>1716146219734</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716146219734</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
