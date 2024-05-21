@@ -5,11 +5,14 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_user, login_required, logout_user, LoginManager, UserMixin, current_user
 from flask_migrate import Migrate
 import sqlite3
+import os
 
+venv_dir = os.path.dirname(os.path.abspath(__file__))
+db_file = os.path.join(venv_dir, 'instance', 'users.db')
 
 app = Flask(__name__)
 app.secret_key = 'sdgdwffewofeiuwoehufiowfhue'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_file
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = LoginManager(app)
@@ -51,7 +54,8 @@ class Order(db.Model):
 
 
 def get_db():
-    db_file = '/Users/Pavel/PycharmProjects/Pizza-by-Pashka/.venv/var/app-instance/users.db'
+    venv_dir = os.path.dirname(os.path.abspath(__file__))
+    db_file = os.path.join(venv_dir, 'instance', 'users.db')
     db = sqlite3.connect(db_file)
     db.row_factory = sqlite3.Row
     return db
