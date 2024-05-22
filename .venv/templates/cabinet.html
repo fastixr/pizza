@@ -26,20 +26,16 @@
 <body>
     <div id="block_lk" class="block">
         <h2 id="my_data" class="text">Личные данные</h2>
-        <form method="POST">
+        <form>
             <h2 id="name_lk" class="text">Имя</h2>
             <div id="block_name">
                 <div class="wrapper">
                     <div class="input_name">
-                        <input type="text" id="name_form_lk" name="name_form_lk" value="{{user.username}}" 
-                        pattern="[А-Яа-яЁё]+"
-                        title="Используйте только буквы кириллицы" required disabled>
+                        <input type="text" id="name_form_lk" name="name" value="{{user.username}}" disabled>
                         <button id="edit_name_button_lk">Изменить</button>
                     </div>
                 </div>
             </div>
-        </form>
-        <form method="POST">
             <h2 id="phone_lk" class="text">Номер телефона</h2>
             <div id="block_phone">
                 <div class="wrapper">
@@ -48,13 +44,11 @@
                     </div>
                 </div>
             </div>
-        </form>
-        <form method="POST">
             <h2 id="date_lk" class="text">Дата рождения</h2>
             <div id="block_date">
                 <div class="wrapper">
                     <div class="input_name">
-                        <input type="date" id="date_form_lk" name="date_form_lk" min="1900-01-01" max="2024-01-01" value="{{user.birthDate}}" disabled>
+                        <input type="date" id="date_form_lk" max="2010-04-29" value="2010-04-29" disabled>
                         <button id="edit_date_button_lk">Изменить</button>
                     </div>
                 </div>
@@ -65,8 +59,7 @@
             <div id="block_card">
                 <div class="wrapper">
                     <div class="input_name">
-                        <input type="text" id="card_form_lk" placeholder="0000 0000 0000 0000"
-                        pattern="d{4} d{4} d{4} d{4}" title="Номер карты должен состоять из 16 цифр и быть разделён пробелами" required disabled>
+                        <input type="text" id="card_form_lk" placeholder="0000 0000 0000 0000" disabled>
                         <button id="edit_card_button_lk">Изменить</button>
                     </div>
                 </div>
@@ -74,16 +67,14 @@
             <div id="block_card_date">
                 <div class="wrapper_card_date">
                     <div class="input_name">
-                        <input type="text" id="card_date_form_lk" placeholder="мм/гг"
-                        pattern="(0[1-9]|1[0-2])/d{2}" title="Дата должна быть в формате мм/гг" required disabled>
+                        <input type="text" id="card_date_form_lk" placeholder="мм/гг" disabled>
                     </div>
                 </div>
             </div>
             <div id="block_card_cvc">
                 <div class="wrapper_card_date">
                     <div class="input_name">
-                        <input type="text" id="card_cvc_form_lk" placeholder="CVC"
-                        pattern="d{3}" title="CVC код должен состоять из 3 цифр" required disabled>
+                        <input type="text" id="card_cvc_form_lk" placeholder="CVC" disabled>
                     </div>
                 </div>
             </div>
@@ -99,9 +90,7 @@
                 <h2 id="sub_text">Сообщать о бонусах, акциях и новых продуктах.</h2>
             </label>
         </div>
-        <a href="{{ url_for('logout') }}">
-            <button id="log_out" type="button" class="btn btn-light">Выйти</button>
-        </a>
+        <button id="log_out" type="button" class="btn btn-light">Выйти</button>
     </div>
     <script src="{{ url_for('static', filename='js/cabinet.js') }}"></script>
 </body>
