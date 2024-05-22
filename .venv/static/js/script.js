@@ -864,41 +864,41 @@ numWithoutBtn6.addEventListener("click", updatePriceTopping6);
 
 
 // УВЕЛИЧИВАЕМ КОЛ-ВО ТОВАРА
-const cartButton = document.getElementById('cart');
-const addToCartButtons = document.querySelectorAll('.to_cart_in_pop');
+//const cartButton = document.getElementById('cart');
+//const addToCartButtons = document.querySelectorAll('.to_cart_in_pop');
 
-let count = sessionStorage.getItem('cartCount') ? parseInt(sessionStorage.getItem('cartCount')) : 0;
-addToCartButtons.forEach(function(addToCartButton) {
-    addToCartButton.addEventListener('click', function() {
-        if (count < 99) {
-            count++;
-        }
-        updateCartButtonText(count);
+//let count = sessionStorage.getItem('cartCount') ? parseInt(sessionStorage.getItem('cartCount')) : 0;
+//addToCartButtons.forEach(function(addToCartButton) {
+//    addToCartButton.addEventListener('click', function() {
+//       if (count < 99) {
+//            count++;
+//        }
+//        updateCartButtonText(count);
         // Сохраняем значение счетчика в sessionStorage
-        sessionStorage.setItem('cartCount', count.toString());
-    });
-});
-function updateCartButtonText(count) {
-    if (count <= 99) {cartButton.textContent = `Корзина | ${count}`;}
-}
+//        sessionStorage.setItem('cartCount', count.toString());
+//    });
+//});
+//function updateCartButtonText(count) {
+//    if (count <= 99) {cartButton.textContent = `Корзина | ${count}`;}
+//}
 
-document.addEventListener('DOMContentLoaded', function() {
-    const cartButton = document.getElementById('cart');
+//document.addEventListener('DOMContentLoaded', function() {
+//    const cartButton = document.getElementById('cart');
+//
+//    let count = sessionStorage.getItem('cartCount') ? parseInt(sessionStorage.getItem('cartCount')) : 0;
+//    updateCartButtonText(count);
 
-    let count = sessionStorage.getItem('cartCount') ? parseInt(sessionStorage.getItem('cartCount')) : 0;
-    updateCartButtonText(count);
+//    function updateCartButtonText(count) {
+//        cartButton.textContent = `Корзина | ${count}`;
+//    }
 
-    function updateCartButtonText(count) {
-        cartButton.textContent = `Корзина | ${count}`;
-    }
-
-    window.addEventListener('storage', function(event) {
-        if (event.key === 'cartCount') {
-            count = parseInt(event.newValue);
-            updateCartButtonText(count);
-        }
-    });
-});
+//    window.addEventListener('storage', function(event) {
+//        if (event.key === 'cartCount') {
+//            count = parseInt(event.newValue);
+//            updateCartButtonText(count);
+//        }
+//    });
+//});
 
 
 //Ставим флаги видимости товаров в корзине 

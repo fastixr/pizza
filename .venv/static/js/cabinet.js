@@ -1,4 +1,4 @@
-const inputField_name_lk = document.getElementById('name_form_lk');
+const inputField_name_lk = document.getElementById('name_from_lk');
 const editButton_name_lk = document.getElementById('edit_name_button_lk');
 
 editButton_name_lk.addEventListener('click', function(event) {
@@ -8,6 +8,7 @@ editButton_name_lk.addEventListener('click', function(event) {
     inputField_name_lk.disabled = false;
     editButton_name_lk.textContent = 'Сохранить';
   } else {
+    document.forms[0].submit()
     inputField_name_lk.disabled = true;
     editButton_name_lk.textContent = 'Изменить';
   }
@@ -23,6 +24,7 @@ editButton_date_lk.addEventListener('click', function(event) {
     inputField_date_lk.disabled = false;
     editButton_date_lk.textContent = 'Сохранить';
   } else {
+    document.forms[2].submit()
     inputField_date_lk.disabled = true;
     editButton_date_lk.textContent = 'Изменить';
   }
