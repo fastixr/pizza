@@ -6,6 +6,7 @@ from flask_login import login_user, login_required, logout_user, LoginManager, U
 from flask_migrate import Migrate
 import sqlite3
 import os
+import json
 
 venv_dir = os.path.dirname(os.path.abspath(__file__))
 db_file = os.path.join(venv_dir, 'instance', 'users.db')
@@ -44,13 +45,21 @@ class Dishes(db.Model):
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, nullable=False)
-    items = db.Column(db.String, nullable=False)
+    items = db.Column(db.Text, nullable=False)
     total_price = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     status = db.Column(db.String, nullable=False)
 
     def __repr__(self):
         return '<Order %r>' % self.id
+
+    @property
+    def items_list(self):
+        return json.loads(self.items)
+
+    @items_list.setter
+    def items_list(self, value):
+        self.items = json.dumps(value, ensure_ascii=False)
 
 
 def get_db():
@@ -72,8 +81,9 @@ def index():
 def contacts():
     return render_template('contacts.html')
 
-@app.route("/placing")
-def placing():
+@app.route("/placing/<id>")
+@login_required
+def placing(id):
     return render_template('placing.html', total_price=session.get('total_price', 0))
 
 @app.route("/actions")
@@ -86,6 +96,7 @@ def main():
     return render_template('cabinet.html')
 
 @app.route('/add_to_order/<dish_id>', methods=['GET', 'POST'])
+@login_required
 def add_to_order(dish_id):
     db = get_db()
     cursor = db.cursor()
@@ -127,12 +138,20 @@ def add_to_order(dish_id):
         return "Ошибка: Блюдо не найдено"
 
 
-@app.route('/clear_order')
-def clear_order():
+@app.route('/clear_order/<id>')
+def clear_order(id):
     session.pop('order', None)
     session.pop('total_price', None)
     session.pop('total_quantity', None)
-    return redirect(url_for('placing'))
+    return redirect(url_for('placing', id=session['id']))
+
+@app.route('/order_saving/<id>')
+@login_required
+def order_saving(id):
+    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Оплачен')
+    db.session.add(order)
+    db.session.commit()
+    return redirect(url_for('clear_order', id=id))
 
 @app.route('/remove_from_order/<dish_id>', methods=['GET', 'POST'])
 def remove_from_order(dish_id):
@@ -171,8 +190,9 @@ def decrease_quantity(dish_id):
 def register():
     return render_template('register.html', title="Регистрация")
 
-@app.route('/cart')
-def cart():
+@app.route('/cart/<id>')
+@login_required
+def cart(id):
     return render_template('cart.html')
 
 @app.route('/register_handler', methods=['POST', 'GET'])
@@ -223,15 +243,20 @@ def login():
         return redirect(URL)
 
     if phone and password:
-        user = Users.query.filter_by(phone=phone).first()
-        id = user.id
-        URL = "/cabinet/" + str(id)
+        try:
+            user = Users.query.filter_by(phone=phone).first()
+            id = user.id
+            URL = "/cabinet/" + str(id)
+        except:
+            return render_template('login.html', title="Авторизация")
 
         if user and check_password_hash(user.password, password):
             login_user(user, remember=True)
 
             is_authentificated = True
             session['id'] = user.id
+            session['name'] = user.username
+            session['phone'] = user.phone
             return redirect(URL)
         else:
             flash('Неправильный логин или пароль')
@@ -249,8 +274,8 @@ def user(id):
 
     user = Users.query.filter_by(id=id).first_or_404()
     if request.method == "POST":
-        if 'name_form_lk' in request.form:
-            user.username = request.form.get('name_form_lk')
+        if 'name_from_lk' in request.form:
+            user.username = request.form.get('name_from_lk')
         if 'date_form_lk' in request.form:
             Year = int(request.form.get('date_form_lk')[:4])
             if request.form.get('date_form_lk')[5] != 0:
@@ -275,7 +300,7 @@ def logout():
     logout_user()
     flash("Вы вышли из аккаунта", "success")
     is_authentificated  = False
-    return redirect('/')
+    return redirect(url_for('login'))
 
 
 @app.route('/cabinet/<id>/password_change', methods=['POST', 'GET'])
@@ -305,6 +330,33 @@ def change(id):
             flash("Неправильный пароль")
 
     return render_template('password_change.html', user=user)
+
+@app.route('/cabinet/<id>/history', methods=['POST', 'GET'])
+@login_required
+def get_orders(id):
+    orders = Order.query.filter_by(user_id=id)
+    orders_list = []
+    order_list = []
+    for order in orders:
+        items_list = json.loads(order.items)
+
+        for item in items_list:
+            order_list.append({
+                "name": item["name"],
+                "quantity": item["quantity"],
+                "price": item["price"],
+            })
+
+        orders_list.append({
+            "order": order_list,
+            "id": order.id,
+            "total_price": order.total_price,
+            "time": order.created_at,
+            "status": order.status
+        })
+        order_list = []
+
+    return render_template("history.html", orders_list=orders_list)
 
 @app.context_processor
 def inject_user_status():

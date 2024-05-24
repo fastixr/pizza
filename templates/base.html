@@ -57,7 +57,7 @@
             </ul>
       
             <div class="col-md-3 text-end">
-                <a href="/cart">
+                <a href="/cart/{{ session['id'] }}">
                     <button id="cart" type="button" class="btn btn-primary"> Корзина | {{ session['total_quantity'] }} </button>
                 </a>
             </div>

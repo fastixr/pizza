@@ -37,7 +37,7 @@
             <div id="block_name_pl">
                 <div class="wrapper_name_pl">
                     <div class="input_name_pl">
-                        <input type="text" id="name_form_pl" name="name" value="Владимир"
+                        <input type="text" id="name_form" name="name" value="{{ session['name'] }}"
                         pattern="[А-Яа-яЁё]+"
                         title="Используйте только буквы кириллицы" required disabled>
                         <button id="edit_name_button_pl">Изменить</button>
@@ -48,7 +48,7 @@
             <div id="block_phone_pl">
                 <div class="wrapper_phone_pl">
                     <div class="input_phone_pl">
-                        <input type="text" id="phone_form_pl" name="phone_form_pl" value="+7(800)555-35-35" disabled 
+                        <input type="text" id="phone_form_pl" name="phone_form_pl" value="{{ session['phone'] }}" disabled
                         pattern="\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}"
                         title="Формат телефона: +7(000)000-00-00" required>
                         <button id="edit_phone_button_pl">Изменить</button>
@@ -96,7 +96,7 @@
                 <div id="block_cash_change_pl">
                     <div class="wrapper_cash_change_pl">
                         <div class="input_cash_change_pl">
-                            <input type="text" id="cash_change_pl" 
+                            <input type="text" id="cash_change_pl"
                             pattern="d*" title="Используйте только цифры" enabled>
                         </div>
                     </div>
@@ -117,8 +117,8 @@
                     <div id="block_card_pl">
                         <div class="wrapper">
                             <div class="input_card_pl">
-                                <input type="text" id="card_name_form_pl" placeholder="0000 0000 0000 0000" 
-                                pattern="d{4} d{4} d{4} d{4}" 
+                                <input type="text" id="card_name_form_pl" placeholder="0000 0000 0000 0000"
+                                pattern="d{4} d{4} d{4} d{4}"
                                 title="Номер карты должен состоять из 16 цифр и быть разделён пробелами" enabled>
                             </div>
                         </div>
@@ -154,12 +154,14 @@
         <span id="info_sub_pl" class="clue" data-clue="Согласие на СМС-расслыку от ООО Пицца от Пашки">
             i
         </span>
-        <button id="offer_accept" type="button" class="btn btn-light">Оформить заказ на {{ session['total_price'] }} ₽.</button>
+        <a href="/order_saving/{{ session['id'] }}">
+            <button id="offer_accept" type="button" class="btn btn-light">Оформить заказ на {{ session['total_price'] }} ₽.</button>
+        </a>
         <container>
-            <a href="{{ url_for('cart') }}">
+            <a href="{{ url_for('cart', id=session['id']) }}">
                 <div id="back_to_cart">Назад в корзину</div>
                 <img id="strelka" class="strelka_img" src="{{ url_for('static', filename='img/strelka.png') }}" alt="strelka">
-            </a>            
+            </a>
         </container>
         <div id="block_order_structure" class="rectangle_order">
             <h2 id="order_list" type="text">Состав заказа</h2>
