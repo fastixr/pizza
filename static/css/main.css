@@ -2069,9 +2069,23 @@ li::marker {
 #name_form {
     position: absolute;
     color: black;
+    left: 10px;
+    top: 50px;
+    width: 520px;
+    height: 200px;
     font-family: "Montserrat", sans-serif;
     font-weight: 900px;
     font-size: 18px;
+    background: transparent;
+}
+
+.wrapper_address_border {
+    position: absolute;
+    border: 2px solid rgba(0, 0, 0, 0.14);
+    border-radius: 7px;
+    width: 620px;
+    height: 200px;
+    background: transparent;
 }
 
 #name_form_lk {

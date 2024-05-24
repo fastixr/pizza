@@ -114,6 +114,7 @@ editButton_save_cash_pl.addEventListener('click', function(event) {
 
 var modal1 = document.getElementById("map_modal");
 var close_btn1 = document.getElementById("close_pop_map");
+var close_btn2 = document.getElementById("submit_address");
 var open_btn1 = document.getElementById("edit_address_button_pl");
 
 
@@ -125,6 +126,11 @@ open_btn1.addEventListener("click", function(event) {
 close_btn1.onclick = function() {
   modal1.style.display = "none";
 }
+
+close_btn2.onclick = function() {
+  modal1.style.display = "none";
+}
+
 
 var map;
 var placemark;
@@ -308,3 +314,13 @@ function getCoordinates(address, callback) {
         }
     );
 }
+
+// ПЕРЕНОС АДРЕСА В ФОРМУ
+
+const nameForm = document.getElementById('name_form');
+const addressMap = document.getElementById('address_map');
+const submitAddress = document.getElementById('submit_address');
+
+  submitAddress.addEventListener('click', () => {
+    nameForm.textContent = addressMap.value;
+  });
