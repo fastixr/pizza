@@ -1,4 +1,4 @@
-const inputField_name_lk = document.getElementById('name_from_lk');
+const inputField_name_lk = document.getElementById('name_form_lk');
 const editButton_name_lk = document.getElementById('edit_name_button_lk');
 
 editButton_name_lk.addEventListener('click', function(event) {

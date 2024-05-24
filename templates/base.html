@@ -47,7 +47,13 @@
               <li><a id="desert" href="http://127.0.0.1:5000/#zag_desert" class="nav-link px-3">Десерты</a></li>
               <li><a id="actions" href="{{ url_for('actions') }}" class="nav-link px-3">Акции</a></li>
               <li><a id="contacts" href="{{ url_for('contacts') }}" class="nav-link px-3">Контакты</a></li>
-              <li><a id="login" href="{{ url_for('login') }}" class="btn btn-light">Войти</a></li>
+              <li><a id="login" href="{{ url_for('login') }}" class="btn btn-light">
+                {% if is_authentificated_js %}
+                Кабинет
+                {% else %}
+                Войти
+                {% endif %}
+              </a></li>
             </ul>
       
             <div class="col-md-3 text-end">
