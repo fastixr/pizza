@@ -26,7 +26,7 @@
                 <a href="/">
                     <img id="logo_cart" src="{{ url_for('static', filename='img/avatar_full.png') }}" alt="logo_cart">
                 </a>
-                <img id="info_cart" src="{{ url_for('static', filename='img/info_cart.png') }}" alt="info_cart">
+                <img id="info_placing" src="{{ url_for('static', filename='img/info_placing.png') }}" alt="info_placing">
             </div>
         </header>
     </div>
@@ -37,9 +37,10 @@
             <div id="block_name_pl">
                 <div class="wrapper_name_pl">
                     <div class="input_name_pl">
-                        <input type="text" id="name_form" name="name" value="Владимир"
+                        <input type="text" id="name_form_pl" name="name" value="Владимир"
                         pattern="[А-Яа-яЁё]+"
-                        title="Используйте только буквы кириллицы" required enabled>
+                        title="Используйте только буквы кириллицы" required disabled>
+                        <button id="edit_name_button_pl">Изменить</button>
                     </div>
                 </div>
             </div>
@@ -116,7 +117,7 @@
                     <div id="block_card_pl">
                         <div class="wrapper">
                             <div class="input_card_pl">
-                                <input type="text" id="name_form_pl" placeholder="0000 0000 0000 0000" 
+                                <input type="text" id="card_name_form_pl" placeholder="0000 0000 0000 0000" 
                                 pattern="d{4} d{4} d{4} d{4}" 
                                 title="Номер карты должен состоять из 16 цифр и быть разделён пробелами" enabled>
                             </div>
@@ -163,16 +164,23 @@
         <div id="block_order_structure" class="rectangle_order">
             <h2 id="order_list" type="text">Состав заказа</h2>
             {% for dish in session['order'] %}
-                <tr>
-                    <td>{{ dish['name'] }} x {{ dish['quantity'] }}</td>
-                    <td>{{ dish['price'] * dish['quantity'] }}руб</td>
-                    <img id="pizza" class="pizza_pop" src="{{ url_for('static', filename=dish['image']) }}" alt="pizza_image">
-                </tr>
+            <div id="block_order_table_names">
+                <table>
+                    <tr>
+                        <td>{{ dish['name'] }} x {{ dish['quantity'] }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="block_order_table_costs">
+                <table>
+                    <tr>
+                        <td>{{ dish['price'] * dish['quantity'] }}руб</td>
+                    </tr>
+                </table>
+            </div>
             {% endfor %}
-            <h2 id="free_delivery" type="text">Бесплатная доставка</h2>
-            <h2 id="order_cost" type="text">Сумма заказа</h2>
             <tr>
-                <td>{{ session['total_price'] }}руб</td>
+                <td>Сумма заказа: {{ session['total_price'] }}руб</td>
             </tr>
         </div>
     </div>

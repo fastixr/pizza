@@ -1998,7 +1998,7 @@ li::marker {
 }
 
 #block_lk {
-    width: 100%;
+    width: 1500px;
     height: 974px;
     background-color: #fff;
     margin: 0 auto;
@@ -2616,7 +2616,7 @@ input[type='checkbox'] {
 }
 
 #block_placing {
-    width: 100%;
+    width: 1500px;
     height: 1474px;
     background-color: #fff;
     margin: 0 auto;
@@ -3093,7 +3093,9 @@ input[type='checkbox'] {
 
 .rectangle_order {
     width: 370px;
-    height: 550px;
+    min-height: 350px;
+    max-height: 550px;
+    overflow-y: auto;
     background-color: white;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     border-radius: 0px;
@@ -3105,26 +3107,76 @@ input[type='checkbox'] {
     top: 50px;
 }
 
+#block_order_table_names table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 50px;
+}
+
+#block_order_table_names td {
+    position: absolute;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 18px;
+    padding: 8px;
+}
+
+#block_order_table_costs table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+#block_order_table_costs td {
+    left: 50px;
+    position: absolute;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 18px;
+    padding: 8px;
+}
+
+#dish_name_pl {
+    position: absolute;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 18px;
+}
+  
 #edit_name_button_pl {
     position: absolute;
-    left: 300px;
-    top: 40px;
+    left: 485px;
+    height: 50px;
+    width: 130px;
+    top: 0px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
-    border-radius: 7px;
-    background-color: #4E0476;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 7px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 7px;
+    background-color: transparent;
     border: #4E0476;
-    color: white;
+    color: #4E0476;
 }
 
 #edit_name_button_pl:hover {
     position: absolute;
-    left: 300px;
-    top: 40px;
+    left: 485px;
+    height: 50px;
+    width: 130px;
+    top: 0px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
-    border-radius: 7px;
-    background-color: white;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 7px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 7px;
+    background-color: transparent;
+    border: #F1F2F5;
     color: black;
 }
 
@@ -3136,26 +3188,6 @@ input[type='checkbox'] {
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
     color: #4E0476;
-}
-
-#free_delivery {
-    position: absolute;
-    left: 95px;
-    top: 500px;
-    font-size: 16px;
-    font-weight: normal;
-    font-family: "Montserrat", sans-serif;
-    color: #444A4B;
-}
-
-#order_cost {
-    position: absolute;
-    left: 18px;
-    top: 450px;
-    font-size: 16px;
-    font-weight: normal;
-    font-family: "Montserrat", sans-serif;
-    color: #444A4B;
 }
 
 #card_method {
@@ -3221,8 +3253,16 @@ input[type='checkbox'] {
     font-family: "Montserrat", sans-serif;
     font-weight: 900px;
     font-size: 18px;
+}
+
+#card_name_form_pl {
+    position: absolute;
     top: 80px;
     right: 55px;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 18px;
 }
 
 #date_form_pl {
@@ -3315,6 +3355,12 @@ input[type='checkbox'] {
     position: absolute;
     left: 370px;
     top: 64px;
+}
+
+#info_placing {
+    position: absolute;
+    top: 13px;
+    left: 868px;
 }
 
 #without_change_placing {
@@ -3665,3 +3711,4 @@ input[type="date"]:enabled {
     left: 150px;
     top: 40px;
 }
+

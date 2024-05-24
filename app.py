@@ -249,8 +249,8 @@ def user(id):
 
     user = Users.query.filter_by(id=id).first_or_404()
     if request.method == "POST":
-        if 'name_from_lk' in request.form:
-            user.username = request.form.get('name_from_lk')
+        if 'name_form_lk' in request.form:
+            user.username = request.form.get('name_form_lk')
         if 'date_form_lk' in request.form:
             Year = int(request.form.get('date_form_lk')[:4])
             if request.form.get('date_form_lk')[5] != 0:
@@ -275,7 +275,7 @@ def logout():
     logout_user()
     flash("Вы вышли из аккаунта", "success")
     is_authentificated  = False
-    return redirect(url_for('login'))
+    return redirect('/')
 
 
 @app.route('/cabinet/<id>/password_change', methods=['POST', 'GET'])
@@ -305,6 +305,10 @@ def change(id):
             flash("Неправильный пароль")
 
     return render_template('password_change.html', user=user)
+
+@app.context_processor
+def inject_user_status():
+    return dict(is_authentificated_js=is_authentificated)
 
 if __name__ == '__main__':
     app.run(debug=True)
