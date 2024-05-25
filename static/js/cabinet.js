@@ -44,6 +44,9 @@ editButton_card_lk.addEventListener('click', function(event) {
     inputField_card_cvc_lk.disabled = false;
     editButton_card_lk.textContent = 'Сохранить';
   } else {
+    document.forms[3].submit();
+    document.forms[4].submit();
+    document.forms[5].submit();
     inputField_card_lk.disabled = true;
     inputField_card_date_lk.disabled = true;
     inputField_card_cvc_lk.disabled = true;
