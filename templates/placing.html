@@ -33,16 +33,33 @@
     </div>
     <div id="map_modal" class="modal_pizza">
         <div class="modal_content_map">
-            <div>
-                <form id="address-form">
-                    <label id="text_near_map1" for="address">Адрес</label>
-                    <input id="address_map" type="text" name="address">
-                    <button id="search_address" type="submit">Найти</button>
-                    <button id="submit_address" type="button">Подтвердить адресс</button>
-                </form>
-            </div>
+            <form id="address-form">
+                <label id="text_near_map1" for="address">Адрес</label>
+                <input id="address_map" type="text" name="address">
+                <button id="search_address" type="submit">Найти</button>
+                <button id="submit_address" type="button">Подтвердить адресс</button>
+            </form>
             <div id="map_delivery"></div>
             <img id="close_pop_map" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
+        </div>
+    </div>
+    <div id="delivery_time_modal" class="modal_pizza">
+        <div class="modal_content_delivery">
+            <h3 id="delivery_time_text">Время доставки</h3>
+            <button id="submit_delivery_time" type="button">Подтвердить время</button>
+            <div id="time_table_delivery">
+                <button id="time_table_btn1" type="button" class="time_table_btn">Как можно скорее</button>
+                <button id="time_table_btn2" type="button" class="time_table_btn">15:00 - 15:30</button>
+                <button id="time_table_btn3" type="button" class="time_table_btn">15:00 - 15:30</button>
+                <button id="time_table_btn4" type="button" class="time_table_btn">15:00 - 15:30</button>
+                <button id="time_table_btn5" type="button" class="time_table_btn">15:00 - 15:30</button>
+                <button id="time_table_btn6" type="button" class="time_table_btn">15:00 - 15:30</button>
+                <button id="time_table_btn7" type="button" class="time_table_btn">15:00 - 15:30</button>
+                <button id="time_table_btn8" type="button" class="time_table_btn">15:00 - 15:30</button>
+                <button id="time_table_btn9" type="button" class="time_table_btn">15:00 - 15:30</button>
+                <button id="time_table_btn10" type="button" class="time_table_btn">15:00 - 15:30</button>
+            </div>
+            <img id="close_pop_del" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
         </div>
     </div>
     <div id="block_placing" class="block">
@@ -82,7 +99,7 @@
             <div id="block_time_pl">
                 <div class="wrapper_time_pl">
                     <div class="input_time_pl">
-                        <input type="text" id="time_form_pl" value="Побыстрее" disabled>
+                        <input type="text" id="time_form_pl" value="Как можно скорее" disabled>
                         <button id="edit_time_button_pl">Изменить</button>
                     </div>
                 </div>

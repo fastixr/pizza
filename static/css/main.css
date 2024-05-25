@@ -3742,7 +3742,7 @@ input[type="date"]:enabled {
     top: 40px;
 }
 
-/* Стили для карты заказа */
+/* Стили для карты заказа и модального окна*/
 
 .modal_content_map {
     position: absolute;
@@ -3751,7 +3751,6 @@ input[type="date"]:enabled {
     border-radius: 12px;
     width: 860px;
     height: 690px;
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -3821,4 +3820,121 @@ input[type="date"]:enabled {
     background-color: #4E0476;
     color: white;
     border: 0px;
+}
+
+/* Стили для модального окна для времени доставки */
+
+.modal_content_delivery {
+    position: absolute;
+    background-color: #E3ECF5;
+    padding: 20px;
+    border-radius: 12px;
+    width: 635px;
+    height: 530px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#delivery_time_text {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+
+    font-size: 32px;
+    color: #686466;
+    font-family: "Montserrat", sans-serif;
+}
+
+#time_table_delivery {
+    position: absolute;
+    left: 30px;
+    top: 100px;
+    width: 580px;
+    height: 335px;
+}
+
+.time_table_btn {
+    position: absolute;
+    width: 280px;
+    height: 51px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 28px 0px rgba(0, 0, 0, 0.1);
+    border: 2px solid white;
+    cursor: pointer;
+
+    font-size: 15px;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#submit_delivery_time {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+
+    width: 200px;
+    height: 50px;
+
+    border-radius: 7px;
+    background-color: #4E0476;
+    color: white;
+    border: 0px;
+}
+
+#time_table_btn1 {
+    left: 0px;
+    top: 0px;
+}
+
+#time_table_btn2 {
+    left: 0px;
+    top: 70px;
+}
+
+#time_table_btn3 {
+    left: 0px;
+    top: 140px;
+}
+
+#time_table_btn4 {
+    left: 0px;
+    top: 210px;
+}
+
+#time_table_btn5 {
+    left: 0px;
+    top: 280px;
+}
+
+#time_table_btn6 {
+    left: 295px;
+    top: 0px;
+}
+
+#time_table_btn7 {
+    left: 295px;
+    top: 70px;
+}
+
+#time_table_btn8 {
+    left: 295px;
+    top: 140px;
+}
+
+#time_table_btn9 {
+    left: 295px;
+    top: 210px;
+}
+
+#time_table_btn10 {
+    left: 295px;
+    top: 280px;
+}
+
+.active_border_time_del {
+    border: 2px solid rgba(78, 4, 118, 1);
 }
