@@ -2066,6 +2066,22 @@ li::marker {
     top: 120px;
 }
 
+#name_form_ph {
+    position: absolute;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 18px;
+}
+
+#name_form_name {
+    position: absolute;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 18px;
+}
+
 #name_form {
     position: absolute;
     color: black;
