@@ -61,11 +61,11 @@
             </div>
         </form>
         <h2 id="actual_card">Актуальный способ оплаты</h2>
-        <form>
+        <form method="POST">
             <div id="block_card">
                 <div class="wrapper">
                     <div class="input_name">
-                        <input type="text" id="card_form_lk" placeholder="0000 0000 0000 0000"
+                        <input type="text" id="card_form_lk" name="card_form_lk" placeholder="0000 0000 0000 0000" value="{{ masked_card_number }}"
                         pattern="d{4} d{4} d{4} d{4}" title="Номер карты должен состоять из 16 цифр и быть разделён пробелами" required disabled>
                         <button id="edit_card_button_lk">Изменить</button>
                     </div>
@@ -74,7 +74,7 @@
             <div id="block_card_date">
                 <div class="wrapper_card_date">
                     <div class="input_name">
-                        <input type="text" id="card_date_form_lk" placeholder="мм/гг"
+                        <input type="text" id="card_date_form_lk" name="card_date_form_lk" placeholder="мм/гг" value="{{ masked_card_date }}"
                         pattern="(0[1-9]|1[0-2])/d{2}" title="Дата должна быть в формате мм/гг" required disabled>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
             <div id="block_card_cvc">
                 <div class="wrapper_card_date">
                     <div class="input_name">
-                        <input type="text" id="card_cvc_form_lk" placeholder="CVC"
+                        <input type="text" id="card_cvc_form_lk" name="card_cvc_form_lk" placeholder="CVC" value="{{ masked_card_cvc }}"
                         pattern="d{3}" title="CVC код должен состоять из 3 цифр" required disabled>
                     </div>
                 </div>
