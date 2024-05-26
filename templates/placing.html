@@ -154,7 +154,7 @@
         <span id="info_sub_pl" class="clue" data-clue="Согласие на СМС-расслыку от ООО Пицца от Пашки">
             i
         </span>
-        <button id="offer_accept" type="button" class="btn btn-light">Оформить заказ на {{ session['total_price'] }} ₽.</button>
+        <a id="offer_accept" href="{{ url_for('order') }}" type="button" class="btn btn-light">Оформить заказ на {{ session['total_price'] }} ₽.</a>
         <container>
             <a href="{{ url_for('cart') }}">
                 <div id="back_to_cart">Назад в корзину</div>
@@ -167,21 +167,17 @@
             <div id="block_order_table_names">
                 <table>
                     <tr>
-                        <td>{{ dish['name'] }} x {{ dish['quantity'] }}</td>
-                    </tr>
-                </table>
-            </div>
-            <div id="block_order_table_costs">
-                <table>
-                    <tr>
-                        <td>{{ dish['price'] * dish['quantity'] }}руб</td>
+                        <td class="dish_quantity">x {{ dish['quantity'] }}</td>
+                        <td class="dish_name">{{ dish['name'] }}</td>
+                        <td class="dish_price">{{ dish['price'] * dish['quantity'] }} ₽</td>
                     </tr>
                 </table>
             </div>
             {% endfor %}
-            <tr>
-                <td>Сумма заказа: {{ session['total_price'] }}руб</td>
-            </tr>
+            <div class="block_order_total">
+                <span class="total_price_text">Сумма заказа</span>
+                <span class="total_price">{{ session['total_price'] }} ₽</span>
+            </div>
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/placing.js') }}"></script>

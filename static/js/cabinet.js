@@ -50,3 +50,24 @@ editButton_card_lk.addEventListener('click', function(event) {
     editButton_card_lk.textContent = 'Изменить';
   }
 });
+
+const password_change_lk = document.getElementById('password_change_lk');
+const password_change_lk_1 = document.getElementById('password_change_lk_1');
+const password_change_lk_2 = document.getElementById('password_change_lk_2');
+const edit_password_button_lk = document.getElementById('edit_password_button_lk');
+
+edit_password_button_lk.addEventListener('click', function(event) {
+    event.preventDefault();
+  if (edit_password_button_lk.textContent === 'Изменить') {
+    event.stopPropagation();
+    password_change_lk.disabled = false;
+    password_change_lk_1.disabled = false;
+    password_change_lk_2.disabled = false;
+    edit_password_button_lk.textContent = 'Сохранить';
+  } else {
+    password_change_lk.disabled = true;
+    password_change_lk_1.disabled = true;
+    password_change_lk_2.disabled = true;
+    edit_password_button_lk.textContent = 'Изменить';
+  }
+});

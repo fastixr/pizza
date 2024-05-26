@@ -80,6 +80,10 @@ def placing():
 def actions():
     return render_template('actions.html')
 
+@app.route("/order")
+def order():
+    return render_template('order.html')
+
 @app.route('/cabinet', methods=['GET'])
 @login_required
 def main():
