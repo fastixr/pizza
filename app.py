@@ -65,7 +65,6 @@ class Order(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     status = db.Column(db.String, nullable=False)
     address = db.Column(db.String)
-    ingredients = db.Column(db.Text)
     deliveryTime = db.Column(db.String)
 
     def __repr__(self):
@@ -78,14 +77,6 @@ class Order(db.Model):
     @items_list.setter
     def items_list(self, value):
         self.items = json.dumps(value, ensure_ascii=False)
-
-    @property
-    def ingredients_list(self):
-        return json.loads(self.items)
-
-    @ingredients_list.setter
-    def ingredients_list(self, value):
-        self.ingredients = json.dumps(value, ensure_ascii=False)
 
 
 def get_db():
@@ -118,12 +109,38 @@ def contacts():
 def placing(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
+    key1 = "73i54sfg243v5643s3z67"
+
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
+
+    user = Users.query.filter_by(id=id).first_or_404()
+    if user.cardNumber:
+        masked_card_number = "**** **** **** " + xor_decrypt(user.cardNumber, key1)[-4:]
+    else:
+        masked_card_number = "0000 0000 0000 0000"
+
+    if user.cardExpirationDate:
+        masked_card_date = "**/**"
+    else:
+        masked_card_date = "мм/гг"
+
+    if user.cardCVV:
+        masked_card_cvc = "***"
+    else:
+        masked_card_cvc = "CVC"
+
     address = request.form.get('address')
     delivery_time = request.form.get('time_form_pl')
+    if 'delivery_time' not in session:
+        session['delivery_time'] = 'Побыстрее'
     if request.method == 'POST':
         session['address'] = address
         session['delivery_time'] = delivery_time
-    return render_template('placing.html', total_price=session.get('total_price', 0))
+
+    return render_template('placing.html', total_price=session.get('total_price', 0), user=user,
+                           masked_card_number=masked_card_number, masked_card_date=masked_card_date,
+                           masked_card_cvc=masked_card_cvc)
 
 
 @app.route("/actions")
@@ -167,6 +184,7 @@ def add_to_order(dish_id):
             'name': dish['name'],
             'price': dish['price'],
             'image': dish['image'],
+            'ingredients': dish['ingredients'],
             'quantity': 1
         })
 
@@ -200,7 +218,8 @@ def clear_order(id):
 def order_saving(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
-    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Доставлен', deliveryTime=session['delivery_time'])
+    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Доставлен',
+                  deliveryTime=session['delivery_time'])
     db.session.add(order)
     db.session.commit()
     return redirect(url_for('clear_order', id=id))
@@ -257,6 +276,8 @@ def cart(id):
 @app.route('/order_update/<id>')
 @login_required
 def update_order_status(id):
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
     order_statuses = {
         'processing': 'Заказ обрабатывается',
         'preparing': 'Готовится',
@@ -404,8 +425,10 @@ def user(id):
 
         db.session.commit()
 
-        return render_template('cabinet.html', user=user, masked_card_number=masked_card_number, masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
-    return render_template('cabinet.html', user=user, masked_card_number=masked_card_number, masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
+        return render_template('cabinet.html', user=user, masked_card_number=masked_card_number,
+                               masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
+    return render_template('cabinet.html', user=user, masked_card_number=masked_card_number,
+                           masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
 
 
 @app.route('/logout')
@@ -480,6 +503,25 @@ def get_orders(id):
         order_list = []
 
     return render_template("history.html", orders_list=orders_list)
+
+
+@app.route('/cabinet/<id>/history/<order_id>')
+@login_required
+def order_details(id, order_id):
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
+    order_list = []
+    order = Order.query.filter_by(id=order_id).first()
+    items_list = json.loads(order.items)
+    for item in items_list:
+        order_list.append({
+            "name": item["name"],
+            "quantity": item["quantity"],
+            "price": item["price"],
+            "ingredients": item["ingredients"]
+        })
+
+    return render_template("details.html", order_list=order_list, order=order)
 
 
 @app.context_processor

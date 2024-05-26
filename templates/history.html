@@ -29,6 +29,9 @@
         <h3>Общая стоимость: {{ order.total_price }} руб.</h3>
         <h3>Время: {{ order.time }}</h3>
         <h3>Статус заказа: {{ order.status }}</h3>
+        <a href="/cabinet/{{ session['id'] }}/history/{{ order.id }}">
+            <button id="order_details">Подробнее</button>
+        </a>
     {% endfor %}
 </body>
 </html>
