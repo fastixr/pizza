@@ -164,14 +164,18 @@ def add_to_order(dish_id):
         return "Ошибка: Блюдо не найдено"
 
 
+current_order = None
+
 @app.route('/clear_order/<id>')
 def clear_order(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
+    global current_order
+    current_order = session['order']
     session.pop('order', None)
     session.pop('total_price', None)
     session.pop('total_quantity', None)
-    return redirect(url_for('placing', id=session['id']))
+    return redirect(url_for('update_order_status', id=session['id']))
 
 
 @app.route('/order_saving/<id>')
@@ -195,6 +199,7 @@ def remove_from_order(dish_id):
         if item['id'] == int(dish_id):
             order.remove(item)
             session['total_price'] -= item['price'] * item['quantity']
+            session['total_quantity'] -= item['quantity']
             break
 
     if len(order) == 0:
@@ -213,6 +218,7 @@ def decrease_quantity(dish_id):
             if item['quantity'] > 1:
                 item['quantity'] -= 1
                 session['total_price'] -= item['price']
+                session['total_quantity'] -= 1
                 break
 
     return redirect(request.referrer)
@@ -229,6 +235,30 @@ def cart(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
     return render_template('cart.html')
+
+
+@app.route('/order_update/<id>')
+@login_required
+def update_order_status(id):
+    order_statuses = {
+        'processing': 'Заказ обрабатывается',
+        'preparing': 'Готовится',
+        'delivery': 'Доставляется',
+        'delivered': 'Доставлен'
+    }
+    global current_order
+    if 'status' not in session:
+        session['status'] = 'processing'
+        current_status = order_statuses.get(session['status'])
+        return render_template('status.html', current_status=current_status, current_order=current_order)
+    current_status = order_statuses.get(session['status'])
+    if current_status == order_statuses['delivered']:
+        return render_template('status.html', current_status=current_status, current_order=current_order)
+    status_index = list(order_statuses.keys()).index(session['status'])
+    next_status_index = (status_index + 1) % len(order_statuses)
+    session['status'] = list(order_statuses.keys())[next_status_index]
+    current_status = order_statuses.get(session['status'])
+    return render_template('status.html', current_status=current_status, current_order=current_order)
 
 
 @app.route('/register_handler', methods=['POST', 'GET'])
@@ -329,8 +359,8 @@ def user(id):
         masked_card_cvc = "CVC"
 
     if request.method == "POST":
-        if 'name_from_lk' in request.form:
-            user.username = request.form.get('name_from_lk')
+        if 'name_form_lk' in request.form:
+            user.username = request.form.get('name_form_lk')
         if 'date_form_lk' in request.form:
             Year = int(request.form.get('date_form_lk')[:4])
             if request.form.get('date_form_lk')[5] != 0:
