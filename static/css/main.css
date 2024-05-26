@@ -3204,8 +3204,11 @@ input[type='checkbox'] {
 }
 
 .rectangle_order {
+    display: flex;
     width: 410px;
-    min-height: 380px;
+    flex-direction: column; /* Дочерние элементы располагаются в колонку */
+    justify-content: space-between; 
+    min-height: 180px;
     max-height: 550px;
     overflow-y: auto;
     background-color: white;
@@ -3270,7 +3273,6 @@ input[type='checkbox'] {
 }
 
 .block_order_total {
-    display: flex;
     justify-content: left;
     padding: 15px 0;
     font-size: 18px;
