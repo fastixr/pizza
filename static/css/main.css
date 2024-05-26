@@ -1999,7 +1999,7 @@ li::marker {
 
 #block_lk {
     width: 1500px;
-    height: 974px;
+    height: 1234px;
     background-color: #fff;
     margin: 0 auto;
     position: sticky;
@@ -2058,6 +2058,33 @@ li::marker {
     border: 2px solid rgba(0, 0, 0, 0.1);
     border-radius: 7px;
     padding-left: 10px;
+}
+
+#password_change_lk {
+    width: 270px;
+    position: absolute;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 18px;
+}
+
+#password_change_lk_1 {
+    width: 270px;
+    position: absolute;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 18px;
+}
+
+#password_change_lk_2 {
+    width: 270px;
+    position: absolute;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 18px;
 }
 
 #block_name {
@@ -2173,6 +2200,50 @@ li::marker {
     top: 220px;
 }
 
+#block_password_lk {
+    position: absolute;
+    left: 160px;
+    top: 720px;
+    width: 270px;
+}
+
+#block_password_lk_1 {
+    position: absolute;
+    left: 160px;
+    top: 790px;
+    width: 270px;
+}
+
+#block_password_lk_2 {
+    position: absolute;
+    left: 160px;
+    top: 860px;
+    width: 270px;
+}
+
+#edit_password_button_lk {
+    position: absolute;
+    left: 520px;
+    top: 760px;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 7px;
+    background-color: #4E0476;
+    border: #4E0476;
+    color: white;
+}
+
+#edit_password_button_lk:hover {
+    position: absolute;
+    left: 520px;
+    top: 760px;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 7px;
+    background-color: white;
+    color: black;
+}
+
 #phone_lk {
     position: absolute;
     color: #686466;
@@ -2245,6 +2316,16 @@ li::marker {
     top: 320px;
 }
 
+#password_lk {
+    position: absolute;
+    color: #4E0476;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900px;
+    font-size: 40px;
+    left: 160px;
+    top: 680px;
+}
+
 #subscribe {
     position: absolute;
     color: #4E0476;
@@ -2252,7 +2333,7 @@ li::marker {
     font-weight: 900px;
     font-size: 40px;
     left: 160px;
-    top: 700px;
+    top: 970px;
 }
 
 #sub_check {
@@ -2260,13 +2341,13 @@ li::marker {
     width: 30px;
     height: 30px;
     left: 160px;
-    top: 770px;
+    top: 1040px;
 }
 
 #sub_text {
     position: absolute;
     left: 190px;
-    top: 775px;
+    top: 1045px;
     font-family: "Montserrat", sans-serif;
     font-weight: 900px;
     font-size: 18px;
@@ -2281,7 +2362,7 @@ input[type='checkbox'] {
     width: 120px;
     height: 50px;
     left: 160px;
-    top: 870px;
+    top: 1140px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
@@ -2364,14 +2445,14 @@ input[type='checkbox'] {
     font-family: "Montserrat", sans-serif;
     color: gray;
     left: 675px;
-    top: 772px;
+    top: 1042px;
 }
 
 #info_sub:hover {
     position: absolute;
     font-family: "Montserrat", sans-serif;
     left: 675px;
-    top: 772px;
+    top: 1042px;
     color: black;
 }
 
@@ -3075,6 +3156,7 @@ input[type='checkbox'] {
     background-color: #4E0476;
     border: #4E0476;
     color: white;
+    line-height: 50px;
 }
 
 #offer_accept:hover {
@@ -3122,8 +3204,8 @@ input[type='checkbox'] {
 }
 
 .rectangle_order {
-    width: 370px;
-    min-height: 350px;
+    width: 410px;
+    min-height: 380px;
     max-height: 550px;
     overflow-y: auto;
     background-color: white;
@@ -3137,43 +3219,82 @@ input[type='checkbox'] {
     top: 50px;
 }
 
+#order_list {
+    text-align: left; 
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    color: #4E0476;
+}
+
+#block_order_table_names {
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
 #block_order_table_names table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 50px;
+    width: 100%; 
+    border-collapse: collapse; 
 }
 
 #block_order_table_names td {
-    position: absolute;
-    color: black;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 900px;
-    font-size: 18px;
-    padding: 8px;
+    padding: 10px; 
+    text-align: left;
 }
 
-#block_order_table_costs table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 10px;
+#block_order_table_names:first-child {
+    margin-top: 40px; 
 }
 
-#block_order_table_costs td {
-    left: 50px;
-    position: absolute;
-    color: black;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 900px;
-    font-size: 18px;
-    padding: 8px;
+#block_order_structure tr:last-child td {
+    font-weight: bold;
+    text-align: left;
+    background-color: white; 
 }
 
-#dish_name_pl {
-    position: absolute;
-    color: black;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 900px;
+.dish_name {
+    text-align: left; 
+}
+
+.dish_price {
+    text-align: right; 
+    width: 100px;
+}
+
+.dish_quantity {
+    width: 55px;
+    text-align: left;
+}
+
+.block_order_total {
+    display: flex;
+    justify-content: left;
+    padding: 15px 0;
     font-size: 18px;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    color: #4E0476;
+    background-color: transparent;
+}
+
+.total_price {
+    text-align: right;
+    padding-left: 160px;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+}
+
+.total_price_text {
+    text-align: left; /* Выравнивание надписи "Сумма заказа" по левому краю */
+    padding-left: 20px; /* Небольшой отступ слева */
+    font-size: 18px;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    color: #686466;
 }
   
 #edit_name_button_pl {
@@ -3208,16 +3329,6 @@ input[type='checkbox'] {
     background-color: transparent;
     border: #F1F2F5;
     color: black;
-}
-
-#order_list {
-    position: absolute;
-    left: 18px;
-    top: 18px;
-    font-size: 16px;
-    font-weight: normal;
-    font-family: "Montserrat", sans-serif;
-    color: #4E0476;
 }
 
 #card_method {
