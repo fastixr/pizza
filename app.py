@@ -64,6 +64,9 @@ class Order(db.Model):
     total_price = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     status = db.Column(db.String, nullable=False)
+    address = db.Column(db.String)
+    ingredients = db.Column(db.Text)
+    deliveryTime = db.Column(db.String)
 
     def __repr__(self):
         return '<Order %r>' % self.id
@@ -75,6 +78,14 @@ class Order(db.Model):
     @items_list.setter
     def items_list(self, value):
         self.items = json.dumps(value, ensure_ascii=False)
+
+    @property
+    def ingredients_list(self):
+        return json.loads(self.items)
+
+    @ingredients_list.setter
+    def ingredients_list(self, value):
+        self.ingredients = json.dumps(value, ensure_ascii=False)
 
 
 def get_db():
@@ -102,11 +113,16 @@ def contacts():
     return render_template('contacts.html')
 
 
-@app.route("/placing/<id>")
+@app.route("/placing/<id>", methods=['GET', 'POST'])
 @login_required
 def placing(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
+    address = request.form.get('address')
+    delivery_time = request.form.get('time_form_pl')
+    if request.method == 'POST':
+        session['address'] = address
+        session['delivery_time'] = delivery_time
     return render_template('placing.html', total_price=session.get('total_price', 0))
 
 
@@ -166,6 +182,7 @@ def add_to_order(dish_id):
 
 current_order = None
 
+
 @app.route('/clear_order/<id>')
 def clear_order(id):
     if 'id' in session and session['id'] != int(id):
@@ -183,7 +200,7 @@ def clear_order(id):
 def order_saving(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
-    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Оплачен')
+    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Доставлен', deliveryTime=session['delivery_time'])
     db.session.add(order)
     db.session.commit()
     return redirect(url_for('clear_order', id=id))

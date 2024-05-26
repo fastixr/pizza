@@ -38,6 +38,7 @@ editButton_time_pl.addEventListener('click', function(event) {
     inputField_time_pl.disabled = false;
     editButton_time_pl.textContent = 'Сохранить';
   } else {
+    document.forms[4].submit();
     inputField_time_pl.disabled = true;
     editButton_time_pl.textContent = 'Изменить';
   }
