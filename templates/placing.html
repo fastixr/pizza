@@ -33,38 +33,21 @@
     </div>
     <div id="map_modal" class="modal_pizza">
         <div class="modal_content_map">
-            <form id="address-form">
-                <label id="text_near_map1" for="address">Адрес</label>
-                <input id="address_map" type="text" name="address">
-                <button id="search_address" type="submit">Найти</button>
-                <button id="submit_address" type="button">Подтвердить адресс</button>
-            </form>
+            <div>
+                <form id="address-form" method="POST">
+                    <label id="text_near_map1" for="address">Адрес</label>
+                    <input id="address_map" type="text" name="address">
+                    <button id="search_address" type="submit">Найти</button>
+                    <button id="submit_address" type="submit">Подтвердить адрес</button>
+                </form>
+            </div>
             <div id="map_delivery"></div>
             <img id="close_pop_map" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
         </div>
     </div>
-    <div id="delivery_time_modal" class="modal_pizza">
-        <div class="modal_content_delivery">
-            <h3 id="delivery_time_text">Время доставки</h3>
-            <button id="submit_delivery_time" type="button">Подтвердить время</button>
-            <div id="time_table_delivery">
-                <button id="time_table_btn1" type="button" class="time_table_btn">Как можно скорее</button>
-                <button id="time_table_btn2" type="button" class="time_table_btn">15:00 - 15:30</button>
-                <button id="time_table_btn3" type="button" class="time_table_btn">15:00 - 15:30</button>
-                <button id="time_table_btn4" type="button" class="time_table_btn">15:00 - 15:30</button>
-                <button id="time_table_btn5" type="button" class="time_table_btn">15:00 - 15:30</button>
-                <button id="time_table_btn6" type="button" class="time_table_btn">15:00 - 15:30</button>
-                <button id="time_table_btn7" type="button" class="time_table_btn">15:00 - 15:30</button>
-                <button id="time_table_btn8" type="button" class="time_table_btn">15:00 - 15:30</button>
-                <button id="time_table_btn9" type="button" class="time_table_btn">15:00 - 15:30</button>
-                <button id="time_table_btn10" type="button" class="time_table_btn">15:00 - 15:30</button>
-            </div>
-            <img id="close_pop_del" class="close_pop_btn" src="{{ url_for('static', filename='img/Close.png') }}" alt="close">
-        </div>
-    </div>
     <div id="block_placing" class="block">
         <h2 id="order_deliver" class="text">Заказ на доставку</h2>
-        <form>
+        <form method="POST">
             <h2 id="name_placing" class="text">Имя</h2>
             <div id="block_name_pl">
                 <div class="wrapper_name_pl">
@@ -76,6 +59,8 @@
                     </div>
                 </div>
             </div>
+        </form>
+        <form method="POST">
             <h2 id="phone_pl" class="text">Номер телефона</h2>
             <div id="block_phone_pl">
                 <div class="wrapper_phone_pl">
@@ -87,6 +72,8 @@
                     </div>
                 </div>
             </div>
+        </form>
+        <form method="POST">
             <h2 id="date_pl" class="text">Адрес доставки</h2>
             <div id="block_address_pl">
                 <div class="wrapper_address_border">
@@ -95,15 +82,19 @@
                     <button id="choose_sam_button_pl">Выбрать самовывоз</button>
                 </div>
             </div>
+        </form>
+        <form method="POST">
             <h2 id="time_placing" class="text">Время доставки</h2>
             <div id="block_time_pl">
                 <div class="wrapper_time_pl">
                     <div class="input_time_pl">
-                        <input type="text" id="time_form_pl" value="Как можно скорее" disabled>
+                        <input type="text" id="time_form_pl" name="time_form_pl" value="{{ session['delivery_time'] if 'delivery_time' in session else 'Побыстрее' }}" disabled>
                         <button id="edit_time_button_pl">Изменить</button>
                     </div>
                 </div>
             </div>
+        </form>
+        <form method="POST">
             <h2 id="promo_placing" class="text">Промокод</h2>
             <div id="block_promo_pl">
                 <div class="wrapper_promo_pl">
@@ -199,17 +190,21 @@
             <div id="block_order_table_names">
                 <table>
                     <tr>
-                        <td class="dish_quantity">x {{ dish['quantity'] }}</td>
-                        <td class="dish_name">{{ dish['name'] }}</td>
-                        <td class="dish_price">{{ dish['price'] * dish['quantity'] }} ₽</td>
+                        <td>{{ dish['name'] }} x {{ dish['quantity'] }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="block_order_table_costs">
+                <table>
+                    <tr>
+                        <td>{{ dish['price'] * dish['quantity'] }}руб</td>
                     </tr>
                 </table>
             </div>
             {% endfor %}
-            <div class="block_order_total">
-                <span class="total_price_text">Сумма заказа</span>
-                <span class="total_price">{{ session['total_price'] }} ₽</span>
-            </div>
+            <tr>
+                <td>Сумма заказа: {{ session['total_price'] }}руб</td>
+            </tr>
         </div>
     </div>
     <script src="{{ url_for('static', filename='js/placing.js') }}"></script>

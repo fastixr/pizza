@@ -19,6 +19,17 @@ migrate = Migrate(app, db)
 manager = LoginManager(app)
 is_authentificated = False
 
+
+def xor_encrypt(text, key):
+    encrypted = ''.join(chr(ord(c) ^ ord(k)) for c, k in zip(text, key))
+    return encrypted
+
+
+def xor_decrypt(text, key):
+    decrypted = ''.join(chr(ord(c) ^ ord(k)) for c, k in zip(text, key))
+    return decrypted
+
+
 class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), nullable=False)
@@ -26,9 +37,13 @@ class Users(db.Model, UserMixin):
     password = db.Column(db.String, nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
     birthDate = db.Column(db.Date)
+    cardNumber = db.Column(db.String(20))
+    cardExpirationDate = db.Column(db.String(20))
+    cardCVV = db.Column(db.String(20))
     
     def __repr__(self):
         return '<Users %r>' % self.id
+
 
 class Dishes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -49,6 +64,9 @@ class Order(db.Model):
     total_price = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     status = db.Column(db.String, nullable=False)
+    address = db.Column(db.String)
+    ingredients = db.Column(db.Text)
+    deliveryTime = db.Column(db.String)
 
     def __repr__(self):
         return '<Order %r>' % self.id
@@ -61,6 +79,14 @@ class Order(db.Model):
     def items_list(self, value):
         self.items = json.dumps(value, ensure_ascii=False)
 
+    @property
+    def ingredients_list(self):
+        return json.loads(self.items)
+
+    @ingredients_list.setter
+    def ingredients_list(self, value):
+        self.ingredients = json.dumps(value, ensure_ascii=False)
+
 
 def get_db():
     venv_dir = os.path.dirname(os.path.abspath(__file__))
@@ -69,35 +95,47 @@ def get_db():
     db.row_factory = sqlite3.Row
     return db
 
+
 @manager.user_loader
 def load_user(user_id):
     return Users.query.get(user_id)
 
+
 @app.route("/", methods=['GET'])
 def index():
+    if is_authentificated is False and 'id' in session:
+        return redirect('/logout')
     return render_template('index.html')
+
 
 @app.route("/contacts")
 def contacts():
     return render_template('contacts.html')
 
-@app.route("/placing/<id>")
+
+@app.route("/placing/<id>", methods=['GET', 'POST'])
 @login_required
 def placing(id):
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
+    address = request.form.get('address')
+    delivery_time = request.form.get('time_form_pl')
+    if request.method == 'POST':
+        session['address'] = address
+        session['delivery_time'] = delivery_time
     return render_template('placing.html', total_price=session.get('total_price', 0))
+
 
 @app.route("/actions")
 def actions():
     return render_template('actions.html')
 
-@app.route("/order")
-def order():
-    return render_template('order.html')
 
 @app.route('/cabinet', methods=['GET'])
 @login_required
 def main():
     return render_template('cabinet.html')
+
 
 @app.route('/add_to_order/<dish_id>', methods=['GET', 'POST'])
 @login_required
@@ -115,14 +153,14 @@ def add_to_order(dish_id):
         if len(session['order']) != 0:
             for item in session['order']:
                 if dish['id'] == item['id']:
-                    item['quantity'] = item.get('quantity', 0) + 1
+                    if item['quantity'] < 9:
+                        item['quantity'] = item.get('quantity', 0) + 1
                     session['total_price'] = sum((item['price'] * item['quantity']) for item in session['order'])
                     session['total_quantity'] = sum(item['quantity'] for item in session['order'])
 
                     db.close()
 
                     return redirect(request.referrer)
-
 
         session['order'].append({
             'id': dish['id'],
@@ -142,20 +180,31 @@ def add_to_order(dish_id):
         return "Ошибка: Блюдо не найдено"
 
 
+current_order = None
+
+
 @app.route('/clear_order/<id>')
 def clear_order(id):
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
+    global current_order
+    current_order = session['order']
     session.pop('order', None)
     session.pop('total_price', None)
     session.pop('total_quantity', None)
-    return redirect(url_for('placing', id=session['id']))
+    return redirect(url_for('update_order_status', id=session['id']))
+
 
 @app.route('/order_saving/<id>')
 @login_required
 def order_saving(id):
-    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Оплачен')
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
+    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Доставлен', deliveryTime=session['delivery_time'])
     db.session.add(order)
     db.session.commit()
     return redirect(url_for('clear_order', id=id))
+
 
 @app.route('/remove_from_order/<dish_id>', methods=['GET', 'POST'])
 def remove_from_order(dish_id):
@@ -167,6 +216,7 @@ def remove_from_order(dish_id):
         if item['id'] == int(dish_id):
             order.remove(item)
             session['total_price'] -= item['price'] * item['quantity']
+            session['total_quantity'] -= item['quantity']
             break
 
     if len(order) == 0:
@@ -185,6 +235,7 @@ def decrease_quantity(dish_id):
             if item['quantity'] > 1:
                 item['quantity'] -= 1
                 session['total_price'] -= item['price']
+                session['total_quantity'] -= 1
                 break
 
     return redirect(request.referrer)
@@ -194,10 +245,38 @@ def decrease_quantity(dish_id):
 def register():
     return render_template('register.html', title="Регистрация")
 
+
 @app.route('/cart/<id>')
 @login_required
 def cart(id):
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
     return render_template('cart.html')
+
+
+@app.route('/order_update/<id>')
+@login_required
+def update_order_status(id):
+    order_statuses = {
+        'processing': 'Заказ обрабатывается',
+        'preparing': 'Готовится',
+        'delivery': 'Доставляется',
+        'delivered': 'Доставлен'
+    }
+    global current_order
+    if 'status' not in session:
+        session['status'] = 'processing'
+        current_status = order_statuses.get(session['status'])
+        return render_template('status.html', current_status=current_status, current_order=current_order)
+    current_status = order_statuses.get(session['status'])
+    if current_status == order_statuses['delivered']:
+        return render_template('status.html', current_status=current_status, current_order=current_order)
+    status_index = list(order_statuses.keys()).index(session['status'])
+    next_status_index = (status_index + 1) % len(order_statuses)
+    session['status'] = list(order_statuses.keys())[next_status_index]
+    current_status = order_statuses.get(session['status'])
+    return render_template('status.html', current_status=current_status, current_order=current_order)
+
 
 @app.route('/register_handler', methods=['POST', 'GET'])
 def register_handler():
@@ -255,7 +334,7 @@ def login():
             return render_template('login.html', title="Авторизация")
 
         if user and check_password_hash(user.password, password):
-            login_user(user, remember=True)
+            login_user(user, remember=False)
 
             is_authentificated = True
             session['id'] = user.id
@@ -273,13 +352,32 @@ def login():
 @app.route('/cabinet/<id>', methods=['POST', 'GET'])
 @login_required
 def user(id):
+    key1 = "73i54sfg243v5643s3z67"
+    key2 = "7h3nsyuiy5645"
+    key3 = "4lfdsh7grs435354"
+
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
 
     user = Users.query.filter_by(id=id).first_or_404()
+    if user.cardNumber:
+        masked_card_number = "**** **** **** " + xor_decrypt(user.cardNumber, key1)[-4:]
+    else:
+        masked_card_number = "0000 0000 0000 0000"
+
+    if user.cardExpirationDate:
+        masked_card_date = "**/**"
+    else:
+        masked_card_date = "мм/гг"
+
+    if user.cardCVV:
+        masked_card_cvc = "***"
+    else:
+        masked_card_cvc = "CVC"
+
     if request.method == "POST":
-        if 'name_from_lk' in request.form:
-            user.username = request.form.get('name_from_lk')
+        if 'name_form_lk' in request.form:
+            user.username = request.form.get('name_form_lk')
         if 'date_form_lk' in request.form:
             Year = int(request.form.get('date_form_lk')[:4])
             if request.form.get('date_form_lk')[5] != 0:
@@ -291,25 +389,42 @@ def user(id):
             else:
                 Day = int(request.form.get('date_form_lk')[9])
             user.birthDate = datetime(Year, Month, Day)
+        if ('card_form_lk' and 'card_date_form_lk' and 'card_cvc_form_lk') in request.form:
+            card_number = request.form.get('card_form_lk')
+            number_encrypted = xor_encrypt(card_number, key1)
+            user.cardNumber = number_encrypted
+
+            card_date = request.form.get('card_date_form_lk')
+            date_encrypted = xor_encrypt(card_date, key2)
+            user.cardExpirationDate = date_encrypted
+
+            card_cvc = request.form.get('card_cvc_form_lk')
+            cvc_encrypted = xor_encrypt(card_cvc, key3)
+            user.cardCVV = cvc_encrypted
 
         db.session.commit()
-        return render_template('cabinet.html', user=user)
-    return render_template('cabinet.html', user=user)
+
+        return render_template('cabinet.html', user=user, masked_card_number=masked_card_number, masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
+    return render_template('cabinet.html', user=user, masked_card_number=masked_card_number, masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
 
 
 @app.route('/logout')
 @login_required
 def logout():
     global is_authentificated
+    session.clear()
     logout_user()
     flash("Вы вышли из аккаунта", "success")
-    is_authentificated  = False
-    return redirect(url_for('login'))
+    is_authentificated = False
+    return redirect("/")
 
 
 @app.route('/cabinet/<id>/password_change', methods=['POST', 'GET'])
 @login_required
 def change(id):
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
+
     old_password = request.form.get('old_password')
     new_password = request.form.get('new_password')
     repeat_new_password = request.form.get('repeat_new_password')
@@ -335,9 +450,13 @@ def change(id):
 
     return render_template('password_change.html', user=user)
 
+
 @app.route('/cabinet/<id>/history', methods=['POST', 'GET'])
 @login_required
 def get_orders(id):
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
+
     orders = Order.query.filter_by(user_id=id)
     orders_list = []
     order_list = []
@@ -362,9 +481,11 @@ def get_orders(id):
 
     return render_template("history.html", orders_list=orders_list)
 
+
 @app.context_processor
 def inject_user_status():
     return dict(is_authentificated_js=is_authentificated)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
