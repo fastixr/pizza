@@ -394,20 +394,40 @@ def user(id):
             else:
                 Day = int(request.form.get('date_form_lk')[9])
             user.birthDate = datetime(Year, Month, Day)
-        if ('card_form_lk' and 'card_date_form_lk' and 'card_cvc_form_lk') in request.form:
+        if ('card_form_lk' and 'card_cvc_form_lk' and 'card_date_form_lk') in request.form:
             card_number = request.form.get('card_form_lk')
             number_encrypted = xor_encrypt(card_number, key1)
             user.cardNumber = number_encrypted
-
-            card_date = request.form.get('card_date_form_lk')
-            date_encrypted = xor_encrypt(card_date, key2)
-            user.cardExpirationDate = date_encrypted
 
             card_cvc = request.form.get('card_cvc_form_lk')
             cvc_encrypted = xor_encrypt(card_cvc, key3)
             user.cardCVV = cvc_encrypted
 
+            card_date = request.form.get('card_date_form_lk')
+            date_encrypted = xor_encrypt(card_date, key2)
+            user.cardExpirationDate = date_encrypted
+        if ('password_change_lk' and 'password_change_lk_1' and 'password_change_lk_2') in request.form:
+            old_password = request.form.get('password_change_lk')
+            new_password = request.form.get('password_change_lk_1')
+            repeat_new_password = request.form.get('password_change_lk_2')
+            if new_password != repeat_new_password:
+                flash("Пароли не совпадают!")
+            elif check_password_hash(user.password, old_password):
+                hash_pwd = generate_password_hash(new_password)
+                if new_password == repeat_new_password:
+                    try:
+                        user.password = hash_pwd
+                        db.session.commit()
+                    except:
+                        return "При смене пароля произошла ошибка"
+            else:
+                flash("Неправильный пароль")
+
         db.session.commit()
+
+        masked_card_number = "**** **** **** " + xor_decrypt(user.cardNumber, key1)[-4:]
+        masked_card_date = "**/**"
+        masked_card_cvc = "***"
 
         return render_template('cabinet.html', user=user, masked_card_number=masked_card_number,
                                masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
@@ -424,38 +444,6 @@ def logout():
     flash("Вы вышли из аккаунта", "success")
     is_authentificated = False
     return redirect("/")
-
-
-@app.route('/cabinet/<id>/password_change', methods=['POST', 'GET'])
-@login_required
-def change(id):
-    if 'id' in session and session['id'] != int(id):
-        return redirect('/')
-
-    old_password = request.form.get('old_password')
-    new_password = request.form.get('new_password')
-    repeat_new_password = request.form.get('repeat_new_password')
-    user = Users.query.filter_by(id=id).first_or_404()
-    id = user.id
-    URL = "/cabinet/" + str(id)
-    if request.method == "POST" or request.method == "GET":
-        if not (old_password or new_password or repeat_new_password):
-            flash("Заполните все поля!")
-        elif new_password != repeat_new_password:
-            flash("Пароли не совпадают!")
-        elif check_password_hash(user.password, old_password):
-            hash_pwd = generate_password_hash(new_password)
-            if new_password == repeat_new_password:
-                try:
-                    user.password = hash_pwd
-                    db.session.commit()
-                    return redirect(URL)
-                except:
-                    return "При смене пароля произошла ошибка"
-        else:
-            flash("Неправильный пароль")
-
-    return render_template('password_change.html', user=user)
 
 
 @app.route('/cabinet/<id>/history', methods=['POST', 'GET'])
