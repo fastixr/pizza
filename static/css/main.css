@@ -1742,100 +1742,6 @@ footer {
     top: 100px;
 }
 
-
-
-
-
-/* LOGIN */
-
-#body_es {
-    background: #4E0476;
-    background-size: cover;
-}
-
-#con_log {
-    width: 552px;
-    height: 500px;
-    border: 1px solid #CCC;
-    background: #4E0476;
-    background-size: cover;
-    margin: 30px auto;
-    border-radius: 20px;
-}
-
-.login .form label {
-    color: white;
-    padding-top: 15px;
-}
-
-.login .form {
-    width: 100%;
-    height: 100%;
-    padding: 15px 25px;
-}
-
-.login .form h2 {
-    color: #FFF;
-    text-align: center;
-    font-weight: normal;
-    font-size: 18px;
-    margin-top: 60px;
-    margin-bottom: 80px;
-}
-
-.login .form h5 {
-    color: #FFF;
-    text-align: right;
-    font-weight: normal;
-    font-size: 15px;
-    margin-right: 135px;
-    margin-top: 15px;
-    margin-bottom: 85px;
-}
-
-.login .form .nav #zareg {
-    font-weight: normal;
-    font-size: 15px;
-    margin-left: 371px;
-    margin-top: -113px;
-}
-
-.login .form .nav #back {
-    font-weight: normal;
-    font-size: 15px;
-    margin-left: -261px;
-    margin-top: -113px;
-}
-
-.login .form input {
-    width: 100%;
-    height: 40px;
-    margin-top: 20px;
-    background: rgba(255,255,255,.5);
-    border: 1px solid rgba(255,255,255,.1);
-    padding: 0 15px;
-    color: #FFF;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.login .form input:focus {
-    border: 1px solid rgba(255,255,255,.8);
-    outline: none;
-}
-
-::-webkit-input-placeholder {
-      color: #DDD;
-}
-
-.login .form input.submit {
-    background: rgba(255,255,255,.9);
-    color: #444;
-    font-size: 15px;
-    margin-top: 40px;
-    font-weight: bold;
-}
-
 /* REGISTER */
 
 #con_log2 {
@@ -1888,24 +1794,19 @@ footer {
 }
 
 #username {
-    width: 500px;
+    position: relative;
+    background: #F2F2F2;
+    top: -70px;
+    left: 10px;
+    width: 300px;
+    height: 50px;
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,.1);
 }
 
 #repeat_password {
     width: 500px;
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,.1);
-}
-
-.register .form h2 {
-    color: #FFF;
-    text-align: center;
-    font-weight: normal;
-    font-size: 18px;
-    margin-top: 60px;
-    margin-bottom: 60px;
 }
 
 /* CABINET */
@@ -4294,4 +4195,343 @@ input[type="date"]:enabled {
 
 #history:hover {
     background-color: #cccdcf;
+}
+
+/* LOGIN IN BASE */
+
+  .underline {
+    position: absolute;
+    height: 4px;
+    background-color: #ceaee8;
+    transition: all 0.5s ease;
+  }
+  
+  .overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease;
+  }
+  
+  .overlay.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .main-popup {
+    position: fixed;
+    left: 0;
+    top: 30px;
+    margin: 0;
+    width: 75%;
+    height: 450px;
+    background-color: white;
+    border-radius: 15px;
+    z-index: 15;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%);
+    transition: all .5s ease;
+    /*overflow: hidden;*/
+  }
+  
+  .main-popup.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px);
+    transition: all .5s ease;
+  }
+  
+  @media (min-width: 350px) {
+    .main-popup {
+      width: 350px;
+      left: 50%;
+      margin: 0 0 0 -250px;
+    }
+  }
+  
+  .popup-header {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 62px;
+    width: 100%;
+  }
+  
+  #popup-close-button a {
+    position: absolute;
+    right: 10px;
+    top: -30px;
+    width: 22px;
+    height: 22px;
+  }
+  
+  #popup-close-button a::before {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 3px;
+    height: 25px;
+    background-color: #fff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  #popup-close-button a::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 3px;
+    height: 25px;
+    background-color: #fff;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  
+  .popup-header ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .popup-header ul li {
+    text-align: center;
+    list-style: none;
+    width: 50%;
+    float: left;
+  }
+  
+  .popup-header ul li a {
+    display: block;
+    padding: 20px 0;
+    margin: 0;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  
+  #sign-in {
+    position: relative;
+    top: 395px;
+    left: 28px;
+    background: white;
+    color: #4E0476;
+    font-size: 15px;
+    font-weight: bold;
+    border-color:white;
+    width: 300px;
+    padding: 10px 20px 10px 20px;
+    z-index: 1000;
+  }
+  
+  #sign-in.active {
+    color: rgba(255,255,255,.9);
+    background-color: #4E0476;
+  }
+  
+  #register {
+    position: relative;
+    top: 359px;
+    left: 25px;
+    background: white;
+    border-color:white;
+    color: #4E0476;
+    font-size: 15px;
+    font-weight: bold;
+    width: 300px;
+    padding: 10px 20px 10px 20px;
+  }
+  
+  #register.active {
+    color: rgba(255,255,255,.9);
+    background-color: #4E0476;
+  }
+  
+  form.sign-in {
+    top: 0px;
+    left: 0;
+    font-size: 1em;
+    opacity: 1;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+  }
+  
+  form.sign-in.move-left {
+    opacity: 0;
+    transform: translateX(-450px);
+  }
+  
+  form label {
+    font-size: 1.1em;
+    color: #4E0476;
+    margin-left: 23px;
+  }
+  
+  form.sign-in input {
+    border-radius: 5px;
+    width: 90%;
+    height: 40px;
+    margin: 5px 5% 30px 5%;
+    padding: 10px;
+    font-size: 1em;
+    color: #4E0476;
+    outline: none;
+    border: none;
+  }
+  
+  form.register {
+    position: relative; 
+    top: -400px;
+    left: 0;
+    font-size: 1em;
+    opacity: 0;
+    transform: translateX(450px);
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+  }
+  
+  form.register.move-left {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  form.register input {
+    border-radius: 5px;
+    width: 90%;
+    height: 40px;
+    margin: 5px 5% 30px 5%;
+    padding: 10px;
+    font-size: 1em;
+    background: #F2F2F2;
+    color: #4E0476;
+    outline: none;
+    border: none;
+  }
+
+  .form .sign-in label {
+    color: white;
+    padding-top: 15px;
+}
+
+.form .sign-in {
+    width: 50%;
+    height: 100%;
+    padding: 15px 25px;
+}
+
+.form .sign-in h5 {
+    color: #4E0476;
+    text-align: right;
+    font-size: 32px;
+    margin-right: 135px;
+    margin-top: -15px;
+    margin-bottom: 85px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form .register h5 {
+    color: #4E0476;
+    text-align: right;
+    font-size: 32px;
+    margin-right: 103px;
+    margin-top: 360px;
+    margin-bottom: 85px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form .sign-in input {
+    width: 15%;
+    height: 40px;
+    background: #F2F2F2;
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 0 15px;
+    color: black; /* отвечает за цвет курсора при нажатии */
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form .sign-in input:focus {
+    border: 1px solid rgba(255,255,255,.8);
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+      color: #DDD;
+}
+
+.form .sign-in input.submit {
+    background: rgba(255,255,255,.9);
+    color: #444;
+    font-size: 15px;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+#logining {
+    position: relative;
+    background: #4E0476;
+    color: white;
+    width: 300px;
+    top: -50px;
+    left: -8px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.form .register #phone {
+    position: relative;
+    background: #F2F2F2;
+    top: -88px;
+    left: 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.form .register #password {
+    position: relative;
+    background: #F2F2F2;
+    top: -105px;
+    left: 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.form .register #repeat_password {
+    position: relative;
+    background: #F2F2F2;
+    top: -122px;
+    left: 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+#zaregalsya {
+    position: relative;
+    background: #4E0476;
+    color: white;
+    width: 300px;
+    top: -140px;
+    left: 10px;
+    padding: 0px 20px;
+    text-align: center;
 }
