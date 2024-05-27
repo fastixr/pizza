@@ -94,8 +94,6 @@ def load_user(user_id):
 
 @app.route("/", methods=['GET'])
 def index():
-    if is_authentificated is False and 'id' in session:
-        return redirect('/logout')
     return render_template('index.html')
 
 
