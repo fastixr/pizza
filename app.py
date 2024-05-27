@@ -343,37 +343,6 @@ def update_order_status(id):
     return render_template('status.html', current_order=current_order, total_price=total_price)
 
 
-@app.route('/register_handler', methods=['POST', 'GET'])
-def register_handler():
-    username = request.form.get('username')
-    phone = request.form.get('phone')
-    password = request.form.get('password')
-    repeat_password = request.form.get('repeat_password')
-
-    if request.method == 'POST':
-        if not (username or phone or password or repeat_password):
-            flash('Заполните все поля!')
-        elif password != repeat_password:
-            flash('Пароли не совпадают!')
-        else:
-            try:
-                if phone == Users.query.filter_by(phone=phone).first().phone:
-                    flash('Номер уже зарегестрирован')
-                return render_template('register.html')
-            except:
-                hash_pwd = generate_password_hash(password)
-                new_user = Users(username=username, phone=phone, password=hash_pwd)
-                if password == repeat_password:
-                    try:
-                        db.session.add(new_user)
-                        db.session.commit()
-                        return redirect('/register_complete')
-                    except:
-                        return "При регистрации произошла ошибка"
-
-    return render_template('register.html', title="Регистрация")
-
-
 @app.route('/register_complete', methods=['GET'])
 def register_complete():
     return render_template('register_complete.html', title="Успешная регистрация")
