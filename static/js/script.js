@@ -5,7 +5,7 @@ $(function() {
     var $register = $('#register');
     var $formSignIn = $('form.sign-in');
     var $formRegister = $('form.register');
-    
+
     $('#login').on('click', function(){
       $overlay.addClass('visible');
       $mainPopUp.addClass('visible');
@@ -27,7 +27,7 @@ $(function() {
       $overlay.removeClass('visible');
       $mainPopUp.removeClass('visible');
     });
-    
+
     $signIn.on('click', function(){
       $signIn.addClass('active');
       $signIn.hide();
@@ -38,7 +38,7 @@ $(function() {
       $formRegister.removeClass('move-left');
       $formRegister.hide();
     });
-    
+
     $register.on('click', function(){
       $signIn.removeClass('active');
       $signIn.show();

@@ -47,7 +47,7 @@
               <li><a id="desert" href="http://127.0.0.1:5000/#zag_desert" class="nav-link px-3">Десерты</a></li>
               <li><a id="actions" href="{{ url_for('actions') }}" class="nav-link px-3">Акции</a></li>
               <li><a id="contacts" href="{{ url_for('contacts') }}" class="nav-link px-3">Контакты</a></li>
-              <li><a id="login" href="{{ url_for('login') }}" class="btn btn-light">
+              <li><a id="login" class="btn btn-light" href="{{ url_for('user', id=session['id']) if 'id' in session else '#' }}">
                 {% if is_authentificated_js %}
                 Кабинет
                 {% else %}
@@ -59,12 +59,12 @@
                 <div class="main-popup">
                   <div class="popup-header">
                     <div id="popup-close-button"><a href="#"></a></div>
+                      <button id="sign-in" type="submit" class="btn btn-primary">Авторизация</button>
                     <a href="#">
-                      <button id="sign-in" type="button" class="btn btn-primary">Авторизация</button>
                       <button id="register" type="button" class="btn btn-primary">Регистрация</button>
                     </a>
                   </div>
-                  
+
                   <div class="popup-content">
                     <div class="form">
                       <form action="#" class="sign-in" method="POST">
@@ -86,34 +86,34 @@
                         value="Войти">
                       </form>
                     </div>
-                    
+
                     <div class="form">
-                      <form action="#" class="register" method="POST" action="/register_handler">
+                      <form action="#" class="register" method="POST">
                         <h5>Регистрация</h5>
                         <input type="text"
-                            id="username"
-                            name="username"
+                            id="username_r"
+                            name="username_r"
                             placeholder="Владимир" required>
                         <input type="tel"
-                            id="phone"
-                            name="phone"
+                            id="phone_r"
+                            name="phone_r"
                             placeholder="Номер телефона"
                             pattern="\+7[0-9]{10}" required>
                         <input type="password"
-                            id="password"
+                            id="password_r"
                             placeholder="Введите пароль"
                             pattern="[a-zA-Z0-9.-@]+"
                             title="Недопустимый символ"
-                            name="password" 
-                            minlength="8" 
+                            name="password_r"
+                            minlength="8"
                             maxlength="16" required>
                         <input type="password"
-                            id="repeat_password"
-                            name="repeat_password"
+                            id="repeat_password_r"
+                            name="repeat_password_r"
                             placeholder="Повторите пароль"
                             pattern="[a-zA-Z0-9.-@]+"
                             title="Недопустимый символ"
-                            minlength="8" 
+                            minlength="8"
                             maxlength="16" required>
                         <input id="zaregalsya" type="submit"
                             value="Зарегистрироваться">

@@ -45,8 +45,6 @@ editButton_card_lk.addEventListener('click', function(event) {
     editButton_card_lk.textContent = 'Сохранить';
   } else {
     document.forms[3].submit();
-    document.forms[4].submit();
-    document.forms[5].submit();
     inputField_card_lk.disabled = true;
     inputField_card_date_lk.disabled = true;
     inputField_card_cvc_lk.disabled = true;
@@ -68,6 +66,7 @@ edit_password_button_lk.addEventListener('click', function(event) {
     password_change_lk_2.disabled = false;
     edit_password_button_lk.textContent = 'Сохранить';
   } else {
+    document.forms[4].submit();
     password_change_lk.disabled = true;
     password_change_lk_1.disabled = true;
     password_change_lk_2.disabled = true;
