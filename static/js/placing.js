@@ -28,22 +28,6 @@ editButton_phone_pl.addEventListener('click', function(event) {
   }
 });
 
-const inputField_time_pl = document.getElementById('time_form_pl');
-const editButton_time_pl = document.getElementById('edit_time_button_pl');
-
-editButton_time_pl.addEventListener('click', function(event) {
-    event.preventDefault();
-  if (editButton_time_pl.textContent === 'Изменить') {
-    event.stopPropagation();
-    inputField_time_pl.disabled = false;
-    editButton_time_pl.textContent = 'Сохранить';
-  } else {
-    document.forms[4].submit();
-    inputField_time_pl.disabled = true;
-    editButton_time_pl.textContent = 'Изменить';
-  }
-});
-
 const inputField_promo_pl = document.getElementById('promo_form_pl');
 const editButton_promo_pl = document.getElementById('edit_promo_button_pl');
 
@@ -325,3 +309,52 @@ const submitAddress = document.getElementById('submit_address');
   submitAddress.addEventListener('click', () => {
     nameForm.textContent = addressMap.value;
   });
+
+  // МОДАЛЬНОЕ ОКНО С ВРЕМЕНЕМ ДОСТАВКИ
+
+var modal2 = document.getElementById("delivery_time_modal");
+var close_btn21 = document.getElementById("close_pop_del");
+var close_btn22 = document.getElementById("submit_delivery_time");
+var open_btn2 = document.getElementById("edit_time_button_pl");
+
+const buttons_time_delivery = document.querySelectorAll('#time_table_btn1, #time_table_btn2, #time_table_btn3, #time_table_btn4, #time_table_btn5, #time_table_btn6, #time_table_btn7, #time_table_btn8, #time_table_btn9, #time_table_btn10');
+buttons_time_delivery.forEach(button => {
+  button.addEventListener('click', () => {
+      buttons_time_delivery.forEach(btn => {
+          btn.classList.remove('active_border_time_del');
+      });
+      button.classList.add('active_border_time_del');
+  });
+});
+
+open_btn2.addEventListener("click", function(event) {
+  event.preventDefault();
+  buttons_time_delivery[0].classList.add('active_border_time_del');
+  modal2.style.display = "block";
+});
+
+
+close_btn21.onclick = function() {
+  buttons_time_delivery.forEach(btn => {
+    btn.classList.remove('active_border_time_del');
+  });
+  modal2.style.display = "none";
+}
+
+close_btn22.onclick = function() {
+  var curTime;
+  // ПЕРЕНОС ВРЕМЕНИ ДОСТАВКИ В ФОРМУ
+  for (let i = 0; i < buttons_time_delivery.length; i++) {
+    if (buttons_time_delivery[i].classList.contains("active_border_time_del")) {
+      curTime = buttons_time_delivery[i].id;
+      break;
+    }
+  }
+  document.getElementById("time_form_pl").value = document.getElementById(curTime).textContent;
+  // КОНЕЦ ПЕРЕНОСА
+  buttons_time_delivery.forEach(btn => {
+    btn.classList.remove('active_border_time_del');
+  });
+  modal2.style.display = "none";
+}
+
