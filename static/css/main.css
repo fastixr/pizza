@@ -1920,6 +1920,13 @@ footer {
     top: 40px;
 }
 
+#order_status_button {
+    width: 190px;
+    position: absolute;
+    left: 1000px;
+    top: 300px;
+}
+
 .rectangle_lk {
     width: 256px;
     height: 338px;
@@ -3953,7 +3960,6 @@ input[type="date"]:enabled {
     position: absolute;
     left: 30px;
     top: 30px;
-
     font-size: 32px;
     color: #686466;
     font-family: "Montserrat", sans-serif;
@@ -4050,6 +4056,103 @@ input[type="date"]:enabled {
 
 .active_border_time_del {
     border: 2px solid rgba(78, 4, 118, 1);
+}
+
+/* Order status */
+
+#orderTitle_st {
+    font-weight: normal;
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+    text-align: center;
+}
+
+#orderList_st {
+    margin-top: 20px;
+}
+
+#orderTable_st {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+#orderTable_st td {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#orderDetails_st {
+    margin-top: 20px;
+}
+
+#orderTimeDisplay {
+    font-weight: normal;
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+}
+
+#orderStatusContainer_st {
+    margin-top: 5px;
+    font-weight: normal;
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+}
+
+#orderStatus {
+    font-weight: bold;
+    font-weight: normal;
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+}
+
+#orderContainer_st {
+    justify-content: center;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    max-width: 600px;
+}
+
+#orderItem {
+    font-weight: bold;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+}
+
+#block_st {
+    display: flex;
+    width: 1500px;
+    justify-content: center;
+}
+
+#order_price_st {
+    margin-top: 13px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+}
+
+#dish_price_st {
+    font-weight: bold;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    color: black;
 }
 
 /* СТРАНИЦЫ ИСТОРИИ ЗАКАЗОВ */
