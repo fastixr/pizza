@@ -199,6 +199,7 @@ def add_to_order(dish_id):
 
 
 current_order = None
+total_price = None
 
 
 @app.route('/clear_order/<id>')
@@ -206,7 +207,9 @@ def clear_order(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
     global current_order
+    global total_price
     current_order = session['order']
+    total_price = session['total_price']
     session.pop('order', None)
     session.pop('total_price', None)
     session.pop('total_quantity', None)
@@ -276,27 +279,8 @@ def cart(id):
 @app.route('/order_update/<id>')
 @login_required
 def update_order_status(id):
-    if 'id' in session and session['id'] != int(id):
-        return redirect('/')
-    order_statuses = {
-        'processing': 'Заказ обрабатывается',
-        'preparing': 'Готовится',
-        'delivery': 'Доставляется',
-        'delivered': 'Доставлен'
-    }
     global current_order
-    if 'status' not in session:
-        session['status'] = 'processing'
-        current_status = order_statuses.get(session['status'])
-        return render_template('status.html', current_status=current_status, current_order=current_order)
-    current_status = order_statuses.get(session['status'])
-    if current_status == order_statuses['delivered']:
-        return render_template('status.html', current_status=current_status, current_order=current_order)
-    status_index = list(order_statuses.keys()).index(session['status'])
-    next_status_index = (status_index + 1) % len(order_statuses)
-    session['status'] = list(order_statuses.keys())[next_status_index]
-    current_status = order_statuses.get(session['status'])
-    return render_template('status.html', current_status=current_status, current_order=current_order)
+    return render_template('status.html', current_order=current_order, total_price=total_price)
 
 
 @app.route('/register_handler', methods=['POST', 'GET'])
