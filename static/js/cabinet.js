@@ -74,3 +74,17 @@ edit_password_button_lk.addEventListener('click', function(event) {
     edit_password_button_lk.textContent = 'Изменить';
   }
 });
+
+// Функция для проверки наличия активного заказа и перенаправления на страницу статуса заказа
+function redirectToOrderStatusPage() {
+  if (sessionStorage.getItem('orderStartTime')) {
+    // Если есть активный заказ, перенаправляем на страницу статуса заказа
+    window.location.href = "/order_update/{{ session['id'] if session['id'] else 0 }}";
+  } else {
+    // Если активного заказа нет, оставляем пользователя на текущей странице
+    alert('В данный момент нет активных заказов.');
+  }
+}
+
+// При нажатии на кнопку проверки статуса заказа на текущей странице
+document.getElementById('order_status_button').addEventListener('click', redirectToOrderStatusPage);

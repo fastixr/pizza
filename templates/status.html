@@ -1,22 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Доставка пиццы</title>
-</head>
 <body>
-    <script>
-        setTimeout(function() {
-            location.reload();
-        }, 300000);
-    </script>
-    <h1>Ваш заказ:</h1>
-        {% for item in current_order %}
-            <table>
-                <tr>
-                    <td>{{ item.name }} x {{ item.quantity }}</td>
-                </tr>
-            </table>
-        {% endfor %}
-    <p>Статус: {{ current_status }}</p>
+    <div id="block_st">
+        <div id="orderContainer_st">
+            <h1 id="orderTitle_st">Ваш последний заказ:</h1>
+            <div id="orderList_st">
+            {% for item in current_order %}
+                <table id="orderTable_st">
+                    <tr>
+                        <td class="dish_name" id="orderItem">{{ item.name }} x {{ item.quantity }}</td>
+                        <td class="dish_price" id="dish_price_st">{{ item.price * item.quantity }} ₽</td>
+                    </tr>
+                </table>
+            {% endfor %}
+            </div>
+            <div id="order_price_st">Сумма заказа: {{ total_price }} ₽</div>
+            <div id="orderTimeDisplay"></div>
+            <div id="orderStatusContainer_st">Статус заказа: <span id="orderStatus">Заказ в обработке</span></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/status.js') }}"></script>
 </body>
 </html>
+
+{% endblock %}
