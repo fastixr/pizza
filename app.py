@@ -92,16 +92,82 @@ def load_user(user_id):
     return Users.query.get(user_id)
 
 
-@app.route("/", methods=['GET'])
+def login(page):
+    if request.method == "POST":
+        global is_authentificated
+        phone = request.form.get('phone')
+        password = request.form.get('password')
+
+        if phone and password:
+            try:
+                user = Users.query.filter_by(phone=phone).first()
+            except:
+                return render_template(page)
+
+            if user and check_password_hash(user.password, password):
+                login_user(user, remember=False)
+
+                is_authentificated = True
+                session['id'] = user.id
+                session['name'] = user.username
+                session['phone'] = user.phone
+                return 1
+            else:
+                flash('Неправильный логин или пароль')
+        else:
+            flash('Пожалуйста заполните все поля')
+
+
+def register(page):
+    username = request.form.get('username_r')
+    phone = request.form.get('phone_r')
+    password = request.form.get('password_r')
+    repeat_password = request.form.get('repeat_password_r')
+
+    if request.method == 'POST':
+        if not (username or phone or password or repeat_password):
+            flash('Заполните все поля!')
+        elif password != repeat_password:
+            flash('Пароли не совпадают!')
+        else:
+            try:
+                if phone == Users.query.filter_by(phone=phone).first().phone:
+                    flash('Номер уже зарегестрирован')
+                return render_template(page)
+            except:
+                hash_pwd = generate_password_hash(password)
+                new_user = Users(username=username, phone=phone, password=hash_pwd)
+                if password == repeat_password:
+                    try:
+                        db.session.add(new_user)
+                        db.session.commit()
+                        return 1
+                    except:
+                        return "При регистрации произошла ошибка"
+
+
+@app.route("/", methods=['GET', 'POST'])
 def index():
+    global is_authentificated
     if is_authentificated is False and 'id' in session:
         return redirect('/logout')
-    return render_template('index.html')
+
+    if login('index.html') == 1:
+        return redirect(url_for('user', id=session['id']))
+    if register('index.html') == 1:
+        return redirect('/register_complete')
+    else:
+        return render_template('index.html')
 
 
-@app.route("/contacts")
+@app.route("/contacts", methods=['GET', 'POST'])
 def contacts():
-    return render_template('contacts.html')
+    if login('contacts.html') == 1:
+        return redirect(url_for('user', id=session['id']))
+    if register('contacts.html') == 1:
+        return redirect('/register_complete')
+    else:
+        return render_template('contacts.html')
 
 
 @app.route("/placing/<id>", methods=['GET', 'POST'])
@@ -143,15 +209,14 @@ def placing(id):
                            masked_card_cvc=masked_card_cvc)
 
 
-@app.route("/actions")
+@app.route("/actions", methods=['GET', 'POST'])
 def actions():
-    return render_template('actions.html')
-
-
-@app.route('/cabinet', methods=['GET'])
-@login_required
-def main():
-    return render_template('cabinet.html')
+    if login('actions.html') == 1:
+        return redirect(url_for('user', id=session['id']))
+    if register('actions.html') == 1:
+        return redirect('/register_complete')
+    else:
+        return render_template('actions.html')
 
 
 @app.route('/add_to_order/<dish_id>', methods=['GET', 'POST'])
@@ -263,11 +328,6 @@ def decrease_quantity(dish_id):
     return redirect(request.referrer)
 
 
-@app.route("/register")
-def register():
-    return render_template('register.html', title="Регистрация")
-
-
 @app.route('/cart/<id>')
 @login_required
 def cart(id):
@@ -317,41 +377,6 @@ def register_handler():
 @app.route('/register_complete', methods=['GET'])
 def register_complete():
     return render_template('register_complete.html', title="Успешная регистрация")
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    global is_authentificated
-    phone = request.form.get('phone')
-    password = request.form.get('password')
-
-    if is_authentificated:
-        id = current_user.id
-        URL = "/cabinet/" + str(id)
-        return redirect(URL)
-
-    if phone and password:
-        try:
-            user = Users.query.filter_by(phone=phone).first()
-            id = user.id
-            URL = "/cabinet/" + str(id)
-        except:
-            return render_template('login.html', title="Авторизация")
-
-        if user and check_password_hash(user.password, password):
-            login_user(user, remember=False)
-
-            is_authentificated = True
-            session['id'] = user.id
-            session['name'] = user.username
-            session['phone'] = user.phone
-            return redirect(URL)
-        else:
-            flash('Неправильный логин или пароль')
-    else:
-        flash('Пожалуйста заполните все поля')
-
-    return render_template('login.html', title="Авторизация")
 
 
 @app.route('/cabinet/<id>', methods=['POST', 'GET'])
