@@ -4051,3 +4051,144 @@ input[type="date"]:enabled {
 .active_border_time_del {
     border: 2px solid rgba(78, 4, 118, 1);
 }
+
+/* СТРАНИЦЫ ИСТОРИИ ЗАКАЗОВ */
+
+#order_history_container {
+    position: sticky;
+}
+
+#order_history_block {
+    position: relative;
+    left: 255px;
+}
+
+.order_history_text {
+    position: relative;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+}
+
+.order_history_text_purp {
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+}
+
+#order_history_zag {
+    left: 0px;
+    right: 0px;
+    font-size: 32px;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+}
+
+.order_history_blank {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 800px;
+}
+
+/* Расположение для того что внутри прямоугольников */
+
+#order_history_number {
+    position: relative;
+    font-size: 22px;
+    left: 0px;
+    top: 15px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+/* Первая строка */
+#order_history_text1 {
+    font-size: 18px;
+    top: 10px;
+    left: 0px;
+}
+
+#order_history_text2 {
+    font-size: 18px;
+    top: 10px;
+    left: 80px;
+}
+
+#order_history_text3 {
+    font-size: 18px;
+    top: 10px;
+    left: 160px;
+}
+/* Вторая строка */
+#order_history_text4 {
+    font-size: 15px;
+    top: 10px;
+    left: 0px;
+}
+
+#order_history_text5 {
+    font-size: 15px;
+    top: 10px;
+    left: 80px;
+}
+
+#order_history_text6 {
+    font-size: 15px;
+    top: 10px;
+    left: 160px;
+}
+/* Общая стоимость*/
+#order_history_text7 {
+    font-size: 18px;
+    top: 10px;
+    left: 0px;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding-top: 8px;
+}
+/* Время */
+#order_history_text8 {
+    font-size: 18px;
+    top: 10px;
+    left: 0px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+/* Статус заказа */
+#order_history_text9 {
+    font-size: 18px;
+    top: 10px;
+    left: 0px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+#order_details {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    height: 35px;
+    width: 120px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: white;
+    background-color:#4E0476;
+    border-color: 0px;
+    border: 0px;
+}
+
+#history {
+    position: absolute;
+    width: 350px;
+    height: 50px;
+    left: 360px;
+    top: 1140px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    border-radius: 7px;
+    white-space: nowrap;
+    padding-top: 10px;
+    background-color: #f8f9fa;
+}
+
+#history:hover {
+    background-color: #cccdcf;
+}
