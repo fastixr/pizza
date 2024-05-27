@@ -304,11 +304,18 @@ function getCoordinates(address, callback) {
 
 const nameForm = document.getElementById('name_form');
 const addressMap = document.getElementById('address_map');
-const submitAddress = document.getElementById('submit_address');
+const submitAddress1 = document.getElementById('submit_address');
+const submitAddress2 = document.getElementById('choose_sam_button_pl');
 
-  submitAddress.addEventListener('click', () => {
+  submitAddress1.addEventListener('click', () => {
     nameForm.textContent = addressMap.value;
   });
+
+  submitAddress2.addEventListener('click', () => {
+    event.preventDefault();
+    nameForm.textContent = "Волоколамское ш., 4, корп. 26"
+  });
+
 
   // МОДАЛЬНОЕ ОКНО С ВРЕМЕНЕМ ДОСТАВКИ
 
@@ -358,3 +365,7 @@ close_btn22.onclick = function() {
   modal2.style.display = "none";
 }
 
+// Очистка корзины
+document.getElementById("offer_accept").onclick = function() {
+  sessionStorage.clear();
+}
