@@ -54,6 +54,73 @@
                 Войти
                 {% endif %}
               </a></li>
+                <div class="overlay">
+                </div>
+                <div class="main-popup">
+                  <div class="popup-header">
+                    <div id="popup-close-button"><a href="#"></a></div>
+                    <a href="#">
+                      <button id="sign-in" type="button" class="btn btn-primary">Авторизация</button>
+                      <button id="register" type="button" class="btn btn-primary">Регистрация</button>
+                    </a>
+                  </div>
+                  
+                  <div class="popup-content">
+                    <div class="form">
+                      <form action="#" class="sign-in" method="POST">
+                        <h5>Вход</h5>
+                        <input type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Номер телефона"
+                            pattern="\+7[0-9]{10}" required>
+                        <input type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Пароль"
+                            pattern="[a-zA-Z0-9.-&@]+"
+                            title="Недопустимый символ"
+                            minlength="8"
+                            maxlength="16" required>
+                        <input id="logining" type="submit"
+                        value="Войти">
+                      </form>
+                    </div>
+                    
+                    <div class="form">
+                      <form action="#" class="register" method="POST" action="/register_handler">
+                        <h5>Регистрация</h5>
+                        <input type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Владимир" required>
+                        <input type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Номер телефона"
+                            pattern="\+7[0-9]{10}" required>
+                        <input type="password"
+                            id="password"
+                            placeholder="Введите пароль"
+                            pattern="[a-zA-Z0-9.-@]+"
+                            title="Недопустимый символ"
+                            name="password" 
+                            minlength="8" 
+                            maxlength="16" required>
+                        <input type="password"
+                            id="repeat_password"
+                            name="repeat_password"
+                            placeholder="Повторите пароль"
+                            pattern="[a-zA-Z0-9.-@]+"
+                            title="Недопустимый символ"
+                            minlength="8" 
+                            maxlength="16" required>
+                        <input id="zaregalsya" type="submit"
+                            value="Зарегистрироваться">
+                      </form>
+                    </div>
+                  </div>
+                </div>
             </ul>
       
             <div class="col-md-3 text-end">
