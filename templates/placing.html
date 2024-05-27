@@ -176,7 +176,7 @@
             i
         </span>
         <a href="/order_saving/{{ session['id'] }}">
-            <button id="offer_accept" type="button" class="btn btn-light">Оформить заказ на {{ session['total_price'] }} ₽.</button>
+            <button id="offer_accept" type="button" class="btn btn-light" onclick="startNewOrder()">Оформить заказ на {{ session['total_price'] }} ₽.</button>
         </a>
         <container>
             <a href="{{ url_for('cart', id=session['id']) }}">
@@ -203,6 +203,7 @@
             </div>
         </div>
     </div>
+    <script src="{{ url_for('static', filename='js/status.js') }}"></script>
     <script src="{{ url_for('static', filename='js/placing.js') }}"></script>
 </body>
 </html>
