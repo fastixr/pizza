@@ -1,3 +1,56 @@
+$(function() {
+    var $overlay = $('.overlay');
+    var $mainPopUp = $('.main-popup')
+    var $signIn = $('#sign-in');
+    var $register = $('#register');
+    var $formSignIn = $('form.sign-in');
+    var $formRegister = $('form.register');
+    
+    $('#login').on('click', function(){
+      $overlay.addClass('visible');
+      $mainPopUp.addClass('visible');
+      $signIn.addClass('active');
+      $signIn.hide();
+      $register.show();
+      $register.removeClass('active');
+      $formRegister.removeClass('move-left');
+      $formRegister.hide();
+      $formSignIn.show();
+      $formSignIn.removeClass('move-left');
+    });
+    $overlay.on('click', function(){
+      $(this).removeClass('visible');
+      $mainPopUp.removeClass('visible');
+    });
+    $('#popup-close-button a').on('click', function(e){
+      e.preventDefault();
+      $overlay.removeClass('visible');
+      $mainPopUp.removeClass('visible');
+    });
+    
+    $signIn.on('click', function(){
+      $signIn.addClass('active');
+      $signIn.hide();
+      $register.removeClass('active');
+      $register.show();
+      $formSignIn.show();
+      $formSignIn.removeClass('move-left');
+      $formRegister.removeClass('move-left');
+      $formRegister.hide();
+    });
+    
+    $register.on('click', function(){
+      $signIn.removeClass('active');
+      $signIn.show();
+      $register.addClass('active');
+      $register.hide();
+      $formSignIn.addClass('move-left');
+      $formSignIn.hide();
+      $formRegister.show();
+      $formRegister.addClass('move-left');
+    });
+  });
+
 $(function(){
 	$nav = $('.header');
 	$nav.css('width', $nav.outerWidth());
