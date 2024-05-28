@@ -102,7 +102,7 @@ def login(page):
             try:
                 user = Users.query.filter_by(phone=phone).first()
             except:
-                return render_template(page)
+                flash("Неправильный логин")
 
             if user and check_password_hash(user.password, password):
                 login_user(user, remember=False)
@@ -113,7 +113,7 @@ def login(page):
                 session['phone'] = user.phone
                 return 1
             else:
-                flash('Неправильный логин или пароль')
+                flash('Неправильный пароль')
         else:
             flash('Пожалуйста заполните все поля')
 
