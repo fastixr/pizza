@@ -86,4 +86,4 @@ function redirectToOrderStatusPage() {
 }
 
 // При нажатии на кнопку проверки статуса заказа на текущей странице
-document.getElementById('order_status_button').addEventListener('click', redirectToOrderStatusPage);
+document.getElementById('last_order_b').addEventListener('click', redirectToOrderStatusPage);
