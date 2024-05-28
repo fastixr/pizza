@@ -385,26 +385,6 @@ close_btn3.onclick = function() {
     modal3.style.display = "none";
 
 }
-// Делаем активными и не активными кнопки для попапа 3 в зависимости от того какая была нажата
-// const buttons_size_of_pizza3 = document.querySelectorAll('#small_btn3, #middle_btn3, #big_btn3');
-// buttons_size_of_pizza3.forEach(button => {
-//     button.addEventListener('click', () => {
-//         buttons_size_of_pizza3.forEach(btn => {
-//             btn.classList.remove('active');
-//         });
-//         button.classList.add('active');
-//     });
-// });
-
-// const buttons_dough_of_pizza3 = document.querySelectorAll('#tradition_btn3, #thin_btn3');
-// buttons_dough_of_pizza3.forEach(button => {
-//     button.addEventListener('click', () => {
-//         buttons_dough_of_pizza3.forEach(btn => {
-//             btn.classList.remove('active');
-//         });
-//         button.classList.add('active');
-//     });
-// });
 
 
 const buttons_adds_of_pizza3 = document.querySelectorAll('#image_btn_pop13, #image_btn_pop14, #image_btn_pop15, #image_btn_pop16, #image_btn_pop17, #image_btn_pop18');
@@ -444,17 +424,6 @@ close_btn4.onclick = function() {
     modal4.style.display = "none";
 }
 
-// Делаем активными и не активными кнопки для попапа 4 в зависимости от того какая была нажата
-// const buttons_size_of_pizza4 = document.querySelectorAll('#small_btn4, #middle_btn4, #big_btn4');
-// buttons_size_of_pizza4.forEach(button => {
-//     button.addEventListener('click', () => {
-//         buttons_size_of_pizza4.forEach(btn => {
-//             btn.classList.remove('active');
-//         });
-//         button.classList.add('active');
-//     });
-// });
-
 const buttons_dough_of_pizza4 = document.querySelectorAll('#tradition_btn4, #thin_btn4');
 buttons_dough_of_pizza4.forEach(button => {
     button.addEventListener('click', () => {
@@ -482,46 +451,18 @@ var open_btn5 = document.querySelectorAll(".open_modal_dessert, .dessert-list");
 
 open_btn5.forEach(function(btn) {
     btn.addEventListener("click", function() {
-        // buttons_size_of_pizza5[0].classList.add('active');
-        // buttons_dough_of_pizza5[0].classList.add('active');
         buttons_adds_of_pizza5[0].classList.add('active_border');
         modal5.style.display = "block";
     });
 });
 
 close_btn5.onclick = function() {
-    // buttons_size_of_pizza5.forEach(btn => {
-    //     btn.classList.remove('active');
-    // });
-    // buttons_dough_of_pizza5.forEach(btn => {
-    //     btn.classList.remove('active');
-    // });
     buttons_adds_of_pizza5.forEach(btn => {
         btn.classList.remove('active_border');
     });
     modal5.style.display = "none";
 }
 
-// Делаем активными и не активными кнопки для попапа 5 в зависимости от того какая была нажата
-// const buttons_size_of_pizza5 = document.querySelectorAll('#small_btn5, #middle_btn5, #big_btn5');
-// buttons_size_of_pizza5.forEach(button => {
-//     button.addEventListener('click', () => {
-//         buttons_size_of_pizza5.forEach(btn => {
-//             btn.classList.remove('active');
-//         });
-//         button.classList.add('active');
-//     });
-// });
-
-// const buttons_dough_of_pizza5 = document.querySelectorAll('#tradition_btn5, #thin_btn5');
-// buttons_dough_of_pizza5.forEach(button => {
-//     button.addEventListener('click', () => {
-//         buttons_dough_of_pizza5.forEach(btn => {
-//             btn.classList.remove('active');
-//         });
-//         button.classList.add('active');
-//     });
-// });
 
 const buttons_adds_of_pizza5 = document.querySelectorAll('#image_btn_pop25, #image_btn_pop26, #image_btn_pop27, #image_btn_pop28, #image_btn_pop29, #image_btn_pop30');
 buttons_adds_of_pizza5.forEach(button => {
@@ -571,15 +512,6 @@ buttons_size_of_pizza6.forEach(button => {
     });
 });
 
-// const buttons_dough_of_pizza6 = document.querySelectorAll('#tradition_btn6, #thin_btn6');
-// buttons_dough_of_pizza6.forEach(button => {
-//     button.addEventListener('click', () => {
-//         buttons_dough_of_pizza6.forEach(btn => {
-//             btn.classList.remove('active');
-//         });
-//         button.classList.add('active');
-//     });
-// });
 
 const buttons_adds_of_pizza6 = document.querySelectorAll('#image_btn_pop31, #image_btn_pop32, #image_btn_pop33, #image_btn_pop34, #image_btn_pop35, #image_btn_pop36');
 buttons_adds_of_pizza6.forEach(button => {
@@ -1028,44 +960,6 @@ toppingBtnIds6.forEach(function(id) {
 closePop6.addEventListener("click", updatePriceTopping6);
 numWithoutBtn6.addEventListener("click", updatePriceTopping6);
 // КОНЕЦ МОДАЛЬНОГО ОКНА Напитки
-
-
-// УВЕЛИЧИВАЕМ КОЛ-ВО ТОВАРА
-//const cartButton = document.getElementById('cart');
-//const addToCartButtons = document.querySelectorAll('.to_cart_in_pop');
-
-//let count = sessionStorage.getItem('cartCount') ? parseInt(sessionStorage.getItem('cartCount')) : 0;
-//addToCartButtons.forEach(function(addToCartButton) {
-//    addToCartButton.addEventListener('click', function() {
-//       if (count < 99) {
-//            count++;
-//        }
-//        updateCartButtonText(count);
-        // Сохраняем значение счетчика в sessionStorage
-//        sessionStorage.setItem('cartCount', count.toString());
-//    });
-//});
-//function updateCartButtonText(count) {
-//    if (count <= 99) {cartButton.textContent = `Корзина | ${count}`;}
-//}
-
-//document.addEventListener('DOMContentLoaded', function() {
-//    const cartButton = document.getElementById('cart');
-//
-//    let count = sessionStorage.getItem('cartCount') ? parseInt(sessionStorage.getItem('cartCount')) : 0;
-//    updateCartButtonText(count);
-
-//    function updateCartButtonText(count) {
-//        cartButton.textContent = `Корзина | ${count}`;
-//    }
-
-//    window.addEventListener('storage', function(event) {
-//        if (event.key === 'cartCount') {
-//            count = parseInt(event.newValue);
-//            updateCartButtonText(count);
-//        }
-//    });
-//});
 
 
 //Ставим флаги видимости товаров в корзине 
