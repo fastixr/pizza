@@ -4764,6 +4764,7 @@ input[type="date"]:enabled {
 }
 
 #text7 {
+    width: 190px;
     left: 770px;
     top: 89px;
     position: relative;
