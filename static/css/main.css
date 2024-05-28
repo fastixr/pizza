@@ -2057,7 +2057,7 @@ li::marker {
     border: 2px solid rgba(0, 0, 0, 0.14);
     border-radius: 7px;
     width: 620px;
-    height: 200px;
+    height: 180px;
     background: transparent;
 }
 
@@ -2966,7 +2966,7 @@ input[type='checkbox'] {
     left: 390px;
     height: 50px;
     width: 230px;
-    top: 150px;
+    top: 130px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
     border-top-left-radius: 0px;
@@ -2983,7 +2983,7 @@ input[type='checkbox'] {
     left: 390px;
     height: 50px;
     width: 230px;
-    top: 150px;
+    top: 130px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
     border-top-left-radius: 0px;
