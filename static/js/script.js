@@ -71,33 +71,33 @@ $(function() {
         if ($(this).scrollTop() > 1) {
             header.addClass('header_fixed');
             $('#cart').css({
-                'right': 486,
+                'right': 196,
                 'top': 92
             })
             $('#login').css({
-                'right': 620,
+                'right': 330,
                 'top': 91
             })
             $('#pizza').css({
-                'right': 1540
-            })
-            $('#salade').css({
                 'right': 1415
             })
+            $('#salade').css({
+                'right': 1290
+            })
             $('#combo').css({
-                'right': 1300
+                'right': 1175
             })
             $('#napitki').css({
-                'right': 1024
+                'right': 899
             })
             $('#desert').css({
-                'right': 1161
+                'right': 1036
             })
             $('#actions').css({
-                'right': 907
+                'right': 782
             })
             $('#contacts').css({
-                'right': 763
+                'right': 638
             })
         } else {
             header.removeClass('header_fixed');
