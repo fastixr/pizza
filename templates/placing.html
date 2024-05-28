@@ -96,7 +96,7 @@
             <h2 id="date_pl" class="text">Адрес доставки</h2>
             <div id="block_address_pl">
                 <div class="wrapper_address_border">
-                    <span id="name_form">Адрес</span>
+                    <span id="name_form">{{ session['address'] if 'address' in session else 'Адрес' }}</span>
                     <button id="edit_address_button_pl">Изменить</button>
                     <button id="choose_sam_button_pl">Выбрать самовывоз</button>
                 </div>

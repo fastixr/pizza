@@ -199,10 +199,9 @@ def placing(id):
     address = request.form.get('address')
     delivery_time = request.form.get('time_form_pl')
     if 'delivery_time' not in session:
-        session['delivery_time'] = 'Побыстрее'
+        session['delivery_time'] = 'Как можно скорее'
     if request.method == 'POST':
         session['address'] = address
-        session['delivery_time'] = delivery_time
 
     return render_template('placing.html', total_price=session.get('total_price', 0), user=user,
                            masked_card_number=masked_card_number, masked_card_date=masked_card_date,
@@ -286,7 +285,7 @@ def clear_order(id):
 def order_saving(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
-    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Доставлен',
+    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Доставлен', address=session['address'],
                   deliveryTime=session['delivery_time'])
     db.session.add(order)
     db.session.commit()

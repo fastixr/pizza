@@ -309,6 +309,7 @@ const submitAddress2 = document.getElementById('choose_sam_button_pl');
 
   submitAddress1.addEventListener('click', () => {
     nameForm.textContent = addressMap.value;
+    document.forms[0].submit();
   });
 
   submitAddress2.addEventListener('click', () => {
