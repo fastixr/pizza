@@ -18,26 +18,34 @@ html {
     margin-left: auto;
 }
 
+.header {
+    width: 100%;
+    background: #fff;
+    padding: 15px 0;
+    z-index: 100;
+    background: transparent;
+    transition: background-color 3s, padding 3s, padding-top 3s;
+  }
+  
+.header_fixed {
+    max-width: 100%;
+    position: fixed;
+    left: 0;
+    margin-top: -65px;
+    top: 0;
+    box-sizing: border-box;
+    background-color: #ffffff;  
+    transition: background-color 3s, padding 3s, padding-top 3s;
+}
+
+
 header {
     z-index: 999;
     position: sticky;
     height: 150px;
     top: 0;
     background-color: white;
-    transition: all 3s;
-}
-
-.header {
-    padding: 10px 0;
-    width: 100%;
-    transition: all 3s;
-}
-
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 1300px;
-    transition: all 3s;
+    transition: background-color 3s, padding 3s, padding-top 3s;
 }
 
 footer {

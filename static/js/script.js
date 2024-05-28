@@ -51,18 +51,127 @@ $(function() {
     });
   });
 
-$(function(){
-	$nav = $('.header');
-	$nav.css('width', $nav.outerWidth());
-	$window = $(window);
-	$h = $nav.offset().top;
-	$window.scroll(function(){
-		if ($window.scrollTop() > $h){
-			$nav.addClass('sticky');
-		} else {
-			$nav.removeClass('sticky');
-		}
-	});
+  $(function() {
+    let header = $('header');
+    let numbers = $('#numbers');
+    let eclipse2 = $('#eclipse2');
+    let eclipse = $('#eclipse');
+    let dostavka = $('#dostavka');
+    let moscow = $('#moscow');
+    let yandex = $('#yandex');
+    let time = $('#time');
+    let time_two = $('#time_two');
+    let number = $('#number');
+    let zvezda_logo = $('#zvezda_logo');
+    let yandex_logo = $('#yandex_logo');
+    let headerHeight = header.outerHeight();
+
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 1) {
+            $('body').css('padding-top', headerHeight);
+            header.addClass('header_fixed');
+            $('body').css({
+                'paddingTop': '0'
+            });
+            $('#cart').css({
+                'right': 406,
+                'top': 92
+            })
+            $('#login').css({
+                'right': 540,
+                'top': 91
+            })
+            $('#pizza').css({
+                'right': 1460
+            })
+            $('#salade').css({
+                'right': 1335
+            })
+            $('#combo').css({
+                'right': 1220
+            })
+            $('#napitki').css({
+                'right': 944
+            })
+            $('#desert').css({
+                'right': 1081
+            })
+            $('#actions').css({
+                'right': 827
+            })
+            $('#contacts').css({
+                'right': 683
+            })
+            $('#full_avatar').css({
+                'top': 95,
+                'left': 390
+            })
+        } else {
+            header.removeClass('header_fixed');
+            $('body').css({
+                'paddingTop': 0
+            });
+            $('#cart').css({
+                'right': 56,
+                'top': 92
+            })
+            $('#login').css({
+                'right': 190,
+                'top': 91
+            })
+            $('#pizza').css({
+                'right': 1110
+            })
+            $('#salade').css({
+                'right': 985
+            })
+            $('#combo').css({
+                'right': 870
+            })
+            $('#napitki').css({
+                'right': 594
+            })
+            $('#desert').css({
+                'right': 731
+            })
+            $('#actions').css({
+                'right': 477
+            })
+            $('#contacts').css({
+                'right': 333
+            })
+            $('#full_avatar').css({
+                'top': 33,
+                'left': 55
+            })
+        }
+
+        if ($(this).scrollTop() > 5) {
+            numbers.hide();
+            eclipse2.hide();
+            eclipse.hide();
+            dostavka.hide();
+            moscow.hide();
+            yandex.hide();
+            time.hide();
+            time_two.hide();
+            number.hide();
+            zvezda_logo.hide();
+            yandex_logo.hide();
+        } else {
+            numbers.fadeIn();
+            eclipse2.fadeIn();
+            eclipse.fadeIn();
+            dostavka.fadeIn();
+            moscow.fadeIn();
+            yandex.fadeIn();
+            time.fadeIn();
+            time_two.fadeIn();
+            number.fadeIn();
+            zvezda_logo.fadeIn();
+            yandex_logo.fadeIn();
+        }
+    });
 });
 
 
