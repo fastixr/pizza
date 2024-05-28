@@ -124,6 +124,7 @@
                 </div>
             </div>
         </form>
+        <h5 id="unitpay">Способы оплаты</h5>
         <div id="block_card_placing" class="rectangle_placing">
             <h2 id="cash_method_text" type="text">Наличными</h2>
             <h2 id="card_method_text" type="text">Картой на сайте</h2>
@@ -188,14 +189,14 @@
             <label>
                 <input id="sub_check_placing" type="checkbox">
                 <span></span>
-                <h2 id="sub_text_placing">Сообщать о бонусах, акциях и новых продуктах.</h2>
+                <h2 id="sub_text_placing">Сообщать о бонусах, акциях и новых продуктах</h2>
             </label>
         </div>
         <span id="info_sub_pl" class="clue" data-clue="Согласие на СМС-расслыку от ООО Пицца от Пашки">
             i
         </span>
         <a href="/order_saving/{{ session['id'] }}">
-            <button id="offer_accept" type="button" class="btn btn-light" onclick="startNewOrder()">Оформить заказ на {{ session['total_price'] }} ₽.</button>
+            <button id="offer_accept" type="button" class="btn btn-light" onclick="startNewOrder()">Оформить заказ на {{ session['total_price'] }} ₽</button>
         </a>
         <container>
             <a href="{{ url_for('cart', id=session['id']) }}">
