@@ -1104,3 +1104,16 @@ document.getElementById("to_cart_in_pop5").addEventListener("click", function() 
 document.getElementById("to_cart_in_pop6").addEventListener("click", function() {
     sessionStorage.setItem("cart_item_visible6", "true"); // Устанавливаем флаг видимости элемента
 });
+
+window.addEventListener('load', () => {
+    const flashes = document.querySelectorAll('.flash');
+    flashes.forEach(flash => {
+        flash.classList.add('show');
+        setTimeout(() => {
+            flash.classList.remove('show');
+            setTimeout(() => {
+                flash.style.opacity = '0'; // Убираем элемент из потока документа
+            }, 500); // Должно совпадать с продолжительностью анимации исчезновения
+        }, 5000); // Время отображения сообщения
+    });
+});

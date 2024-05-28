@@ -4784,3 +4784,67 @@ input[type="date"]:enabled {
     color: black;
     z-index: 1000;
 }
+
+/* Flashes */
+
+.flash {
+    opacity: 0;/* Изначально скрыт */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: #4E0476; /* Пример цвета фона */
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+    transition: display 0s, opacity 0.5s linear;
+}
+
+.flash.show {
+    opacity: 1;
+}
+
+.flash.wrong {
+    position: fixed;
+    top: 20px;
+}
+
+/* Complete register */
+
+#block_cplr {
+    position: sticky;
+    width: 1500px;
+    height: 300px;
+}
+
+#success_register {
+    left: 500px;
+    position: absolute;
+    top: 50px;
+    font-size: 30px;
+    font-family: "Montserrat", sans-serif;
+    color: #4E0476;
+}
+
+#go_to_index {
+    position: absolute;
+    left: 620px;
+    top: 140px;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 7px;
+    background-color: #4E0476;
+    border: #4E0476;
+    color: white;
+}
+
+#go_to_index:hover {
+    position: absolute;
+    left: 620px;
+    top: 140px;
+    font-weight: normal;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 7px;
+    background-color: white;
+    color: black;
+}

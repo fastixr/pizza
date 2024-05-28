@@ -1,10 +1,20 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
 <html>
 
 <body>
-    <h1>Вы успешно зарегестрированы!</h1>
-    <p>Нажмите на кнопку ниже, чтобы перейти на главную страницу:</p>
-    <a href="/" class="button">Перейти на главную страницу</a>
+    <div id="block_cplr">
+        <h1 id="success_register">Вы успешно зарегестрированы!</h1>
+        <a href="/">
+            <button id="go_to_index" type="button" class="btn btn-light">Перейти на главную страницу</button>
+        </a>
+    </div>
 </body>
 
 </html>
+{% endblock %}
