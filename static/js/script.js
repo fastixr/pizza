@@ -64,54 +64,43 @@ $(function() {
     let number = $('#number');
     let zvezda_logo = $('#zvezda_logo');
     let yandex_logo = $('#yandex_logo');
+    let full_avatar = $('#full_avatar');
     let headerHeight = header.outerHeight();
 
     $(window).scroll(function() {
         if ($(this).scrollTop() > 1) {
-            $('body').css('padding-top', headerHeight);
             header.addClass('header_fixed');
-            $('body').css({
-                'paddingTop': '0'
-            });
             $('#cart').css({
-                'right': 406,
+                'right': 486,
                 'top': 92
             })
             $('#login').css({
-                'right': 540,
+                'right': 620,
                 'top': 91
             })
             $('#pizza').css({
-                'right': 1460
+                'right': 1540
             })
             $('#salade').css({
-                'right': 1335
+                'right': 1415
             })
             $('#combo').css({
-                'right': 1220
+                'right': 1300
             })
             $('#napitki').css({
-                'right': 944
+                'right': 1024
             })
             $('#desert').css({
-                'right': 1081
+                'right': 1161
             })
             $('#actions').css({
-                'right': 827
+                'right': 907
             })
             $('#contacts').css({
-                'right': 683
-            })
-            $('#full_avatar').css({
-                'position': 'fixed',
-                'top': 95,
-                'left': 300
+                'right': 763
             })
         } else {
             header.removeClass('header_fixed');
-            $('body').css({
-                'paddingTop': 0
-            });
             $('#cart').css({
                 'right': 56,
                 'top': 92
@@ -141,11 +130,6 @@ $(function() {
             $('#contacts').css({
                 'right': 333
             })
-            $('#full_avatar').css({
-                'position': 'absolute',
-                'top': 33,
-                'left': 55
-            })
         }
 
         if ($(this).scrollTop() > 5) {
@@ -160,6 +144,7 @@ $(function() {
             number.hide();
             zvezda_logo.hide();
             yandex_logo.hide();
+            full_avatar.hide()
         } else {
             numbers.fadeIn();
             eclipse2.fadeIn();
@@ -170,6 +155,7 @@ $(function() {
             time.fadeIn();
             time_two.fadeIn();
             number.fadeIn();
+            full_avatar.fadeIn();
             zvezda_logo.fadeIn();
             yandex_logo.fadeIn();
         }
