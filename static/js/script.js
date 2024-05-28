@@ -221,8 +221,8 @@ function moveSlides(forward = true) {
   }
   slides.forEach((slide, index) => {
     const img = slide.querySelector('img');
-    img.src = `/static/img/slide${(currentImageIndex - index + slides.length) % slides.length + 1}.png`;
-    img.alt = `Slide ${(currentImageIndex - index + slides.length) % slides.length + 1}`;
+    img.src = `/static/img/slide${(currentImageIndex + index + slides.length) % slides.length + 1}.png`;
+    img.alt = `Slide ${(currentImageIndex + index + slides.length) % slides.length + 1}`;
   });
   slideInterval = setInterval(moveSlides, 7000);
 }

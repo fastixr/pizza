@@ -102,7 +102,7 @@ def login(page):
             try:
                 user = Users.query.filter_by(phone=phone).first()
             except:
-                return render_template(page)
+                flash("Неправильный логин")
 
             if user and check_password_hash(user.password, password):
                 login_user(user, remember=False)
@@ -113,7 +113,7 @@ def login(page):
                 session['phone'] = user.phone
                 return 1
             else:
-                flash('Неправильный логин или пароль')
+                flash('Неправильный пароль')
         else:
             flash('Пожалуйста заполните все поля')
 
@@ -197,12 +197,10 @@ def placing(id):
         masked_card_cvc = "CVC"
 
     address = request.form.get('address')
-    delivery_time = request.form.get('time_form_pl')
     if 'delivery_time' not in session:
         session['delivery_time'] = 'Как можно скорее'
     if request.method == 'POST':
         session['address'] = address
-
     return render_template('placing.html', total_price=session.get('total_price', 0), user=user,
                            masked_card_number=masked_card_number, masked_card_date=masked_card_date,
                            masked_card_cvc=masked_card_cvc)
@@ -285,8 +283,12 @@ def clear_order(id):
 def order_saving(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
-    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Доставлен', address=session['address'],
-                  deliveryTime=session['delivery_time'])
+    try:
+        order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Доставлен', address=session['address'],
+                      deliveryTime=session['delivery_time'])
+    except:
+        flash('Укажите адрес доставки')
+        return redirect(url_for('placing', id=session['id']))
     db.session.add(order)
     db.session.commit()
     return redirect(url_for('clear_order', id=id))
@@ -332,6 +334,8 @@ def decrease_quantity(dish_id):
 def cart(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
+    if 'order' not in session:
+        flash('Корзина пуста')
     return render_template('cart.html')
 
 

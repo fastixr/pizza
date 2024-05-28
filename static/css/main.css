@@ -2057,7 +2057,7 @@ li::marker {
     border: 2px solid rgba(0, 0, 0, 0.14);
     border-radius: 7px;
     width: 620px;
-    height: 200px;
+    height: 180px;
     background: transparent;
 }
 
@@ -2966,7 +2966,7 @@ input[type='checkbox'] {
     left: 390px;
     height: 50px;
     width: 230px;
-    top: 150px;
+    top: 130px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
     border-top-left-radius: 0px;
@@ -2983,7 +2983,7 @@ input[type='checkbox'] {
     left: 390px;
     height: 50px;
     width: 230px;
-    top: 150px;
+    top: 130px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
     border-top-left-radius: 0px;
@@ -3821,9 +3821,9 @@ input[type="date"]:enabled {
     position: absolute;
     left: 30px;
     top: 35px;
-    
     font-weight: 30px;
     font-size: 16px;
+    margin-left: 0px;
 
     color: #686466;
     font-family: "Montserrat", sans-serif;
@@ -4681,6 +4681,16 @@ input[type="date"]:enabled {
     text-align: left;
 }
 /* Остальные строчки */
+
+#order_details_text15 {
+    top: 0px;
+    left: 30px;
+    width: 1090px;
+    text-align: left;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+}
+
 #order_details_text11 {
     top: 0px;
     left: 30px;
