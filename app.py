@@ -439,7 +439,7 @@ def logout():
     global is_authentificated
     session.clear()
     logout_user()
-    flash("Вы вышли из аккаунта", "success")
+    flash("Вы вышли из аккаунта", 'wrong')
     is_authentificated = False
     return redirect("/")
 

@@ -51,7 +51,7 @@
             <div id="block_phone">
                 <div class="wrapper">
                     <div class="input_name">
-                        <input type="text" id="name_form_ph" value="{{user.phone}}" disabled>
+                        <input type="text" id="name_form_ph" value="{{user.phone}}" disabled required>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
             <div id="block_date">
                 <div class="wrapper">
                     <div class="input_name">
-                        <input type="date" id="date_form_lk" name="date_form_lk" min="1900-01-01" max="2024-01-01" value="{{user.birthDate}}" disabled>
+                        <input type="date" id="date_form_lk" name="date_form_lk" min="1900-01-01" max="2024-01-01" value="{{user.birthDate}}" disabled required>
                         <button id="edit_date_button_lk">Изменить</button>
                     </div>
                 </div>
@@ -106,21 +106,21 @@
                 <div id="block_password_lk">
                     <div class="wrapper">
                         <div class="input_name">
-                            <input type="text" id="password_change_lk" name="password_change_lk" placeholder="Введите старый пароль" disabled required>
+                            <input type="password" id="password_change_lk" name="password_change_lk" placeholder="Введите старый пароль" disabled required>
                         </div>
                     </div>
                 </div>
                 <div id="block_password_lk_1">
                     <div class="wrapper">
                         <div class="input_name">
-                            <input type="text" id="password_change_lk_1" name="password_change_lk_1" placeholder="Введите новый пароль" disabled required>
+                            <input type="password" id="password_change_lk_1" name="password_change_lk_1" placeholder="Введите новый пароль" disabled required>
                         </div>
                     </div>
                 </div>
                 <div id="block_password_lk_2">
                     <div class="wrapper">
                         <div class="input_name">
-                            <input type="text" id="password_change_lk_2" name="password_change_lk_2" placeholder="Подтвердите пароль" disabled required>
+                            <input type="password" id="password_change_lk_2" name="password_change_lk_2" placeholder="Подтвердите пароль" disabled required>
                         </div>
                     </div>
                 </div>

@@ -3545,6 +3545,14 @@ input[type="date"]:enabled {
     background-color: white;
 }
 
+input[type="password"]:disabled {
+    background-color: #F1F2F5;
+}
+  
+input[type="password"]:enabled {
+    background-color: white;
+}
+
 /* Добавление всё что относится к добавлению товара в корзину*/
 .client_order_cart {
     position: absolute;
@@ -4880,3 +4888,4 @@ input[type="date"]:enabled {
 #last_order_b:hover {
     background-color: #cccdcf;
 }
+
