@@ -411,7 +411,6 @@ def user(id):
                 if new_password == repeat_new_password:
                     try:
                         user.password = hash_pwd
-                        db.session.commit()
                     except:
                         return "При смене пароля произошла ошибка"
             else:
