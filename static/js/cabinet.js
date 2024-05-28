@@ -8,7 +8,7 @@ editButton_name_lk.addEventListener('click', function(event) {
     inputField_name_lk.disabled = false;
     editButton_name_lk.textContent = 'Сохранить';
   } else {
-    document.forms[0].submit()
+    document.forms[2].submit()
     inputField_name_lk.disabled = true;
     editButton_name_lk.textContent = 'Изменить';
   }
@@ -24,7 +24,7 @@ editButton_date_lk.addEventListener('click', function(event) {
     inputField_date_lk.disabled = false;
     editButton_date_lk.textContent = 'Сохранить';
   } else {
-    document.forms[2].submit()
+    document.forms[4].submit()
     inputField_date_lk.disabled = true;
     editButton_date_lk.textContent = 'Изменить';
   }
@@ -44,8 +44,6 @@ editButton_card_lk.addEventListener('click', function(event) {
     inputField_card_cvc_lk.disabled = false;
     editButton_card_lk.textContent = 'Сохранить';
   } else {
-    document.forms[3].submit();
-    document.forms[4].submit();
     document.forms[5].submit();
     inputField_card_lk.disabled = true;
     inputField_card_date_lk.disabled = true;
@@ -68,6 +66,7 @@ edit_password_button_lk.addEventListener('click', function(event) {
     password_change_lk_2.disabled = false;
     edit_password_button_lk.textContent = 'Сохранить';
   } else {
+    document.forms[6].submit();
     password_change_lk.disabled = true;
     password_change_lk_1.disabled = true;
     password_change_lk_2.disabled = true;

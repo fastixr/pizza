@@ -24,6 +24,13 @@
     </div>
 </body>
 <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <!-- Модальное окно для пицц-->
     <div id="rn1_modal" class="modal_pizza">
         <div class="modal_content">
@@ -37,9 +44,7 @@
             <button id="thin_btn1" type="button" class="btn_dough2">Тонкое</button>
             <div id="scrollable_coords1" class="scrollable_content">
                 <div id="image_btn_pop1" class="image_btn_pop image_btn_pop_cord1">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
                     <h4 id="pizza_desc_img_pop1" class="text_desc_img_pop">Без добавок</h4>
-                    <h4 id="pizza_cost_img_pop1" class="text_cost_img_pop">0 ₽</h4>
                 </div>
                 <div id="image_btn_pop2" class="image_btn_pop image_btn_pop_cord2">
                     <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
@@ -88,9 +93,7 @@
             <button id="thin_btn2" type="button" class="btn_dough2">Тонкое</button>
             <div id="scrollable_coords2" class="scrollable_content">
                 <div id="image_btn_pop7" class="image_btn_pop image_btn_pop_cord1">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
                     <h4 id="pizza_desc_img_pop7" class="text_desc_img_pop">Без добавок</h4>
-                    <h4 id="pizza_cost_img_pop7" class="text_cost_img_pop">0 ₽</h4>
                 </div>
                 <div id="image_btn_pop8" class="image_btn_pop image_btn_pop_cord2">
                     <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
@@ -132,40 +135,33 @@
             <h2 id="pizza_name_pop3" class="text_name_pop">Салаты</h2>
             <h3 id="pizza_desc_pop3" class="text_desc_pop">25 см, традиционное тесто, 360 г</h3>
             <h4 id="pizza_dang_pop3" class="text_dang_pop">Моцарелла, соус альфредо</h4>
-            <!-- <button id="small_btn3" type="button" class="btn_size1">Маленькая</button>
-            <button id="middle_btn3" type="button" class="btn_size2">Средняя</button>
-            <button id="big_btn3" type="button" class="btn_size3">Большая</button>
-            <button id="tradition_btn3" type="button" class="btn_dough1">Традиционное</button>
-            <button id="thin_btn3" type="button" class="btn_dough2">Тонкое</button> -->
             <div id="scrollable_coords3" class="scrollable_content">
                 <div id="image_btn_pop13" class="image_btn_pop image_btn_pop_cord1">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
                     <h4 id="pizza_desc_img_pop13" class="text_desc_img_pop">Без добавок</h4>
-                    <h4 id="pizza_cost_img_pop13" class="text_cost_img_pop">0 ₽</h4>
                 </div>
                 <div id="image_btn_pop14" class="image_btn_pop image_btn_pop_cord2">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop14" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/souce.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop14" class="text_desc_img_pop">Соус Цезарь</h4>
                     <h4 id="pizza_cost_img_pop14" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop15" class="image_btn_pop image_btn_pop_cord3">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop15" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/souce.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop15" class="text_desc_img_pop">Соус Цезарь</h4>
                     <h4 id="pizza_cost_img_pop15" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop16" class="image_btn_pop image_btn_pop_cord4">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop16" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/souce.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop16" class="text_desc_img_pop">Соус Цезарь</h4>
                     <h4 id="pizza_cost_img_pop16" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop17" class="image_btn_pop image_btn_pop_cord5">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop17" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/souce.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop17" class="text_desc_img_pop">Соус Цезарь</h4>
                     <h4 id="pizza_cost_img_pop17" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop18" class="image_btn_pop image_btn_pop_cord6">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop18" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/souce.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop18" class="text_desc_img_pop">Соус Цезарь</h4>
                     <h4 id="pizza_cost_img_pop18" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
             </div>
@@ -183,16 +179,11 @@
             <h2 id="pizza_name_pop4" class="text_name_pop">Комбо</h2>
             <h3 id="pizza_desc_pop4" class="text_desc_pop">25 см, традиционное тесто, 360 г</h3>
             <h4 id="pizza_dang_pop4" class="text_dang_pop">Моцарелла, соус альфредо</h4>
-            <!-- <button id="small_btn4" type="button" class="btn_size1">Маленькая</button>
-            <button id="middle_btn4" type="button" class="btn_size2">Средняя</button>
-            <button id="big_btn4" type="button" class="btn_size3">Большая</button> -->
             <button id="tradition_btn4" type="button" class="btn_dough1">Традиционное</button>
             <button id="thin_btn4" type="button" class="btn_dough2">Тонкое</button>
             <div id="scrollable_coords4" class="scrollable_content">
                 <div id="image_btn_pop19" class="image_btn_pop image_btn_pop_cord1">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
                     <h4 id="pizza_desc_img_pop19" class="text_desc_img_pop">Без добавок</h4>
-                    <h4 id="pizza_cost_img_pop19" class="text_cost_img_pop">0 ₽</h4>
                 </div>
                 <div id="image_btn_pop20" class="image_btn_pop image_btn_pop_cord2">
                     <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
@@ -234,40 +225,33 @@
             <h2 id="pizza_name_pop5" class="text_name_pop">Десерты</h2>
             <h3 id="pizza_desc_pop5" class="text_desc_pop">25 см, традиционное тесто, 360 г</h3>
             <h4 id="pizza_dang_pop5" class="text_dang_pop">Моцарелла, соус альфредо</h4>
-            <!-- <button id="small_btn5" type="button" class="btn_size1">Маленькая</button>
-            <button id="middle_btn5" type="button" class="btn_size2">Средняя</button>
-            <button id="big_btn5" type="button" class="btn_size3">Большая</button>
-            <button id="tradition_btn5" type="button" class="btn_dough1">Традиционное</button>
-            <button id="thin_btn5" type="button" class="btn_dough2">Тонкое</button> -->
             <div id="scrollable_coords5" class="scrollable_content">
                 <div id="image_btn_pop25" class="image_btn_pop image_btn_pop_cord1">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
                     <h4 id="pizza_desc_img_pop25" class="text_desc_img_pop">Без добавок</h4>
-                    <h4 id="pizza_cost_img_pop25" class="text_cost_img_pop">0 ₽</h4>
                 </div>
                 <div id="image_btn_pop26" class="image_btn_pop image_btn_pop_cord2">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop26" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/strawberry.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop26" class="text_desc_img_pop">Клубника</h4>
                     <h4 id="pizza_cost_img_pop26" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop27" class="image_btn_pop image_btn_pop_cord3">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop27" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/strawberry.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop27" class="text_desc_img_pop">Клубника</h4>
                     <h4 id="pizza_cost_img_pop27" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop28" class="image_btn_pop image_btn_pop_cord4">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop28" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/strawberry.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop28" class="text_desc_img_pop">Клубника</h4>
                     <h4 id="pizza_cost_img_pop28" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop29" class="image_btn_pop image_btn_pop_cord5">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop29" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/strawberry.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop29" class="text_desc_img_pop">Клубника</h4>
                     <h4 id="pizza_cost_img_pop29" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop30" class="image_btn_pop image_btn_pop_cord6">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop30" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/strawberry.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop30" class="text_desc_img_pop">Клубника</h4>
                     <h4 id="pizza_cost_img_pop30" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
             </div>
@@ -292,33 +276,31 @@
             <button id="thin_btn6" type="button" class="btn_dough2">Тонкое</button> -->
             <div id="scrollable_coords6" class="scrollable_content">
                 <div id="image_btn_pop31" class="image_btn_pop image_btn_pop_cord1">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
                     <h4 id="pizza_desc_img_pop31" class="text_desc_img_pop">Без добавок</h4>
-                    <h4 id="pizza_cost_img_pop31" class="text_cost_img_pop">0 ₽</h4>
                 </div>
                 <div id="image_btn_pop32" class="image_btn_pop image_btn_pop_cord2">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop32" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/ice.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop32" class="text_desc_img_pop">Лёд</h4>
                     <h4 id="pizza_cost_img_pop32" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop33" class="image_btn_pop image_btn_pop_cord3">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop33" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/ice.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop33" class="text_desc_img_pop">Лёд</h4>
                     <h4 id="pizza_cost_img_pop33" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop34" class="image_btn_pop image_btn_pop_cord4">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop34" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/ice.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop34" class="text_desc_img_pop">Лёд</h4>
                     <h4 id="pizza_cost_img_pop34" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop35" class="image_btn_pop image_btn_pop_cord5">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop35" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/ice.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop35" class="text_desc_img_pop">Лёд</h4>
                     <h4 id="pizza_cost_img_pop35" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
                 <div id="image_btn_pop36" class="image_btn_pop image_btn_pop_cord6">
-                    <img src="{{ url_for('static', filename='img/jalapeno.png') }}" alt="jalapeno_img">
-                    <h4 id="pizza_desc_img_pop36" class="text_desc_img_pop">Острый халапеньо</h4>
+                    <img src="{{ url_for('static', filename='img/ice.png') }}" alt="jalapeno_img">
+                    <h4 id="pizza_desc_img_pop36" class="text_desc_img_pop">Лёд</h4>
                     <h4 id="pizza_cost_img_pop36" class="text_cost_img_pop">от 120 ₽</h4>
                 </div>
             </div>
@@ -704,10 +686,16 @@
                 <div id="block52" class="block">
                     <h1 id="text3">Оплата и доставка</h1>
                     <img id="header_zakazal" class="header__img" src="{{ url_for('static', filename='img/header_zakazal.png') }}" alt="header_zakazal">
+                    <h5 id="text5">Оформите ваш заказ</h5>
                     <img id="header_vibral" class="header__img" src="{{ url_for('static', filename='img/header_vibral.png') }}" alt="header_vibral">
+                    <h5 id="text6">Дождитесь начала сбора заказа</h5>
                     <img id="header_oplatil" class="header__img" src="{{ url_for('static', filename='img/header_oplatil.png') }}" alt="header_oplatil">
+                    <h5 id="text7">Заказ будет собран</h5>
                     <img id="header_dostavil" class="header__img" src="{{ url_for('static', filename='img/header_dostavil.png') }}" alt="header_dostavil">
+                    <h5 id="text8">Ваша пицца будет передана в доставку</h5>
+                    <div id="map2"></div>
                 </div>
+
             </div>
         </div>
 </body>

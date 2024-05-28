@@ -1,15 +1,177 @@
-$(function(){
-	$nav = $('.header');
-	$nav.css('width', $nav.outerWidth());
-	$window = $(window);
-	$h = $nav.offset().top;
-	$window.scroll(function(){
-		if ($window.scrollTop() > $h){
-			$nav.addClass('sticky');
-		} else {
-			$nav.removeClass('sticky');
-		}
-	});
+$(function() {
+    var $overlay = $('.overlay');
+    var $mainPopUp = $('.main-popup')
+    var $signIn = $('#sign-in');
+    var $register = $('#register');
+    var $formSignIn = $('form.sign-in');
+    var $formRegister = $('form.register');
+
+    $('#login').on('click', function(){
+      $overlay.addClass('visible');
+      $mainPopUp.addClass('visible');
+      $signIn.addClass('active');
+      $signIn.hide();
+      $register.show();
+      $register.removeClass('active');
+      $formRegister.removeClass('move-left');
+      $formRegister.hide();
+      $formSignIn.show();
+      $formSignIn.removeClass('move-left');
+    });
+    $overlay.on('click', function(){
+      $(this).removeClass('visible');
+      $mainPopUp.removeClass('visible');
+    });
+    $('#popup-close-button a').on('click', function(e){
+      e.preventDefault();
+      $overlay.removeClass('visible');
+      $mainPopUp.removeClass('visible');
+    });
+
+    $signIn.on('click', function(){
+      $signIn.addClass('active');
+      $signIn.hide();
+      $register.removeClass('active');
+      $register.show();
+      $formSignIn.show();
+      $formSignIn.removeClass('move-left');
+      $formRegister.removeClass('move-left');
+      $formRegister.hide();
+    });
+
+    $register.on('click', function(){
+      $signIn.removeClass('active');
+      $signIn.show();
+      $register.addClass('active');
+      $register.hide();
+      $formSignIn.addClass('move-left');
+      $formSignIn.hide();
+      $formRegister.show();
+      $formRegister.addClass('move-left');
+    });
+  });
+
+  $(function() {
+    let header = $('header');
+    let numbers = $('#numbers');
+    let eclipse2 = $('#eclipse2');
+    let eclipse = $('#eclipse');
+    let dostavka = $('#dostavka');
+    let moscow = $('#moscow');
+    let yandex = $('#yandex');
+    let time = $('#time');
+    let time_two = $('#time_two');
+    let number = $('#number');
+    let zvezda_logo = $('#zvezda_logo');
+    let yandex_logo = $('#yandex_logo');
+    let headerHeight = header.outerHeight();
+
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 1) {
+            $('body').css('padding-top', headerHeight);
+            header.addClass('header_fixed');
+            $('body').css({
+                'paddingTop': '0'
+            });
+            $('#cart').css({
+                'right': 406,
+                'top': 92
+            })
+            $('#login').css({
+                'right': 540,
+                'top': 91
+            })
+            $('#pizza').css({
+                'right': 1460
+            })
+            $('#salade').css({
+                'right': 1335
+            })
+            $('#combo').css({
+                'right': 1220
+            })
+            $('#napitki').css({
+                'right': 944
+            })
+            $('#desert').css({
+                'right': 1081
+            })
+            $('#actions').css({
+                'right': 827
+            })
+            $('#contacts').css({
+                'right': 683
+            })
+            $('#full_avatar').css({
+                'top': 95,
+                'left': 390
+            })
+        } else {
+            header.removeClass('header_fixed');
+            $('body').css({
+                'paddingTop': 0
+            });
+            $('#cart').css({
+                'right': 56,
+                'top': 92
+            })
+            $('#login').css({
+                'right': 190,
+                'top': 91
+            })
+            $('#pizza').css({
+                'right': 1110
+            })
+            $('#salade').css({
+                'right': 985
+            })
+            $('#combo').css({
+                'right': 870
+            })
+            $('#napitki').css({
+                'right': 594
+            })
+            $('#desert').css({
+                'right': 731
+            })
+            $('#actions').css({
+                'right': 477
+            })
+            $('#contacts').css({
+                'right': 333
+            })
+            $('#full_avatar').css({
+                'top': 33,
+                'left': 55
+            })
+        }
+
+        if ($(this).scrollTop() > 5) {
+            numbers.hide();
+            eclipse2.hide();
+            eclipse.hide();
+            dostavka.hide();
+            moscow.hide();
+            yandex.hide();
+            time.hide();
+            time_two.hide();
+            number.hide();
+            zvezda_logo.hide();
+            yandex_logo.hide();
+        } else {
+            numbers.fadeIn();
+            eclipse2.fadeIn();
+            eclipse.fadeIn();
+            dostavka.fadeIn();
+            moscow.fadeIn();
+            yandex.fadeIn();
+            time.fadeIn();
+            time_two.fadeIn();
+            number.fadeIn();
+            zvezda_logo.fadeIn();
+            yandex_logo.fadeIn();
+        }
+    });
 });
 
 
@@ -29,6 +191,23 @@ function init() {
     myMap.geoObjects.add(myPlacemark);
 }
 
+ymaps.ready(init2);
+
+function init2() {
+    var myMap = new ymaps.Map("map2", {
+        center: [55.81020756890799, 37.49832099999996], // Координаты МАИ
+        zoom: 16, // Уровень масштабирования карты
+        controls: ['zoomControl', 'geolocationControl', 'fullscreenControl']
+    });
+
+    var myPlacemark = new ymaps.Placemark([55.81020756890799, 37.49832099999996], {
+        balloonContent: 'Пицца от пашки'
+    });
+
+    myMap.geoObjects.add(myPlacemark);
+}
+
+
 const slides = document.querySelectorAll('.slide');
 let currentImageIndex = 0;
 let slideInterval;
@@ -42,8 +221,8 @@ function moveSlides(forward = true) {
   }
   slides.forEach((slide, index) => {
     const img = slide.querySelector('img');
-    img.src = `/static/img/slide${(currentImageIndex - index + slides.length) % slides.length + 1}.png`;
-    img.alt = `Slide ${(currentImageIndex - index + slides.length) % slides.length + 1}`;
+    img.src = `/static/img/slide${(currentImageIndex + index + slides.length) % slides.length + 1}.png`;
+    img.alt = `Slide ${(currentImageIndex + index + slides.length) % slides.length + 1}`;
   });
   slideInterval = setInterval(moveSlides, 7000);
 }
@@ -924,4 +1103,17 @@ document.getElementById("to_cart_in_pop5").addEventListener("click", function() 
 
 document.getElementById("to_cart_in_pop6").addEventListener("click", function() {
     sessionStorage.setItem("cart_item_visible6", "true"); // Устанавливаем флаг видимости элемента
+});
+
+window.addEventListener('load', () => {
+    const flashes = document.querySelectorAll('.flash');
+    flashes.forEach(flash => {
+        flash.classList.add('show');
+        setTimeout(() => {
+            flash.classList.remove('show');
+            setTimeout(() => {
+                flash.style.opacity = '0'; // Убираем элемент из потока документа
+            }, 500); // Должно совпадать с продолжительностью анимации исчезновения
+        }, 5000); // Время отображения сообщения
+    });
 });

@@ -1,34 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>История заказов</title>
-</head>
+{% extends 'base.html' %}
+
+{% block title %}
+История заказов
+{% endblock %}
+
+{% block content %}
 <body>
-    <h1>История заказов</h1>
-    {% for order in orders_list %}
-        <h2>Заказ №{{ order.id }}</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Название</th>
-                    <th>Количество</th>
-                    <th>Стоимость</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in order.order %}
-                    <tr>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ item.price * item.quantity }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <h3>Общая стоимость: {{ order.total_price }} руб.</h3>
-        <h3>Время: {{ order.time }}</h3>
-        <h3>Статус заказа: {{ order.status }}</h3>
-    {% endfor %}
+    <div id="order_history_container" class="container">
+        <div id="order_history_block">
+            <h1 id="order_history_zag">История заказов</h1>
+            {% for order in orders_list %}
+                <div class="order_history_blank">
+                    <h2 id="order_history_number" class="order_history_text_purp">Заказ №{{ order.id }}</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th id="order_history_text1"  class="order_history_text">Название</th>
+                                <th id="order_history_text2" class="order_history_text">Количество</th>
+                                <th id="order_history_text3" class="order_history_text">Стоимость</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in order.order %}
+                                <tr>
+                                    <td id="order_history_text4" class="order_history_text">{{ item.name }}</td>
+                                    <td id="order_history_text5" class="order_history_text">{{ item.quantity }}</td>
+                                    <td id="order_history_text6" class="order_history_text">{{ item.price * item.quantity }}</td>
+                                </tr>
+                            {% endfor %}   
+                        </tbody>
+                    </table>
+                    <h3 id="order_history_text7" class="order_history_text">Общая стоимость: {{ order.total_price }} руб.</h3>
+                    <h3 id="order_history_text8" class="order_history_text">Время: {{ order.time }}</h3>
+                    <h3 id="order_history_text9" class="order_history_text">Статус заказа: {{ order.status }}</h3>
+                    <a href="/cabinet/{{ session['id'] }}/history/{{ order.id }}">
+                        <button id="order_details">Подробнее</button>
+                    </a>
+                </div>   
+            {% endfor %}
+        </div>
+    </div>   
 </body>
-</html>
+{% endblock %}

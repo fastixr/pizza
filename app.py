@@ -65,7 +65,6 @@ class Order(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     status = db.Column(db.String, nullable=False)
     address = db.Column(db.String)
-    ingredients = db.Column(db.Text)
     deliveryTime = db.Column(db.String)
 
     def __repr__(self):
@@ -78,14 +77,6 @@ class Order(db.Model):
     @items_list.setter
     def items_list(self, value):
         self.items = json.dumps(value, ensure_ascii=False)
-
-    @property
-    def ingredients_list(self):
-        return json.loads(self.items)
-
-    @ingredients_list.setter
-    def ingredients_list(self, value):
-        self.ingredients = json.dumps(value, ensure_ascii=False)
 
 
 def get_db():
@@ -101,14 +92,82 @@ def load_user(user_id):
     return Users.query.get(user_id)
 
 
-@app.route("/", methods=['GET'])
+def login(page):
+    if request.method == "POST":
+        global is_authentificated
+        phone = request.form.get('phone')
+        password = request.form.get('password')
+
+        if phone and password:
+            try:
+                user = Users.query.filter_by(phone=phone).first()
+            except:
+                flash('Неправильный номер телефона', 'wrong_1')
+
+            if user and check_password_hash(user.password, password):
+                login_user(user, remember=False)
+
+                is_authentificated = True
+                session['id'] = user.id
+                session['name'] = user.username
+                session['phone'] = user.phone
+                return 1
+            else:
+                flash('Неправильный пароль', 'wrong_1')
+        else:
+            pass
+
+
+def register(page):
+    username = request.form.get('username_r')
+    phone = request.form.get('phone_r')
+    password = request.form.get('password_r')
+    repeat_password = request.form.get('repeat_password_r')
+
+    if request.method == 'POST':
+        if not (username or phone or password or repeat_password):
+            pass
+        elif password != repeat_password:
+            flash('Пароли не совпадают!', 'wrong_1')
+        else:
+            try:
+                if phone == Users.query.filter_by(phone=phone).first().phone:
+                    flash('Номер уже зарегестрирован', 'wrong_1')
+                return render_template(page)
+            except:
+                hash_pwd = generate_password_hash(password)
+                new_user = Users(username=username, phone=phone, password=hash_pwd)
+                if password == repeat_password:
+                    try:
+                        db.session.add(new_user)
+                        db.session.commit()
+                        return 1
+                    except:
+                        return "При регистрации произошла ошибка"
+
+
+@app.route("/", methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    global is_authentificated
+    if is_authentificated is False and 'id' in session:
+        return redirect('/logout')
+
+    if login('index.html') == 1:
+        return redirect(url_for('user', id=session['id']))
+    if register('index.html') == 1:
+        return redirect('/register_complete')
+    else:
+        return render_template('index.html')
 
 
-@app.route("/contacts")
+@app.route("/contacts", methods=['GET', 'POST'])
 def contacts():
-    return render_template('contacts.html')
+    if login('contacts.html') == 1:
+        return redirect(url_for('user', id=session['id']))
+    if register('contacts.html') == 1:
+        return redirect('/register_complete')
+    else:
+        return render_template('contacts.html')
 
 
 @app.route("/placing/<id>", methods=['GET', 'POST'])
@@ -116,23 +175,47 @@ def contacts():
 def placing(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
+    key1 = "73i54sfg243v5643s3z67"
+
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
+
+    user = Users.query.filter_by(id=id).first_or_404()
+    if user.cardNumber:
+        masked_card_number = "**** **** **** " + xor_decrypt(user.cardNumber, key1)[-4:]
+    else:
+        masked_card_number = "0000 0000 0000 0000"
+
+    if user.cardExpirationDate:
+        masked_card_date = "**/**"
+    else:
+        masked_card_date = "мм/гг"
+
+    if user.cardCVV:
+        masked_card_cvc = "***"
+    else:
+        masked_card_cvc = "CVC"
+
     address = request.form.get('address')
     delivery_time = request.form.get('time_form_pl')
+    if 'delivery_time' not in session:
+        session['delivery_time'] = 'Как можно скорее'
     if request.method == 'POST':
         session['address'] = address
-        session['delivery_time'] = delivery_time
-    return render_template('placing.html', total_price=session.get('total_price', 0))
+
+    return render_template('placing.html', total_price=session.get('total_price', 0), user=user,
+                           masked_card_number=masked_card_number, masked_card_date=masked_card_date,
+                           masked_card_cvc=masked_card_cvc)
 
 
-@app.route("/actions")
+@app.route("/actions", methods=['GET', 'POST'])
 def actions():
-    return render_template('actions.html')
-
-
-@app.route('/cabinet', methods=['GET'])
-@login_required
-def main():
-    return render_template('cabinet.html')
+    if login('actions.html') == 1:
+        return redirect(url_for('user', id=session['id']))
+    if register('actions.html') == 1:
+        return redirect('/register_complete')
+    else:
+        return render_template('actions.html')
 
 
 @app.route('/add_to_order/<dish_id>', methods=['GET', 'POST'])
@@ -165,6 +248,7 @@ def add_to_order(dish_id):
             'name': dish['name'],
             'price': dish['price'],
             'image': dish['image'],
+            'ingredients': dish['ingredients'],
             'quantity': 1
         })
 
@@ -201,7 +285,8 @@ def clear_order(id):
 def order_saving(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
-    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Доставлен', deliveryTime=session['delivery_time'])
+    order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Доставлен', address=session['address'],
+                  deliveryTime=session['delivery_time'])
     db.session.add(order)
     db.session.commit()
     return redirect(url_for('clear_order', id=id))
@@ -242,11 +327,6 @@ def decrease_quantity(dish_id):
     return redirect(request.referrer)
 
 
-@app.route("/register")
-def register():
-    return render_template('register.html', title="Регистрация")
-
-
 @app.route('/cart/<id>')
 @login_required
 def cart(id):
@@ -262,75 +342,9 @@ def update_order_status(id):
     return render_template('status.html', current_order=current_order, total_price=total_price)
 
 
-@app.route('/register_handler', methods=['POST', 'GET'])
-def register_handler():
-    username = request.form.get('username')
-    phone = request.form.get('phone')
-    password = request.form.get('password')
-    repeat_password = request.form.get('repeat_password')
-
-    if request.method == 'POST':
-        if not (username or phone or password or repeat_password):
-            flash('Заполните все поля!')
-        elif password != repeat_password:
-            flash('Пароли не совпадают!')
-        else:
-            try:
-                if phone == Users.query.filter_by(phone=phone).first().phone:
-                    flash('Номер уже зарегестрирован')
-                return render_template('register.html')
-            except:
-                hash_pwd = generate_password_hash(password)
-                new_user = Users(username=username, phone=phone, password=hash_pwd)
-                if password == repeat_password:
-                    try:
-                        db.session.add(new_user)
-                        db.session.commit()
-                        return redirect('/register_complete')
-                    except:
-                        return "При регистрации произошла ошибка"
-
-    return render_template('register.html', title="Регистрация")
-
-
 @app.route('/register_complete', methods=['GET'])
 def register_complete():
     return render_template('register_complete.html', title="Успешная регистрация")
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    global is_authentificated
-    phone = request.form.get('phone')
-    password = request.form.get('password')
-
-    if is_authentificated:
-        id = current_user.id
-        URL = "/cabinet/" + str(id)
-        return redirect(URL)
-
-    if phone and password:
-        try:
-            user = Users.query.filter_by(phone=phone).first()
-            id = user.id
-            URL = "/cabinet/" + str(id)
-        except:
-            return render_template('login.html', title="Авторизация")
-
-        if user and check_password_hash(user.password, password):
-            login_user(user, remember=False)
-
-            is_authentificated = True
-            session['id'] = user.id
-            session['name'] = user.username
-            session['phone'] = user.phone
-            return redirect(URL)
-        else:
-            flash('Неправильный логин или пароль')
-    else:
-        flash('Пожалуйста заполните все поля')
-
-    return render_template('login.html', title="Авторизация")
 
 
 @app.route('/cabinet/<id>', methods=['POST', 'GET'])
@@ -373,23 +387,46 @@ def user(id):
             else:
                 Day = int(request.form.get('date_form_lk')[9])
             user.birthDate = datetime(Year, Month, Day)
-        if ('card_form_lk' and 'card_date_form_lk' and 'card_cvc_form_lk') in request.form:
+        if ('card_form_lk' and 'card_cvc_form_lk' and 'card_date_form_lk') in request.form:
             card_number = request.form.get('card_form_lk')
             number_encrypted = xor_encrypt(card_number, key1)
             user.cardNumber = number_encrypted
-
-            card_date = request.form.get('card_date_form_lk')
-            date_encrypted = xor_encrypt(card_date, key2)
-            user.cardExpirationDate = date_encrypted
 
             card_cvc = request.form.get('card_cvc_form_lk')
             cvc_encrypted = xor_encrypt(card_cvc, key3)
             user.cardCVV = cvc_encrypted
 
-        db.session.commit()
+            card_date = request.form.get('card_date_form_lk')
+            date_encrypted = xor_encrypt(card_date, key2)
+            user.cardExpirationDate = date_encrypted
+        if ('password_change_lk' and 'password_change_lk_1' and 'password_change_lk_2') in request.form:
+            old_password = request.form.get('password_change_lk')
+            new_password = request.form.get('password_change_lk_1')
+            repeat_new_password = request.form.get('password_change_lk_2')
+            if new_password != repeat_new_password:
+                flash("Пароли не совпадают!")
+            elif check_password_hash(user.password, old_password):
+                hash_pwd = generate_password_hash(new_password)
+                if new_password == repeat_new_password:
+                    try:
+                        user.password = hash_pwd
+                    except:
+                        return "При смене пароля произошла ошибка"
+            else:
+                flash("Неправильный пароль")
 
-        return render_template('cabinet.html', user=user, masked_card_number=masked_card_number, masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
-    return render_template('cabinet.html', user=user, masked_card_number=masked_card_number, masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
+        db.session.commit()
+        if user.cardNumber:
+            masked_card_number = "**** **** **** " + xor_decrypt(user.cardNumber, key1)[-4:]
+        if user.cardExpirationDate:
+            masked_card_date = "**/**"
+        if user.cardCVV:
+            masked_card_cvc = "***"
+
+        return render_template('cabinet.html', user=user, masked_card_number=masked_card_number,
+                               masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
+    return render_template('cabinet.html', user=user, masked_card_number=masked_card_number,
+                           masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
 
 
 @app.route('/logout')
@@ -401,38 +438,6 @@ def logout():
     flash("Вы вышли из аккаунта", "success")
     is_authentificated = False
     return redirect("/")
-
-
-@app.route('/cabinet/<id>/password_change', methods=['POST', 'GET'])
-@login_required
-def change(id):
-    if 'id' in session and session['id'] != int(id):
-        return redirect('/')
-
-    old_password = request.form.get('old_password')
-    new_password = request.form.get('new_password')
-    repeat_new_password = request.form.get('repeat_new_password')
-    user = Users.query.filter_by(id=id).first_or_404()
-    id = user.id
-    URL = "/cabinet/" + str(id)
-    if request.method == "POST" or request.method == "GET":
-        if not (old_password or new_password or repeat_new_password):
-            flash("Заполните все поля!")
-        elif new_password != repeat_new_password:
-            flash("Пароли не совпадают!")
-        elif check_password_hash(user.password, old_password):
-            hash_pwd = generate_password_hash(new_password)
-            if new_password == repeat_new_password:
-                try:
-                    user.password = hash_pwd
-                    db.session.commit()
-                    return redirect(URL)
-                except:
-                    return "При смене пароля произошла ошибка"
-        else:
-            flash("Неправильный пароль")
-
-    return render_template('password_change.html', user=user)
 
 
 @app.route('/cabinet/<id>/history', methods=['POST', 'GET'])
@@ -464,6 +469,25 @@ def get_orders(id):
         order_list = []
 
     return render_template("history.html", orders_list=orders_list)
+
+
+@app.route('/cabinet/<id>/history/<order_id>')
+@login_required
+def order_details(id, order_id):
+    if 'id' in session and session['id'] != int(id):
+        return redirect('/')
+    order_list = []
+    order = Order.query.filter_by(id=order_id).first()
+    items_list = json.loads(order.items)
+    for item in items_list:
+        order_list.append({
+            "name": item["name"],
+            "quantity": item["quantity"],
+            "price": item["price"],
+            "ingredients": item["ingredients"]
+        })
+
+    return render_template("details.html", order_list=order_list, order=order)
 
 
 @app.context_processor

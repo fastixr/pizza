@@ -18,26 +18,34 @@ html {
     margin-left: auto;
 }
 
+.header {
+    width: 100%;
+    background: #fff;
+    padding: 15px 0;
+    z-index: 100;
+    background: transparent;
+    transition: background-color 3s, padding 3s, padding-top 3s;
+  }
+  
+.header_fixed {
+    max-width: 100%;
+    position: fixed;
+    left: 0;
+    margin-top: -65px;
+    top: 0;
+    box-sizing: border-box;
+    background-color: #ffffff;  
+    transition: background-color 3s, padding 3s, padding-top 3s;
+}
+
+
 header {
     z-index: 999;
     position: sticky;
     height: 150px;
     top: 0;
     background-color: white;
-    transition: all 3s;
-}
-
-.header {
-    padding: 10px 0;
-    width: 100%;
-    transition: all 3s;
-}
-
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 1300px;
-    transition: all 3s;
+    transition: background-color 3s, padding 3s, padding-top 3s;
 }
 
 footer {
@@ -1438,6 +1446,14 @@ footer {
     height: 322px;
 }
 
+#map2 {
+    position: absolute;
+    top: 240px;
+    left: 174px;
+    width: 1110px;
+    height: 322px;
+}
+
 /* LOGIN */
 
 #login {
@@ -1458,15 +1474,21 @@ footer {
 }
 
 #password {
-    width: 500px;
+    position: relative;
+    top: -68px;
+    left: -8px;
+    width: 300px;
     height: 50px;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 #phone {
-    width: 500px;
+    position: relative;
+    top: -50px;
+    left: -8px;
+    width: 300px;
     height: 50px;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 #number_login {
@@ -1696,7 +1718,7 @@ footer {
 
 .section {
     width: 100%;
-    height: 500px;
+    height: 600px;
     background-color: #D5BFFF;
 }
 
@@ -1706,7 +1728,7 @@ footer {
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
     font-size: 26px;
-    left: 615px;
+    left: 610px;
     top: 35px;
 }
 
@@ -1740,100 +1762,6 @@ footer {
     position: absolute;
     left: 980px;
     top: 100px;
-}
-
-
-
-
-
-/* LOGIN */
-
-#body_es {
-    background: #4E0476;
-    background-size: cover;
-}
-
-#con_log {
-    width: 552px;
-    height: 500px;
-    border: 1px solid #CCC;
-    background: #4E0476;
-    background-size: cover;
-    margin: 30px auto;
-    border-radius: 20px;
-}
-
-.login .form label {
-    color: white;
-    padding-top: 15px;
-}
-
-.login .form {
-    width: 100%;
-    height: 100%;
-    padding: 15px 25px;
-}
-
-.login .form h2 {
-    color: #FFF;
-    text-align: center;
-    font-weight: normal;
-    font-size: 18px;
-    margin-top: 60px;
-    margin-bottom: 80px;
-}
-
-.login .form h5 {
-    color: #FFF;
-    text-align: right;
-    font-weight: normal;
-    font-size: 15px;
-    margin-right: 135px;
-    margin-top: 15px;
-    margin-bottom: 85px;
-}
-
-.login .form .nav #zareg {
-    font-weight: normal;
-    font-size: 15px;
-    margin-left: 371px;
-    margin-top: -113px;
-}
-
-.login .form .nav #back {
-    font-weight: normal;
-    font-size: 15px;
-    margin-left: -261px;
-    margin-top: -113px;
-}
-
-.login .form input {
-    width: 100%;
-    height: 40px;
-    margin-top: 20px;
-    background: rgba(255,255,255,.5);
-    border: 1px solid rgba(255,255,255,.1);
-    padding: 0 15px;
-    color: #FFF;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.login .form input:focus {
-    border: 1px solid rgba(255,255,255,.8);
-    outline: none;
-}
-
-::-webkit-input-placeholder {
-      color: #DDD;
-}
-
-.login .form input.submit {
-    background: rgba(255,255,255,.9);
-    color: #444;
-    font-size: 15px;
-    margin-top: 40px;
-    font-weight: bold;
 }
 
 /* REGISTER */
@@ -1888,24 +1816,19 @@ footer {
 }
 
 #username {
-    width: 500px;
+    position: relative;
+    background: #F2F2F2;
+    top: -70px;
+    left: 10px;
+    width: 300px;
+    height: 50px;
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,.1);
 }
 
 #repeat_password {
     width: 500px;
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,.1);
-}
-
-.register .form h2 {
-    color: #FFF;
-    text-align: center;
-    font-weight: normal;
-    font-size: 18px;
-    margin-top: 60px;
-    margin-bottom: 60px;
 }
 
 /* CABINET */
@@ -2134,7 +2057,7 @@ li::marker {
     border: 2px solid rgba(0, 0, 0, 0.14);
     border-radius: 7px;
     width: 620px;
-    height: 200px;
+    height: 180px;
     background: transparent;
 }
 
@@ -3043,7 +2966,7 @@ input[type='checkbox'] {
     left: 390px;
     height: 50px;
     width: 230px;
-    top: 150px;
+    top: 130px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
     border-top-left-radius: 0px;
@@ -3060,7 +2983,7 @@ input[type='checkbox'] {
     left: 390px;
     height: 50px;
     width: 230px;
-    top: 150px;
+    top: 130px;
     font-weight: normal;
     font-family: "Montserrat", sans-serif;
     border-top-left-radius: 0px;
@@ -3862,7 +3785,7 @@ input[type="date"]:enabled {
     top: 40px;
 }
 
-/* Стили для карты заказа */
+/* Стили для карты заказа и модального окна*/
 
 .modal_content_map {
     position: absolute;
@@ -3871,7 +3794,6 @@ input[type="date"]:enabled {
     border-radius: 12px;
     width: 860px;
     height: 690px;
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -3899,9 +3821,9 @@ input[type="date"]:enabled {
     position: absolute;
     left: 30px;
     top: 35px;
-    
     font-weight: 30px;
     font-size: 16px;
+    margin-left: 0px;
 
     color: #686466;
     font-family: "Montserrat", sans-serif;
@@ -3941,6 +3863,122 @@ input[type="date"]:enabled {
     background-color: #4E0476;
     color: white;
     border: 0px;
+}
+
+/* Стили для модального окна для времени доставки */
+
+.modal_content_delivery {
+    position: absolute;
+    background-color: #E3ECF5;
+    padding: 20px;
+    border-radius: 12px;
+    width: 635px;
+    height: 530px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#delivery_time_text {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    font-size: 32px;
+    color: #686466;
+    font-family: "Montserrat", sans-serif;
+}
+
+#time_table_delivery {
+    position: absolute;
+    left: 30px;
+    top: 100px;
+    width: 580px;
+    height: 335px;
+}
+
+.time_table_btn {
+    position: absolute;
+    width: 280px;
+    height: 51px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 28px 0px rgba(0, 0, 0, 0.1);
+    border: 2px solid white;
+    cursor: pointer;
+
+    font-size: 15px;
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#submit_delivery_time {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+
+    width: 200px;
+    height: 50px;
+
+    border-radius: 7px;
+    background-color: #4E0476;
+    color: white;
+    border: 0px;
+}
+
+#time_table_btn1 {
+    left: 0px;
+    top: 0px;
+}
+
+#time_table_btn2 {
+    left: 0px;
+    top: 70px;
+}
+
+#time_table_btn3 {
+    left: 0px;
+    top: 140px;
+}
+
+#time_table_btn4 {
+    left: 0px;
+    top: 210px;
+}
+
+#time_table_btn5 {
+    left: 0px;
+    top: 280px;
+}
+
+#time_table_btn6 {
+    left: 295px;
+    top: 0px;
+}
+
+#time_table_btn7 {
+    left: 295px;
+    top: 70px;
+}
+
+#time_table_btn8 {
+    left: 295px;
+    top: 140px;
+}
+
+#time_table_btn9 {
+    left: 295px;
+    top: 210px;
+}
+
+#time_table_btn10 {
+    left: 295px;
+    top: 280px;
+}
+
+.active_border_time_del {
+    border: 2px solid rgba(78, 4, 118, 1);
 }
 
 /* Order status */
@@ -4038,4 +4076,747 @@ input[type="date"]:enabled {
     font-size: 16px;
     font-family: "Montserrat", sans-serif;
     color: black;
+}
+
+/* СТРАНИЦЫ ИСТОРИИ ЗАКАЗОВ */
+
+#order_history_container {
+    position: sticky;
+}
+
+#order_history_block {
+    position: relative;
+    left: 255px;
+}
+
+.order_history_text {
+    position: relative;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+}
+
+.order_history_text_purp {
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+}
+
+#order_history_zag {
+    left: 0px;
+    right: 0px;
+    font-size: 32px;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+}
+
+.order_history_blank {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 800px;
+}
+
+/* Расположение для того что внутри прямоугольников */
+
+#order_history_number {
+    position: relative;
+    font-size: 22px;
+    left: 0px;
+    top: 15px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+/* Первая строка */
+#order_history_text1 {
+    font-size: 18px;
+    top: 10px;
+    left: 0px;
+}
+
+#order_history_text2 {
+    font-size: 18px;
+    top: 10px;
+    left: 80px;
+}
+
+#order_history_text3 {
+    font-size: 18px;
+    top: 10px;
+    left: 160px;
+}
+/* Вторая строка */
+#order_history_text4 {
+    font-size: 15px;
+    top: 10px;
+    left: 0px;
+}
+
+#order_history_text5 {
+    font-size: 15px;
+    top: 10px;
+    left: 80px;
+}
+
+#order_history_text6 {
+    font-size: 15px;
+    top: 10px;
+    left: 160px;
+}
+/* Общая стоимость*/
+#order_history_text7 {
+    font-size: 18px;
+    top: 10px;
+    left: 0px;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding-top: 8px;
+}
+/* Время */
+#order_history_text8 {
+    font-size: 18px;
+    top: 10px;
+    left: 0px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+/* Статус заказа */
+#order_history_text9 {
+    font-size: 18px;
+    top: 10px;
+    left: 0px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+#order_details {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    height: 35px;
+    width: 120px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: white;
+    background-color:#4E0476;
+    border-color: 0px;
+    border: 0px;
+}
+
+#history {
+    position: absolute;
+    width: 350px;
+    height: 50px;
+    left: 360px;
+    top: 1140px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    border-radius: 7px;
+    white-space: nowrap;
+    padding-top: 10px;
+    background-color: #f8f9fa;
+}
+
+#history:hover {
+    background-color: #cccdcf;
+}
+
+/* LOGIN IN BASE */
+
+.underline {
+    position: absolute;
+    height: 4px;
+    background-color: #ceaee8;
+    transition: all 0.5s ease;
+  }
+  
+  .overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease;
+  }
+  
+  .overlay.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .main-popup {
+    position: fixed;
+    left: 0;
+    top: 30px;
+    margin: 0;
+    width: 75%;
+    height: 450px;
+    background-color: white;
+    border-radius: 15px;
+    z-index: 15;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%);
+    transition: all .5s ease;
+    /*overflow: hidden;*/
+  }
+  
+  .main-popup.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px);
+    transition: all .5s ease;
+  }
+  
+  @media (min-width: 350px) {
+    .main-popup {
+      width: 350px;
+      left: 50%;
+      margin: 0 0 0 -250px;
+    }
+  }
+  
+  .popup-header {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 62px;
+    width: 100%;
+  }
+  
+  #popup-close-button a {
+    position: absolute;
+    right: 10px;
+    top: -30px;
+    width: 22px;
+    height: 22px;
+  }
+  
+  #popup-close-button a::before {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 3px;
+    height: 25px;
+    background-color: #fff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  #popup-close-button a::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 3px;
+    height: 25px;
+    background-color: #fff;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  
+  .popup-header ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .popup-header ul li {
+    text-align: center;
+    list-style: none;
+    width: 50%;
+    float: left;
+  }
+  
+  .popup-header ul li a {
+    display: block;
+    padding: 20px 0;
+    margin: 0;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  
+  #sign-in {
+    position: relative;
+    top: 395px;
+    left: 28px;
+    background: white;
+    color: #4E0476;
+    font-size: 15px;
+    font-weight: bold;
+    border-color:white;
+    width: 300px;
+    padding: 10px 20px 10px 20px;
+    z-index: 1000;
+  }
+  
+  #sign-in.active {
+    color: rgba(255,255,255,.9);
+    background-color: #4E0476;
+  }
+  
+  #register {
+    position: relative;
+    top: 359px;
+    left: 25px;
+    background: white;
+    border-color:white;
+    color: #4E0476;
+    font-size: 15px;
+    font-weight: bold;
+    width: 300px;
+    padding: 10px 20px 10px 20px;
+  }
+  
+  #register.active {
+    color: rgba(255,255,255,.9);
+    background-color: #4E0476;
+  }
+  
+  form.sign-in {
+    top: 0px;
+    left: 0;
+    font-size: 1em;
+    opacity: 1;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+  }
+  
+  form.sign-in.move-left {
+    opacity: 0;
+    transform: translateX(-450px);
+  }
+  
+  form label {
+    font-size: 1.1em;
+    color: #4E0476;
+    margin-left: 23px;
+  }
+  
+  form.sign-in input {
+    border-radius: 5px;
+    width: 90%;
+    height: 40px;
+    margin: 5px 5% 30px 5%;
+    padding: 10px;
+    font-size: 1em;
+    color: #4E0476;
+    outline: none;
+    border: none;
+  }
+  
+  form.register {
+    position: relative; 
+    top: -400px;
+    left: 0;
+    font-size: 1em;
+    opacity: 0;
+    transform: translateX(450px);
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+  }
+  
+  form.register.move-left {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  form.register input {
+    border-radius: 5px;
+    width: 90%;
+    height: 40px;
+    margin: 5px 5% 30px 5%;
+    padding: 10px;
+    font-size: 1em;
+    background: #F2F2F2;
+    color: black;
+    outline: none;
+    border: none;
+  }
+
+  .form .sign-in label {
+    color: white;
+    padding-top: 15px;
+}
+
+.form .sign-in {
+    width: 50%;
+    height: 100%;
+    padding: 15px 25px;
+}
+
+.form .sign-in h5 {
+    color: #4E0476;
+    text-align: right;
+    font-size: 32px;
+    margin-right: 135px;
+    margin-top: -15px;
+    margin-bottom: 85px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form .register h5 {
+    color: #4E0476;
+    text-align: right;
+    font-size: 32px;
+    margin-right: 103px;
+    margin-top: 360px;
+    margin-bottom: 85px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form .sign-in input {
+    width: 15%;
+    height: 40px;
+    background: #F2F2F2;
+    border: 1px solid rgba(255,255,255,.1);
+    padding: 0 15px;
+    color: black; /* отвечает за цвет курсора при нажатии */
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form .sign-in input:focus {
+    border: 1px solid rgba(255,255,255,.8);
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+      color: #DDD;
+}
+
+.form .sign-in input.submit {
+    background: rgba(255,255,255,.9);
+    color: #444;
+    font-size: 15px;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+#logining {
+    position: relative;
+    background: #4E0476;
+    color: white;
+    width: 300px;
+    top: -50px;
+    left: -8px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.form .register #phone_r {
+    position: relative;
+    background: #F2F2F2;
+    top: -88px;
+    left: 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form .register #password_r {
+    position: relative;
+    background: #F2F2F2;
+    top: -105px;
+    left: 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form .register #username_r {
+    position: relative;
+    background: #F2F2F2;
+    top: -70px;
+    left: 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form .register #repeat_password_r {
+    position: relative;
+    background: #F2F2F2;
+    color: black;
+    top: -122px;
+    left: 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: "Montserrat", sans-serif;
+}
+
+#zaregalsya {
+    position: relative;
+    background: #4E0476;
+    color: white;
+    width: 300px;
+    top: -140px;
+    left: 10px;
+    padding: 0px 20px;
+    font-size: 15px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+#order_details_block {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    width: 1150px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+#order_details_block_container {
+    position: absolute;
+    width: 1150px;
+    height: 520px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#order_details_number {
+    position: relative;
+    top: 0px;
+    left: 30px;
+    font-size: 32px;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(78, 4, 118, 1);
+    text-align: left;
+}
+
+#order_details_text0 {
+    top: 0px;
+    left: 30px;
+    text-align: left;
+    width: 1090px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+/* 1 строчка */
+#order_details_text1 {
+    top: 0px;
+    left: 30px;
+    width: 100px;
+    text-align: left;
+}
+
+#order_details_text2 {
+    top: 0px;
+    left: 30px;
+    width: 100px;
+    text-align: left;
+}
+
+#order_details_text3 {
+    top: 0px;
+    left: 50px;
+    width: 100px;
+    text-align: left;
+}
+
+#order_details_text4 {
+    top: 0px;
+    left: 70px;
+    width: 100px;
+    text-align: left;
+}
+
+#order_details_text5 {
+    top: 0px;
+    left: 90px;
+    width: 100px;
+    text-align: left;
+}
+/* 2 строчка */
+#order_details_text6 {
+    top: 0px;
+    left: 30px;
+    width: 200px;
+    text-align: left;
+}
+
+#order_details_text7 {
+    top: 0px;
+    left: 70px;
+    width: 100px;
+    text-align: left;
+}
+
+#order_details_text8 {
+    top: 0px;
+    left: 85px;
+    width: 100px;
+    text-align: left;
+}
+
+#order_details_text9 {
+    top: 0px;
+    left: 100px;
+    width: 100px;
+    text-align: left;
+}
+
+#order_details_text10 {
+    top: 0px;
+    left: 90px;
+    width: 500px;
+    text-align: left;
+}
+/* Остальные строчки */
+
+#order_details_text15 {
+    top: 0px;
+    left: 30px;
+    width: 1090px;
+    text-align: left;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+}
+
+#order_details_text11 {
+    top: 0px;
+    left: 30px;
+    width: 1090px;
+    text-align: left;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+#order_details_text12 {
+    top: 0px;
+    left: 30px;
+    width: 1090px;
+    text-align: left;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+#order_details_text13 {
+    top: 0px;
+    left: 30px;
+    width: 1090px;
+    text-align: left;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+#order_details_text14 {
+    top: 0px;
+    left: 30px;
+    width: 1090px;
+    text-align: left;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+#back_order_details_btn {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    border: 0px;
+    cursor: pointer;
+    background-color: white;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+}
+
+
+#pizza_desc_img_pop13, #pizza_desc_img_pop7, #pizza_desc_img_pop1, #pizza_desc_img_pop19, #pizza_desc_img_pop25, #pizza_desc_img_pop31 {
+    top: 60px;
+}
+
+#text5 {
+    left: 258px;
+    top: 165px;
+    position: relative;
+    font-size: 17px;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+    z-index: 1000;
+}
+
+#text6 {
+    left: 520px;
+    top: 127px;
+    width: 171px;
+    text-align-last: center;
+    position: relative;
+    font-size: 17px;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+    z-index: 1000;
+}
+
+#text7 {
+    left: 770px;
+    top: 89px;
+    position: relative;
+    font-size: 17px;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+    z-index: 1000;
+}
+
+#text8 {
+    left: 1015px;
+    top: 51px;
+    width: 191px;
+    text-align: center;
+    position: relative;
+    font-size: 17px;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+    z-index: 1000;
+
+
+}
+
+/* Flashes */
+
+.flash {
+    opacity: 0;/* Изначально скрыт */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background-color: #4E0476; /* Пример цвета фона */
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+    transition: display 0s, opacity 0.5s linear;
+}
+
+.flash.show {
+    opacity: 1;
+}
+
+.flash.wrong_1 {
+    position: fixed;
+    top: 20px;
+}
+
+.flash.wrong_2 {
+    position: fixed;
+    top: 70px;
+}
+
+.flash.please {
+    position: fixed;
+    top: 70px;
 }
