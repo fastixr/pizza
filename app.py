@@ -416,10 +416,12 @@ def user(id):
                 flash("Неправильный пароль")
 
         db.session.commit()
-
-        masked_card_number = "**** **** **** " + xor_decrypt(user.cardNumber, key1)[-4:]
-        masked_card_date = "**/**"
-        masked_card_cvc = "***"
+        if user.cardNumber:
+            masked_card_number = "**** **** **** " + xor_decrypt(user.cardNumber, key1)[-4:]
+        if user.cardExpirationDate:
+            masked_card_date = "**/**"
+        if user.cardCVV:
+            masked_card_cvc = "***"
 
         return render_template('cabinet.html', user=user, masked_card_number=masked_card_number,
                                masked_card_date=masked_card_date, masked_card_cvc=masked_card_cvc)
