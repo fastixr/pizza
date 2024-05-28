@@ -174,7 +174,7 @@
             <h2 id="text_cart4" class="cart_text">Промокод</h2>
             <input class="promo_input" type="text" placeholder="Введите промокод">
             <button id="apply_btn1" type="button" class="apply_btn">Применить</button>
-            <a href="{{ url_for('placing', id=session['id']) }}">
+            <a href="{{ url_for('placing', id=session['id']) if 'order' in session else url_for('cart', id=session['id']) }}">
                 <button id="apply_btn2" type="button" class="apply_btn">Оформить заказ ></button>
             </a>
             <a href="/">
