@@ -4719,6 +4719,6 @@ input[type="date"]:enabled {
 }
 
 
-#pizza_desc_img_pop13 {
+#pizza_desc_img_pop13, #pizza_desc_img_pop7, #pizza_desc_img_pop1, #pizza_desc_img_pop19, #pizza_desc_img_pop25, #pizza_desc_img_pop31 {
     top: 60px;
 }
