@@ -102,7 +102,7 @@ def login(page):
             try:
                 user = Users.query.filter_by(phone=phone).first()
             except:
-                flash("Неправильный логин")
+                flash('Неправильный телефон', 'wrong')
 
             if user and check_password_hash(user.password, password):
                 login_user(user, remember=False)
@@ -113,9 +113,9 @@ def login(page):
                 session['phone'] = user.phone
                 return 1
             else:
-                flash('Неправильный пароль')
+                flash('Неправильный пароль', 'wrong')
         else:
-            flash('Пожалуйста заполните все поля')
+            pass
 
 
 def register(page):
@@ -126,13 +126,13 @@ def register(page):
 
     if request.method == 'POST':
         if not (username or phone or password or repeat_password):
-            flash('Заполните все поля!')
+            pass
         elif password != repeat_password:
-            flash('Пароли не совпадают!')
+            flash('Пароли не совпадают!', 'wrong')
         else:
             try:
                 if phone == Users.query.filter_by(phone=phone).first().phone:
-                    flash('Номер уже зарегестрирован')
+                    flash('Номер уже зарегестрирован', 'wrong')
                 return render_template(page)
             except:
                 hash_pwd = generate_password_hash(password)
@@ -287,7 +287,7 @@ def order_saving(id):
         order = Order(user_id=id, items_list=session['order'], total_price=session['total_price'], status='Доставлен', address=session['address'],
                       deliveryTime=session['delivery_time'])
     except:
-        flash('Укажите адрес доставки')
+        flash('Укажите адрес доставки', 'wrong')
         return redirect(url_for('placing', id=session['id']))
     db.session.add(order)
     db.session.commit()
@@ -335,7 +335,7 @@ def cart(id):
     if 'id' in session and session['id'] != int(id):
         return redirect('/')
     if 'order' not in session:
-        flash('Корзина пуста')
+        flash('Корзина пуста', 'wrong')
     return render_template('cart.html')
 
 
@@ -408,7 +408,7 @@ def user(id):
             new_password = request.form.get('password_change_lk_1')
             repeat_new_password = request.form.get('password_change_lk_2')
             if new_password != repeat_new_password:
-                flash("Пароли не совпадают!")
+                flash("Пароли не совпадают!", 'wrong')
             elif check_password_hash(user.password, old_password):
                 hash_pwd = generate_password_hash(new_password)
                 if new_password == repeat_new_password:
@@ -417,7 +417,7 @@ def user(id):
                     except:
                         return "При смене пароля произошла ошибка"
             else:
-                flash("Неправильный пароль")
+                flash("Неправильный пароль", 'wrong')
 
         db.session.commit()
         if user.cardNumber:

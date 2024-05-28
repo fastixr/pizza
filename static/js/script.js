@@ -103,8 +103,9 @@ $(function() {
                 'right': 683
             })
             $('#full_avatar').css({
+                'position': 'fixed',
                 'top': 95,
-                'left': 390
+                'left': 300
             })
         } else {
             header.removeClass('header_fixed');
@@ -141,6 +142,7 @@ $(function() {
                 'right': 333
             })
             $('#full_avatar').css({
+                'position': 'absolute',
                 'top': 33,
                 'left': 55
             })
