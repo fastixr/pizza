@@ -4860,3 +4860,23 @@ input[type="date"]:enabled {
     background-color: white;
     color: black;
 }
+
+/* Last order button */
+
+#last_order_b {
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    left: 980px;
+    top: 150px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    border-radius: 7px;
+    white-space: nowrap;
+    padding-top: 10px;
+    background-color: #f8f9fa;
+}
+
+#last_order_b:hover {
+    background-color: #cccdcf;
+}
